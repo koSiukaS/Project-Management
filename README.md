@@ -1,4 +1,7 @@
 # Project-Management
+Task: During any project (student or enterprise) activities are planned and tracked in order to evaluate the effectiveness of the work. Each project member gets tasks and also plans own tasks, predicts the time to finish the task, and notifies about the status of the task at some points.   The system should present all projects of the company (student group), present the timeline, tasks and their status of one project, and show effectiveness of the particular project member.
+
+
 I will update this list everyday, will add what is done by everyone, what is needed to be done.
 After you make your tasks, just pull request to this github repo.
 ## To do for 03-30 (Wednesday):
