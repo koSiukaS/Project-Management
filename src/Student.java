@@ -2,6 +2,15 @@ public class Student extends Member {
     private int courseStartYear, courseStartMonth, courseStartDay;
     private String group;
     private int course;
+	private String courseName;
+	
+	public String getCourseName(){
+		return courseName;
+	}
+	
+	public void setCourseName(String name){
+		courseName = name;
+	}
     
     public int getCourseStartYear(){
         return courseStartYear;
