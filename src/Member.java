@@ -6,6 +6,7 @@ public class Member {
     private int birthYear, birthMonth, birthDay;
     private Task[] tasks;
     private int effectiveness;
+    private String id;
 
     public String getFirstName() {
         return firstName;
@@ -69,5 +70,13 @@ public class Member {
 
     public void setEffectiveness(int effectiveness) {
         this.effectiveness = effectiveness;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
