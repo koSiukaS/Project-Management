@@ -1,9 +1,10 @@
+import java.util.ArrayList;
+
 public class Project {
 
     private String name;
     private String description;
     private String supervisor;
-    private Member[] members;
     ArrayList<Member> members = new ArrayList<>();
     
     public void addMember(Member member){
@@ -35,13 +36,5 @@ public class Project {
 
     public void setSupervisor(String supervisor) {
         this.supervisor = supervisor;
-    }
-
-    public Member[] getMembers() {
-        return members;
-    }
-
-    public void setMembers(Member[] members) {
-        this.members = members;
     }
 }
