@@ -11,8 +11,6 @@ After you make your tasks, just pull request to this github repo.
 =====
 ###### Dainius:
 * Project.java:
- * method addMember (dynamic, so you must increase array size each time you add member or use ArrayList)
- * method deleteMember
  * showAddMember method (GUI):
     * it should have every member variable field
     * on "add" button adds it to Project object
@@ -38,7 +36,9 @@ After you make your tasks, just pull request to this github repo.
 
 =====
 ###### Dainius:
-* Nothing
+* Project.java:
+ * method addMember (dynamic, so you must increase array size each time you add member or use ArrayList)
+ * method deleteMember
 
 =====
 ###### Aivaras:
