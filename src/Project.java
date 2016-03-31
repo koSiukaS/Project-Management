@@ -4,16 +4,14 @@ public class Project {
     private String description;
     private String supervisor;
     private Member[] members;
-	ArrayList<Member> m=new ArrayList();
+    ArrayList<Member> members = new ArrayList<>();
     
     public void addMember(Member member){
-            m.add(member);
+        members.add(member);
     }
-    public void removeMember(int a){
-        m.remove(a);
+    public void removeMember(int index){
+        members.remove(index);
     }
-
-
 
     public String getName() {
         return name;
