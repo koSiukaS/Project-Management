@@ -8,7 +8,7 @@ public class Member {
     private int birthYear, birthMonth, birthDay;
     private int effectiveness;
     private String id;
-    ArrayList<Task> t = new ArrayList<Task>();
+    ArrayList<Task> tasks = new ArrayList<Task>();
 
     public String getFirstName() {
         return firstName;
@@ -75,10 +75,10 @@ public class Member {
     }
     
     void addTask(Task task){
-        t.add(task);
+        tasks.add(task);
     }
     
     void removeTask(int task){
-        t.remove(task);
+        tasks.remove(task);
     }
 }
