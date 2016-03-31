@@ -5,6 +5,8 @@ public class Project {
     private String supervisor;
     private Member[] members;
 
+
+
     public String getName() {
         return name;
     }
