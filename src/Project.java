@@ -5,14 +5,6 @@ public class Project {
     private String name;
     private String description;
     private String supervisor;
-    ArrayList<Member> members = new ArrayList<>();
-    
-    public void addMember(Member member){
-        members.add(member);
-    }
-    public void removeMember(int index){
-        members.remove(index);
-    }
 
     public String getName() {
         return name;
