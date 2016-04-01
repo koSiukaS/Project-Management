@@ -14,7 +14,7 @@ public class Time{
     private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
     private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-    public void time(){
+    public void time(final JFrame mainFrame){
         final JFrame frame = new JFrame("Date");
         JPanel f = new JPanel(new FlowLayout());
         
@@ -82,6 +82,7 @@ public class Time{
         	  	setProgramMonth(Integer.parseInt(inMonth));
         	  	setProgramDay(Integer.parseInt(inDay));
                 frame.dispose();
+                mainFrame.setVisible(true);
         	  	System.out.println(getProgramYear()+"/"+getProgramMonth()+"/"+getProgramDay());
           		}
         });
