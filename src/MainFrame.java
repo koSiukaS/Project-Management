@@ -1,16 +1,29 @@
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainFrame {
 
     private JFrame frame = new JFrame("Project Management");
+    private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
 
     public JFrame getFrame() {
         return frame;
     }
 
+    private void addStartingInput() {
+        UniversityProject project = new UniversityProject();
+        universityProjects.add(project.getStartingInput1());
+        universityProjects.add(project.getStartingInput2());
+        universityProjects.add(project.getStartingInput3());
+        universityProjects.add(project.getStartingInput1());
+        universityProjects.add(project.getStartingInput2());
+        universityProjects.add(project.getStartingInput1());
+    }
+
     public void showMainFrame() {
+        addStartingInput();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(860, 500);
         frame.setResizable(false);
@@ -22,7 +35,7 @@ public class MainFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.weighty = 1;
-        east.add(showProjectButtons(), gbc);
+        east.add(universityProjects.get(0).showProjectButtons(), gbc);
         east.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Menu",
@@ -35,72 +48,25 @@ public class MainFrame {
          * panel in which data will be shown
          */
         JPanel center = new JPanel();
+        for(int i = 0; i < universityProjects.size(); i++) {
+            center.add(universityProjects.get(i).showProject(universityProjects.get(i)));
+        }
+
+        JScrollPane scrollPane = new JScrollPane(center);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        /*scrollPane.setBounds(50, 30, 500, 400);
+        //center.add(scrollPane);
+        JPanel panel = new JPanel(null);
+        panel.setPreferredSize(new Dimension(500, 400));
+        panel.add(scrollPane);*/
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.add(east, BorderLayout.EAST);
-        //frame.add(center);
+        frame.add(center);
         //frame.pack();
         frame.setVisible(false);
     }
 
-    private JPanel showProjects(Project project) {
-        JPanel panel = new JPanel();
-
-        JLabel nameLabel = new JLabel();
-        //nameLabel.setText(project.getName().toUpperCase());
-        nameLabel.setText("nameLabel tekstas");
-        nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-
-        JLabel descriptionLabel = new JLabel();
-        //String shortDescription = project.getDescription().substring(0, 100) + "...";
-        String shortDescription = "dasdasfasfasfkjfkfkfhfakkfajafkjjjjjjjjjjjjjjjjjddskhhhhhhhhhhhhhhhhhhhhhh";
-        descriptionLabel.setText(shortDescription);
-
-        JLabel supervisorLabel = new JLabel();
-        String supervisor = "Supervisor: ";// + project.getSupervisor();
-        supervisorLabel.setText(supervisor);
-
-        JLabel membersLabel = new JLabel();
-        String members = "Members count: " + "5";//project.getMembersCount();
-        membersLabel.setText(members);
-
-        JButton detailsButton = new JButton("Details");
-
-        GroupLayout layout = new GroupLayout(panel);
-        panel.setLayout(layout);
-        panel.setSize(500, 100);
-        layout.setAutoCreateContainerGaps(true);
-        layout.setAutoCreateGaps(true);
-        layout.setVerticalGroup(layout.createSequentialGroup()
-                .addComponent(nameLabel)
-                .addComponent(descriptionLabel)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(supervisorLabel)
-                        .addComponent(detailsButton))
-                .addComponent(membersLabel)
-        );
-        layout.setHorizontalGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(nameLabel)
-                        .addComponent(descriptionLabel)
-                        .addComponent(supervisorLabel)
-                        .addComponent(membersLabel))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(detailsButton))
-        );
-
-        return panel;
-    }
-
-    private JPanel showProjectButtons() {
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 0, 3));
-        JButton addProject = new JButton("Add project");
-        JButton editProject = new JButton("Edit project");
-        JButton removeProject = new JButton("Remove project");
-        buttonPanel.add(addProject);
-        buttonPanel.add(editProject);
-        buttonPanel.add(removeProject);
-        return buttonPanel;
-    }
 }

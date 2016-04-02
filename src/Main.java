@@ -17,8 +17,7 @@ public class Main {
     }
 
     private void startingInput() {
-        /*
-         * Need input here.
-         */
+        UniversityProject firstProject = new UniversityProject();
+
     }
 }
