@@ -48,7 +48,7 @@ public class Student extends Member {
         return course;
     }
     
-    public void setCourse(String course){
+    public void setCourse(int course){
         this.course = course;
     }
 }

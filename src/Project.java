@@ -1,17 +1,10 @@
+import java.util.ArrayList;
+
 public class Project {
 
     private String name;
     private String description;
     private String supervisor;
-    private Member[] members;
-	ArrayList<Member> m=new ArrayList();
-    
-    public void addMember(Member member){
-            m.add(member);
-    }
-    public void removeMember(int a){
-        m.remove(a);
-    }
 
     public String getName() {
         return name;
@@ -35,13 +28,5 @@ public class Project {
 
     public void setSupervisor(String supervisor) {
         this.supervisor = supervisor;
-    }
-
-    public Member[] getMembers() {
-        return members;
-    }
-
-    public void setMembers(Member[] members) {
-        this.members = members;
     }
 }

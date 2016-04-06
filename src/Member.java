@@ -1,12 +1,14 @@
+import java.util.*;
+
 public class Member {
 
     private String firstName;
     private String lastName;
     private String position;
     private int birthYear, birthMonth, birthDay;
-    private Task[] tasks;
     private int effectiveness;
     private String id;
+    ArrayList<Task> tasks = new ArrayList<Task>();
 
     public String getFirstName() {
         return firstName;
@@ -56,14 +58,6 @@ public class Member {
         this.birthDay = birthDay;
     }
 
-    public Task[] getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Task[] tasks) {
-        this.tasks = tasks;
-    }
-
     public int getEffectiveness() {
         return effectiveness;
     }
@@ -78,5 +72,13 @@ public class Member {
 
     public void setId(String id) {
         this.id = id;
+    }
+    
+    void addTask(Task task){
+        tasks.add(task);
+    }
+    
+    void removeTask(int task){
+        tasks.remove(task);
     }
 }
