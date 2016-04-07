@@ -10,7 +10,6 @@ public class ProjectWindow {
     //sita suvarkyt turi.
     public JPanel createProjectPanel(UniversityProject project) {
         JPanel panel = new JPanel(new FlowLayout());
-
         JLabel nameLabel = new JLabel();
         nameLabel.setText(project.getName().toUpperCase());
         nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -30,15 +29,19 @@ public class ProjectWindow {
         JButton detailsButton = new JButton("Details");
 
         JPanel informationPanel = new JPanel();
+        Dimension panelSize = new Dimension(600,75);
+        informationPanel.setPreferredSize(panelSize);
         informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.PAGE_AXIS));
         informationPanel.add(nameLabel);
         informationPanel.add(descriptionLabel);
         informationPanel.add(supervisorLabel);
         informationPanel.add(membersLabel);
 
+        FlowLayout flow = new FlowLayout(FlowLayout.LEADING, 10, 5);
+        panel.setLayout(flow);
         panel.add(informationPanel);
         panel.add(detailsButton);
-
+        
         return panel;
     }
 
