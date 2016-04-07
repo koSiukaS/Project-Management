@@ -1,9 +1,15 @@
+package model;
+
 public class Student extends Member {
     private int courseStartYear, courseStartMonth, courseStartDay;
-    private String group;
+    private int group;
     private int course;
     private String courseName;
-	
+
+    public void setCourseStartDay(int courseStartDay) {
+        this.courseStartDay = courseStartDay;
+    }
+
     public String getCourseName(){
 	return courseName;
     }
@@ -36,11 +42,11 @@ public class Student extends Member {
         courseStartDay = day;
     }
     
-    public String getGroup(){
+    public int getGroup(){
         return group;
     }
     
-    public void setGroup(String group){
+    public void setGroup(int group){
         this.group = group;
     }
     

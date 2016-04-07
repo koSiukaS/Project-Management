@@ -1,3 +1,5 @@
+package model;
+
 import java.util.*;
 
 public class Member {
@@ -6,9 +8,16 @@ public class Member {
     private String lastName;
     private String position;
     private int birthYear, birthMonth, birthDay;
-    private int effectiveness;
     private String id;
-    ArrayList<Task> tasks = new ArrayList<Task>();
+    private ArrayList<Task> tasks = new ArrayList<Task>();
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -56,14 +65,6 @@ public class Member {
 
     public void setBirthDay(int birthDay) {
         this.birthDay = birthDay;
-    }
-
-    public int getEffectiveness() {
-        return effectiveness;
-    }
-
-    public void setEffectiveness(int effectiveness) {
-        this.effectiveness = effectiveness;
     }
 
     public String getId() {

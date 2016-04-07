@@ -1,0 +1,103 @@
+Version Control System
+Common reports and programs or information blocks are modified by several users as the latest version of any material should be accessible for all project (group) members. The system should be able to show the last version and all the previous versions, and to recover to some previous version if the last version is broken. The system should show what was changed in each version, who made the modification, who worked and committed most frequently.
+S. Miller
+@
+Ezra
+Tang
+Web developer
+1991 12 25
+s1713113
+Information Technology
+2
+2015 09 01
+#
+Buy hosting
+Purchase the best hosting plan from hosting.com website.
+2016 06 05
+#
+Buy domain name
+Purchase domain named 'justblog.com' from cheapest service provider.
+2016 05 21
+#
+Install WordPress
+Install Wordpress engine, modify it, install needed plugins.
+2016 05 30
+#
+Build user friendly website
+Build easy to use website.
+2016 06 08
+@
+Douglas	
+Coleman
+Designer
+1991 08 11
+s1125152
+Graphics Design
+2
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Herman
+Bell
+Second designer
+1992 04 22
+s1719109
+Information Technology
+2
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Helps draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Emmett
+Marshall
+Lead programmer
+1992 10 31
+s1755573
+Information Technology
+2
+2015 09 01
+#
+Make a plan
+Make a plan what program will have.
+2016 05 25
+#
+Make GUI
+Make GUI ready for use.
+2016 05 30
+#
+Put all classes to GUI
+Put all classes to GUI check if it is working.
+2016 06 10
+#
+End project
+End project make sure everything is working and give it for marking.
+2016 06 15

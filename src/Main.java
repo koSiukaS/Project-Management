@@ -1,12 +1,31 @@
+import model.UniversityProject;
+import model.Time;
+import view.MainFrame;
+
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
 
-    ArrayList<Project> projects = new ArrayList<>();
+    public ArrayList<UniversityProject> projects = new ArrayList<>();
 
     public static void main(String[] args) {
-        final MainFrame main = new MainFrame();
+        Main start = new Main();
+        start.startingInput();
+        start.startProgram();
+    }
+
+    private void startingInput() {
+        try {
+            projects = new FilesInputOutput().readFiles();
+        } catch(IOException e) {
+            System.exit(1);
+        }
+    }
+
+    private void startProgram() {
+        final MainFrame main = new MainFrame(projects);
         final Time time = new Time();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -14,10 +33,5 @@ public class Main {
                 time.time(main.getFrame());
             }
         });
-    }
-
-    private void startingInput() {
-        UniversityProject firstProject = new UniversityProject();
-
     }
 }

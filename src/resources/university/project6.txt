@@ -1,0 +1,111 @@
+BLOG site
+Individuals or their groups can have their blogs. Blog messages are represented by showing the newest material at the top, old messages are in archives (special catalogues). Blog messages (or diary blocks) can contain text and pictures. Readers can leave comments and get answers. All users are registered, thus, the system should be able to show a list of blogs, the content of a particular blog, expand the comments, enable conversations, and search on different criteria, e.g. user name, date, some keyword (phrase).
+M. Ellis
+@
+Richard
+Gates
+Web Developer
+1992 07 25
+s1713173
+Information Technology
+1
+2015 09 01
+#
+Buy Hosting
+Purchase the best hosting plan from hosting.com website.
+2016 05 20
+#
+Buy domain name
+Purchase domain named 'justblog.com' from cheapest service provider.
+2016 05 21
+#
+Install WordPress
+Install Wordpress engine, modify it, install needed plugins.
+2016 05 30
+#
+Write program
+Write fully funtioning blog.
+2016 06 08
+@
+Leonardo
+Snow
+Designer
+1993 08 01
+s1715152
+Graphics Design
+3
+2015 09 01
+#
+Plan desing
+Plan desing to have a general understanding what should it have.
+2016 05 25
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+Make a sketh
+Make a sketh of te plan.
+2016 05 28
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Tad
+Ali
+Second designer
+1992 01 12
+s1719173
+Information Technology
+1
+2015 09 01
+#
+Plan desing
+Plan desing to have a general understanding what should it have.
+2016 05 25
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+Make a sketh
+Make a sketh of te plan.
+2016 05 28
+#
+Draw a design
+Helps draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Andre
+Ness
+Lead programmer
+1992 05 25
+s1753173
+Information Technology
+1
+2015 09 01
+#
+Make a plan
+Make a plan what program will have.
+2016 05 25
+#
+Make GUI
+Make GUI ready for use.
+2016 05 30
+#
+Put all classes to GUI
+Put all classes to GUI chech if it is working.
+2016 06 10
+#
+End project
+End project make sure everything is working and give it for marking.
+2016 06 15

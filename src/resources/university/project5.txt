@@ -1,0 +1,103 @@
+Group Timetable/Calendar
+The system should store timetables of several persons. Common meetings, lectures, events should be presented, also, the system should store personal timetables/calendars. Thus, the person should see his own calendar and common (actual) events. E.g. OOP is valid for the teacher and all first year students of IT, but some students also attend MIFSA meetings.
+D. Hold
+@
+James
+Merrick
+Web Developer
+1991 07 25
+s1453173
+Information Technology
+2
+2015 09 01
+#
+Buy Hosting
+Purchase the best hosting plan from hosting.com website.
+2016 05 20
+#
+Buy domain name
+Purchase domain named 'justblog.com' from cheapest service provider.
+2016 05 21
+#
+Install WordPress
+Install Wordpress engine, modify it, install needed plugins.
+2016 05 30
+#
+Build user friendly website
+Build easy to use website.
+2016 06 08
+@
+Kayla
+Tate
+Designer
+1990 08 01
+s1714562
+Graphics Design
+4
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Jenna
+Ellis
+Second designer
+1991 01 12
+s1769173
+Information Technology
+2
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Helps draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Angel
+Lowe
+Lead programmer
+1991 10 25
+s1759373
+Information Technology
+2
+2015 09 01
+#
+Make a plan
+Make a plan what program will have.
+2016 05 25
+#
+Make GUI
+Make GUI ready for use.
+2016 05 30
+#
+Put all classes to GUI
+Put all classes to GUI check if it is working.
+2016 06 10
+#
+End project
+End project make sure everything is working and give it for marking.
+2016 06 15

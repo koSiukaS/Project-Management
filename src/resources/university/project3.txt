@@ -1,0 +1,107 @@
+E-Shop of Clothes and Accessories
+Some brands have shops in the shopping centers and e-shops. Thus, things can be bought online using cards and at the shop using cash. Also, the number of clothes and accessories is limited. If someone buys a pair of trousers of some type and size, it might be that another person would not get it. But the system should inform where to search for the necessary thing, another shop, another city, etc. Clothes have a lot of properties, e.g. size, color, type, model. If the use does not get what is needed the system should suggest to try another model of the same size (if this particle is at the shop, of course).
+C. McGregor
+@
+Asher
+Thorton
+Web Developer
+1993 07 25
+s1713103
+Information Technology
+1
+2015 09 01
+#
+Buy Hosting
+Purchase the best hosting plan from hosting.com website.
+2016 05 20
+#
+Buy domain name
+Purchase domain named 'justblog.com' from cheapest service provider.
+2016 05 21
+#
+Install WordPress
+Install Wordpress engine, modify it, install needed plugins.
+2016 05 30
+#
+Build user friendly website
+Build easy to use website.
+2016 06 08
+@
+Abraham
+Franklin
+Designer
+1992 08 01
+s1715152
+Graphics Design
+1
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Luther
+Fitzgerald
+Second designer
+1992 01 20
+s1019173
+Information Technology
+1
+2015 09 01
+#
+Plan design
+Plan design to have a general understanding what should it have.
+2016 05 25
+#
+Draw a design
+Draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+Make a sketch
+Make a sketch of the plan.
+2016 05 28
+#
+Draw a design
+Helps draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
+End task
+End task complate all the work.
+2016 06 07
+@
+Ray
+Manning
+Lead programmer
+1992 07 25
+s1753170
+Information Technology
+1
+2015 09 01
+#
+Make a plan
+Make a plan what program will have.
+2016 05 25
+#
+Make GUI
+Make GUI ready for use.
+2016 05 30
+#
+Put all classes to GUI
+Put all classes to GUI check if it is working.
+2016 06 10
+#
+End project
+End project make sure everything is working and give it for marking.
+2016 06 15
