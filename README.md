@@ -4,45 +4,43 @@ model.Task: During any project (student or enterprise) activities are planned an
 
 I will update this list everyday, will add what is done by everyone, what is needed to be done.
 After you make your tasks, just pull request to this github repo.
-## To do for 04-01 (Friday):
+## To do for 04-08 (Friday):
 ###### Žygis:
-* GUI concept (Main.java) - continuing work
+* GUI
+* JPanels communication
+* Time control
 
 =====
 ###### Dainius:
-* model.Project.java:
- * showAddMember method (GUI):
-    * it should have every member variable field
-    * on "add" button adds it to model.Project object
-* Make input data (model.Project names, tasks, student first, last names, birth dates, etc.) in .xls/.csv different sheets (tons of data)
+* Fix and make more .txt filss
+* Add Student method (GUI) (please fix your spaghetti code)
 
 =====
 ###### Aivaras:
-* model.Member.java:
- * showAddTask method (GUI):
-    * textField name
-    * textField description
-    * deadline data (similiar to model.Time.java style)
-    * save/add button which adds model.Task to model.Member object.
+* Help Žygis with main GUI (to make ir faster)
+* Add Task method (GUI)
 
 # Done
 ###### Žygis:
-* Base classes (starting project structure)
- * model.Member.java
- * model.Project.java
- * model.Task.java
- * model.Time.java
-* model.Time.java GUI and functionality
+* Base classes
+* Project packages and structure
+* Time.java - GUI and functionality
+* FilesInputOutput.java - reading from files
+* MainFramse.java - main GUI window
+* ProjectsWindow.java - JPanels
 
 =====
 ###### Dainius:
-* model.Project.java:
- * method addMember (dynamic, so you must increase array size each time you add member or use ArrayList)
+* Project.java:
+ * method addMember
  * method deleteMember
+* .txt files
+* ADD WHAT YOU DONE
 
 =====
 ###### Aivaras:
-* model.Student.java (structure)
-* model.Member.java
+* Student.java (structure)
+* Member.java
  * method addTask
  * method deleteTask
+* ADD WHAT YOU DONE
