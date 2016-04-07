@@ -76,6 +76,7 @@ public class UniversityProject extends Project {
         membersLabel.setText(members);
 
         JButton detailsButton = new JButton("Details");
+JButton addStudents=new JButton("Add student");
 
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
@@ -88,7 +89,9 @@ public class UniversityProject extends Project {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(supervisorLabel)
                         .addComponent(detailsButton))
-                .addComponent(membersLabel)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addComponent(addStudents)
+                        .addComponent(membersLabel))
         );
         layout.setHorizontalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -97,9 +100,10 @@ public class UniversityProject extends Project {
                         .addComponent(supervisorLabel)
                         .addComponent(membersLabel))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(detailsButton))
+                        .addComponent(detailsButton)
+                        .addComponent(addStudents))
         );
-
+         addStudents.addActionListener(new AddStudent());
         return panel;
     }
 
