@@ -8,7 +8,7 @@ After you make your tasks, just pull request to this github repo.
 ###### Žygis:
 * GUI
 * JPanels communication
-* Time control
+* view.ProgramDate control
 
 =====
 ###### Dainius:
@@ -24,7 +24,7 @@ After you make your tasks, just pull request to this github repo.
 ###### Žygis:
 * Base classes
 * Project packages and structure
-* Time.java - GUI and functionality
+* view.ProgramDate.java - GUI and functionality
 * FilesInputOutput.java - reading from files
 * MainFramse.java - main GUI window
 * ProjectsWindow.java - JPanels

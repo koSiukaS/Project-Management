@@ -1,11 +1,11 @@
-package model;
+package view;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-public class Time{
+public class ProgramDate {
 
     private int programYear, programMonth, programDay;
 
@@ -16,7 +16,7 @@ public class Time{
     private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
     private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-    public void time(final JFrame mainFrame){
+    public void time(final MainFrame mainFrame){
         final JFrame frame = new JFrame("Date");
         JPanel f = new JPanel(new FlowLayout());
         
@@ -80,12 +80,15 @@ public class Time{
         {
         public void actionPerformed(ActionEvent e)
           		{
-        	  	setProgramYear(Integer.parseInt(inYear));
-        	  	setProgramMonth(Integer.parseInt(inMonth));
-        	  	setProgramDay(Integer.parseInt(inDay));
-                frame.dispose();
-                mainFrame.setVisible(true);
-        	  	System.out.println(getProgramYear()+"/"+getProgramMonth()+"/"+getProgramDay());
+                    setProgramYear(Integer.parseInt(inYear));
+                    setProgramMonth(Integer.parseInt(inMonth));
+                    setProgramDay(Integer.parseInt(inDay));
+                    frame.dispose();
+                    mainFrame.refresh();
+                    /*SwingUtilities.updateComponentTreeUI(mainFrame);
+                    mainFrame.revalidate();
+                    mainFrame.repaint();*/
+                    mainFrame.getFrame().setVisible(true);
           		}
         });
 

@@ -1,6 +1,6 @@
 import model.UniversityProject;
-import model.Time;
 import view.MainFrame;
+import view.ProgramDate;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -25,12 +25,12 @@ public class Main {
     }
 
     private void startProgram() {
-        final MainFrame main = new MainFrame(projects);
-        final Time time = new Time();
+        final ProgramDate date = new ProgramDate();
+        final MainFrame main = new MainFrame(projects, date);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+                date.time(main);
                 main.showMainFrame();
-                time.time(main.getFrame());
             }
         });
     }
