@@ -12,8 +12,13 @@ import java.util.ArrayList;
 public class MainFrame {
 
     private JFrame frame = new JFrame("Project Management");
+    private JPanel center;
+    private JPanel east;
+    private ProjectsListJPanels projectsWindow = new ProjectsListJPanels(MainFrame.this);
+
     private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
     private ProgramDate date;
+    private JLabel dateLabel;
 
     public MainFrame(ArrayList<UniversityProject> universityProjects, ProgramDate date) {
         this.universityProjects = universityProjects;
@@ -25,55 +30,48 @@ public class MainFrame {
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
     }
 
+    public JPanel getCenter() {
+        return center;
+    }
+
+    public void setCenter(JPanel center) {
+        this.center = center;
+    }
+
+    public JPanel getEast() {
+        return east;
+    }
+
+    public void setEast(JPanel east) {
+        this.east = east;
+    }
+
+    public ArrayList<UniversityProject> getUniversityProjects() {
+        return universityProjects;
+    }
+
+    public ProjectsListJPanels getProjectsWindow() {
+        return projectsWindow;
+    }
+
     public JFrame getFrame() {
         return frame;
     }
 
     public void showMainFrame() {
-        JPanel east = showMenu(new ProjectsWindow().createProjectButtons());
-        JPanel center = showProjectsList();//new ProjectWindow().createAndShowFullProjectPanel(universityProjects.get(3));
+        east = showMenu(projectsWindow.createProjectButtons());
+        center = projectsWindow.createProjectsList(universityProjects);
 
         frame.add(east, BorderLayout.EAST);
         frame.add(center);
         frame.setVisible(false);
     }
 
-    private JPanel showProjectsList() {
+    public JPanel showMenu(JPanel panel) {
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-
-        JPanel intermediatePanel = new JPanel();
-        intermediatePanel.setLayout(new BoxLayout(intermediatePanel, BoxLayout.PAGE_AXIS));
-        for(int i = 0; i < universityProjects.size(); i++) {
-            intermediatePanel.add(new ProjectsWindow().createProjectPanel(universityProjects.get(i), frame));
-            intermediatePanel.add(new JSeparator(SwingConstants.HORIZONTAL));
-        }
-
-        JScrollPane scrollPane = new JScrollPane(intermediatePanel);
-        //scrollPane.setPreferredSize(new Dimension(715, 450));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
-
-        JPanel namePanel = new JPanel();
-        namePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        JLabel nameLabel = new JLabel("Projects", SwingConstants.LEFT);
-        nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 35));
-        namePanel.add(nameLabel);
-
-        mainPanel.add(namePanel);
-        mainPanel.add(scrollPane);
-        return mainPanel;
-    }
-
-    private JPanel showMenu(JPanel panel) {
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.weighty = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        mainPanel.add(panel, gbc);
+        SpringLayout layout = new SpringLayout();
+        mainPanel.setLayout(layout);
+        mainPanel.setPreferredSize(new Dimension(138, 0));
         mainPanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Menu",
@@ -81,25 +79,40 @@ public class MainFrame {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-        gbc.gridy++;
-        gbc.insets = new Insets(250, 0, 0, 0);
-        mainPanel.add(showTime(), gbc);
+        mainPanel.add(panel);
+        JPanel datePanel = showTime();
+        mainPanel.add(datePanel);
+        layout.putConstraint(SpringLayout.SOUTH, datePanel, 0, SpringLayout.SOUTH, mainPanel);
         return mainPanel;
     }
 
     private JPanel showTime() {
-        JPanel panel = new JPanel(new GridLayout(3, 1, 0, 0));
+        JPanel panel = new JPanel();
+        SpringLayout layout = new SpringLayout();
+        panel.setLayout(layout);
+        panel.setPreferredSize(new Dimension(128, 55));
         JButton button = new JButton("Change date");
+        button.setPreferredSize(new Dimension(128, 30));
+        JLabel dateStr = new JLabel("Date:");
+        dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        dateLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                date.time(frame);
-                System.out.println(String.format("old date: %d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+                date.time(MainFrame.this);
             }
         });
-        panel.add(new JLabel("Date:"));
-        panel.add(new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay())));
+        panel.add(dateStr);
+        layout.putConstraint(SpringLayout.WEST, dateStr, 0, SpringLayout.WEST, panel);
+        panel.add(dateLabel);
+        layout.putConstraint(SpringLayout.WEST, dateLabel, 44, SpringLayout.WEST, panel);
         panel.add(button);
+        layout.putConstraint(SpringLayout.NORTH, button, 24, SpringLayout.NORTH, panel);
         return panel;
+    }
+
+    public void refresh() {
+        dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
     }
 }

@@ -29,7 +29,7 @@ public class Main {
         final MainFrame main = new MainFrame(projects, date);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                date.time(main.getFrame());
+                date.time(main);
                 main.showMainFrame();
             }
         });

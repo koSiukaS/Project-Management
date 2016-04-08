@@ -16,7 +16,7 @@ public class ProgramDate {
     private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
     private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-    public void time(final JFrame mainFrame){
+    public void time(final MainFrame mainFrame){
         final JFrame frame = new JFrame("Date");
         JPanel f = new JPanel(new FlowLayout());
         
@@ -80,15 +80,15 @@ public class ProgramDate {
         {
         public void actionPerformed(ActionEvent e)
           		{
-        	  	setProgramYear(Integer.parseInt(inYear));
-        	  	setProgramMonth(Integer.parseInt(inMonth));
-        	  	setProgramDay(Integer.parseInt(inDay));
-                frame.dispose();
-                SwingUtilities.updateComponentTreeUI(mainFrame);
-                mainFrame.revalidate();
-                mainFrame.repaint();
-                mainFrame.setVisible(true);
-        	  	//System.out.println(getProgramYear()+"/"+getProgramMonth()+"/"+getProgramDay());
+                    setProgramYear(Integer.parseInt(inYear));
+                    setProgramMonth(Integer.parseInt(inMonth));
+                    setProgramDay(Integer.parseInt(inDay));
+                    frame.dispose();
+                    mainFrame.refresh();
+                    /*SwingUtilities.updateComponentTreeUI(mainFrame);
+                    mainFrame.revalidate();
+                    mainFrame.repaint();*/
+                    mainFrame.getFrame().setVisible(true);
           		}
         });
 
