@@ -3,15 +3,18 @@ package view;
 import model.UniversityProject;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class MainFrame {
 
-    private JFrame frame = new JFrame("Project Management");
+    public JFrame frame = new JFrame("Project Management");
     private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
+
+    public MainFrame() {
+
+    }
 
     public MainFrame(ArrayList<UniversityProject> universityProjects) {
         this.universityProjects = universityProjects;
@@ -26,8 +29,8 @@ public class MainFrame {
         frame.setSize(860, 500);
         frame.setResizable(false);
 
-        JPanel east = showProjectButtons();
-        JPanel center = showProjectsList();
+        JPanel east = showButtons(new ProjectsWindow().createProjectButtons());
+        JPanel center = showProjectsList();//new ProjectWindow().createAndShowFullProjectPanel(universityProjects.get(3));
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
@@ -42,9 +45,8 @@ public class MainFrame {
 
         JPanel intermediatePanel = new JPanel();
         intermediatePanel.setLayout(new BoxLayout(intermediatePanel, BoxLayout.PAGE_AXIS));
-        System.out.println(universityProjects.size());
         for(int i = 0; i < universityProjects.size(); i++) {
-            intermediatePanel.add(new ProjectWindow().createProjectPanel(universityProjects.get(i)));
+            intermediatePanel.add(new ProjectsWindow().createProjectPanel(universityProjects.get(i)));
             intermediatePanel.add(new JSeparator(SwingConstants.HORIZONTAL));
         }
 
@@ -65,14 +67,12 @@ public class MainFrame {
         return mainPanel;
     }
 
-    private JPanel showProjectButtons() {
-        JPanel projectButtons = new ProjectWindow().createProjectButtons();
-
+    private JPanel showButtons(JPanel panel) {
         JPanel east = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.weighty = 1;
-        east.add(projectButtons, gbc);
+        east.add(panel, gbc);
         east.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Menu",
@@ -80,8 +80,6 @@ public class MainFrame {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-
         return east;
     }
-
 }

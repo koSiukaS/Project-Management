@@ -11,6 +11,10 @@ public class Member {
     private String id;
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
+    public String getFirstNameLetterAndLastName() {
+        return (firstName.charAt(0) + ". " + lastName);
+    }
+
     public ArrayList<Task> getTasks() {
         return tasks;
     }

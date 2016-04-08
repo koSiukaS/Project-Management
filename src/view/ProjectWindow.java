@@ -1,55 +1,54 @@
 package view;
 
+import model.Student;
 import model.UniversityProject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ProjectWindow {
 
-    //sita suvarkyt turi.
-    public JPanel createProjectPanel(UniversityProject project) {
-        JPanel panel = new JPanel(new FlowLayout());
-        JLabel nameLabel = new JLabel();
-        nameLabel.setText(project.getName().toUpperCase());
-        nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-
-        JLabel descriptionLabel = new JLabel();
-        String shortDescription = project.getDescription().substring(0, 95) + "...";
-        descriptionLabel.setText(shortDescription);
-
-        JLabel supervisorLabel = new JLabel();
-        String supervisor = "Supervisor: " + project.getSupervisor();
-        supervisorLabel.setText(supervisor);
-
-        JLabel membersLabel = new JLabel();
-        String members = "Students count: " + project.getStudentsCount();
-        membersLabel.setText(members);
-
-        JButton detailsButton = new JButton("Details");
-
+    public JPanel createAndShowFullProjectPanel(UniversityProject project) {
         JPanel informationPanel = new JPanel();
-        Dimension panelSize = new Dimension(600,75);
-        informationPanel.setPreferredSize(panelSize);
+        informationPanel.setPreferredSize(new Dimension(700,275));
         informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.PAGE_AXIS));
-        informationPanel.add(nameLabel);
+
+        JLabel nameLabel = new JLabel(project.getName().toUpperCase());
+        nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 35));
+        JLabel descriptionLabel = new JLabel(project.getDescription());
+        JLabel supervisorLabel = new JLabel("Supervisor: " + project.getSupervisor());
+
         informationPanel.add(descriptionLabel);
         informationPanel.add(supervisorLabel);
-        informationPanel.add(membersLabel);
 
-        FlowLayout flow = new FlowLayout(FlowLayout.LEADING, 10, 5);
-        panel.setLayout(flow);
-        panel.add(informationPanel);
-        panel.add(detailsButton);
-        
-        return panel;
+        ArrayList<Student> students = project.getStudents();
+        for(int i = 0; i < project.getStudentsCount(); i++) {
+            JPanel memberPanel = new JPanel(new FlowLayout(FlowLayout.LEADING, 10, 5));
+            JLabel memberLabel = new JLabel(students.get(i).getFirstNameLetterAndLastName());
+            JButton button = new JButton("Details");
+            memberPanel.add(memberLabel);
+            memberLabel.add(button);
+            informationPanel.add(memberLabel);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(informationPanel);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        //scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.add(nameLabel);
+        mainPanel.add(scrollPane);
+
+        return mainPanel;
     }
 
-    public JPanel createProjectButtons() {
+    public JPanel createMemberButtons() {
         JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 0, 3));
-        JButton addProject = new JButton("Add project");
-        JButton editProject = new JButton("Edit project");
-        JButton removeProject = new JButton("Remove project");
+        JButton addProject = new JButton("Add member");
+        JButton editProject = new JButton("Edit member");
+        JButton removeProject = new JButton("Remove member");
         buttonPanel.add(addProject);
         buttonPanel.add(editProject);
         buttonPanel.add(removeProject);
