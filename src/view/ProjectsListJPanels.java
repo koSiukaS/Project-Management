@@ -39,6 +39,7 @@ public class ProjectsListJPanels {
         detailsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+				new SingleProjectGui(project);
                 frame.getFrame().remove(frame.getCenter());
                 frame.setCenter(new ProjectJPanels(frame).createAndShowFullProjectPanel(project));
                 frame.getFrame().add(frame.getCenter());
