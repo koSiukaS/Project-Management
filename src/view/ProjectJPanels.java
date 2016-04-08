@@ -18,9 +18,11 @@ public class ProjectJPanels {
     }
 
     public JPanel createAndShowFullProjectPanel(UniversityProject project) {
-        JPanel informationPanel = new JPanel();
-        informationPanel.setPreferredSize(new Dimension(715,275));
-        informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.PAGE_AXIS));
+        //JPanel informationPanel = new JPanel();
+        SingleProjectGui single = new SingleProjectGui(project);
+        JPanel panelProject = single.initiateProjectGui();
+        panelProject.setPreferredSize(new Dimension(715,420));
+        /*informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.PAGE_AXIS));
 
         JLabel nameLabel = new JLabel(project.getName().toUpperCase());
         nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 35));
@@ -38,15 +40,15 @@ public class ProjectJPanels {
             memberPanel.add(memberLabel);
             memberPanel.add(button);
             informationPanel.add(memberPanel);
-        }
+        }*/
 
-        JScrollPane scrollPane = new JScrollPane(informationPanel);
+        JScrollPane scrollPane = new JScrollPane(panelProject);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         //scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
 
         JPanel mainPanel = new JPanel();
-        mainPanel.add(nameLabel);
+        //mainPanel.add(nameLabel);
         mainPanel.add(scrollPane);
 
         return mainPanel;

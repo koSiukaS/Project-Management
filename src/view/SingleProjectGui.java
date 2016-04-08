@@ -12,14 +12,14 @@ public class SingleProjectGui{
         globalProject = project;
         initiateProjectGui();
 }
-    public void initiateProjectGui(){
+    public JPanel initiateProjectGui(){
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
+        /*JFrame frame = new JFrame();
         frame.setSize(705,420);
         frame.add(panel);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.setVisible(true);*/
         
         JLabel labelName = new JLabel(globalProject.getName());
         JLabel labelStudentList = new JLabel("Student list");
@@ -66,6 +66,8 @@ public class SingleProjectGui{
         spring.putConstraint(SpringLayout.NORTH, labelStudentList, 10, SpringLayout.SOUTH, scrollingDescription);
         spring.putConstraint(SpringLayout.WEST, scrollingStudents, 0, SpringLayout.WEST, labelStudentList);
         spring.putConstraint(SpringLayout.NORTH, scrollingStudents, 5, SpringLayout.SOUTH, labelStudentList);
+        
+        return panel;
     }
     private JPanel makingStudents(String firstName, String lastName, int taskCount){
         JPanel student = new JPanel();
