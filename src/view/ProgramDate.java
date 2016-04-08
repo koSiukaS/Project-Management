@@ -1,11 +1,11 @@
-package model;
+package view;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-public class Time{
+public class ProgramDate {
 
     private int programYear, programMonth, programDay;
 
@@ -84,8 +84,11 @@ public class Time{
         	  	setProgramMonth(Integer.parseInt(inMonth));
         	  	setProgramDay(Integer.parseInt(inDay));
                 frame.dispose();
+                SwingUtilities.updateComponentTreeUI(mainFrame);
+                mainFrame.revalidate();
+                mainFrame.repaint();
                 mainFrame.setVisible(true);
-        	  	System.out.println(getProgramYear()+"/"+getProgramMonth()+"/"+getProgramDay());
+        	  	//System.out.println(getProgramYear()+"/"+getProgramMonth()+"/"+getProgramDay());
           		}
         });
 

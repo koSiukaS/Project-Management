@@ -7,10 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ProjectsWindow extends MainFrame{
+public class ProjectsWindow{
 
-    //sita suvarkyt turi.
-    public JPanel createProjectPanel(final UniversityProject project) {
+    public JPanel createProjectPanel(final UniversityProject project, final JFrame frame) {
         final JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING, 10, 5));
 
         JLabel nameLabel = new JLabel();
@@ -34,6 +33,7 @@ public class ProjectsWindow extends MainFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("clicked");
+                //frame.removeAll();
                 frame.add(new ProjectWindow().createAndShowFullProjectPanel(project));
             }
         });

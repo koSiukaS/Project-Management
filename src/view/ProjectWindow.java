@@ -28,8 +28,8 @@ public class ProjectWindow {
             JLabel memberLabel = new JLabel(students.get(i).getFirstNameLetterAndLastName());
             JButton button = new JButton("Details");
             memberPanel.add(memberLabel);
-            memberLabel.add(button);
-            informationPanel.add(memberLabel);
+            memberPanel.add(button);
+            informationPanel.add(memberPanel);
         }
 
         JScrollPane scrollPane = new JScrollPane(informationPanel);
