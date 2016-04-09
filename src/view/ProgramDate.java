@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.awt.GraphicsEnvironment.*;
 public class ProgramDate {
 
     /**
@@ -13,9 +14,12 @@ public class ProgramDate {
     private int programYear;
     private int programMonth;
     private int programDay;
-    private String inYear = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
-    private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
-    private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+    //private String inYear = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+    //private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
+    //private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+    private JSpinner spinnerYear;
+    private JSpinner spinnerMonth;
+    private JSpinner spinnerDay;
 
     private JFrame frame;
     private JPanel f;
@@ -29,7 +33,7 @@ public class ProgramDate {
          * ending - 1970;
          * saved in allYears[]
          */
-        JLabel year = new JLabel("Year");
+        /*JLabel year = new JLabel("Year");
         f.add(year);
         int yearCount = Calendar.getInstance().get(Calendar.YEAR) - 1970;
         String allYears[] = new String[yearCount+1];
@@ -76,7 +80,40 @@ public class ProgramDate {
                 JComboBox cd = (JComboBox)e.getSource();
                 inDay = (String)cd.getSelectedItem();
             }
-        });
+        });*/
+        SpinnerNumberModel modelYears = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 1970, Calendar.getInstance().get(Calendar.YEAR) + 100, 1);
+        SpinnerNumberModel modelMonths = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.MONTH)+1, 1, 12, 1);
+        SpinnerNumberModel modelDays = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.DAY_OF_MONTH), 1, 31, 1);
+        
+        spinnerYear = new JSpinner(modelYears);
+        spinnerMonth = new JSpinner(modelMonths);
+        spinnerDay = new JSpinner(modelDays);
+        
+        Font boldFont = new Font("Calibri", Font.BOLD, 13);
+        
+        spinnerYear.setEditor(new JSpinner.NumberEditor(spinnerYear,"#"));
+        JComponent boxYear = spinnerYear.getEditor();
+        JFormattedTextField textFieldYear = ((JSpinner.DefaultEditor)boxYear).getTextField();
+        textFieldYear.setColumns(3);
+        textFieldYear.setFont(boldFont);
+        textFieldYear.setHorizontalAlignment(JTextField.CENTER);
+        JComponent boxMonth = spinnerMonth.getEditor();
+        JFormattedTextField textFieldMonth = ((JSpinner.DefaultEditor)boxMonth).getTextField();
+        textFieldMonth.setColumns(2);
+        textFieldMonth.setFont(boldFont);
+        textFieldMonth.setHorizontalAlignment(JTextField.CENTER);
+        JComponent boxDay = spinnerDay.getEditor();
+        JFormattedTextField textFieldDay = ((JSpinner.DefaultEditor)boxDay).getTextField();
+        textFieldDay.setColumns(2);
+        textFieldDay.setFont(boldFont);
+        textFieldDay.setHorizontalAlignment(JTextField.CENTER);
+        
+        f.add(new JLabel("Year"));
+        f.add(spinnerYear);
+        f.add(new JLabel("Month"));
+        f.add(spinnerMonth);
+        f.add(new JLabel("Day"));
+        f.add(spinnerDay);
 
         f.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
@@ -85,13 +122,16 @@ public class ProgramDate {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-
+        
+        frame.setPreferredSize(new Dimension(400, 80));
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.pack();
+        frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
+       /* Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         System.out.println(dim.width/2-frame.getSize().width/2);
-        System.out.println(dim.height/2-frame.getSize().height/2);
+        System.out.println(dim.height/2-frame.getSize().height/2);*/
     }
 
     public void changeTime(final MainFrame mainFrame) {
@@ -101,9 +141,9 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setProgramYear(Integer.parseInt(inYear));
-                setProgramMonth(Integer.parseInt(inMonth));
-                setProgramDay(Integer.parseInt(inDay));
+                setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 mainFrame.refresh();
                 mainFrame.getFrame().setVisible(true);
@@ -112,6 +152,7 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     public void changeTime(final ProjectJPanels panel) {
@@ -131,6 +172,7 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     private void removeSaveActionListener(JButton save) {
