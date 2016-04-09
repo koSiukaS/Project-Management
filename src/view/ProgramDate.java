@@ -81,9 +81,15 @@ public class ProgramDate {
                 inDay = (String)cd.getSelectedItem();
             }
         });*/
-        SpinnerNumberModel modelYears = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 1970, Calendar.getInstance().get(Calendar.YEAR) + 100, 1);
-        SpinnerNumberModel modelMonths = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.MONTH)+1, 1, 12, 1);
-        SpinnerNumberModel modelDays = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.DAY_OF_MONTH), 1, 31, 1);
+        if(programYear == 0) {
+        programYear = Calendar.getInstance().get(Calendar.YEAR);
+        programMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
+        programDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        }
+        
+        SpinnerNumberModel modelYears = new SpinnerNumberModel(programYear, 1970, Calendar.getInstance().get(Calendar.YEAR) + 100, 1);
+        SpinnerNumberModel modelMonths = new SpinnerNumberModel(programMonth, 1, 12, 1);
+        SpinnerNumberModel modelDays = new SpinnerNumberModel(programDay, 1, 31, 1);
         
         spinnerYear = new JSpinner(modelYears);
         spinnerMonth = new JSpinner(modelMonths);
@@ -162,9 +168,9 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setProgramYear(Integer.parseInt(inYear));
-                setProgramMonth(Integer.parseInt(inMonth));
-                setProgramDay(Integer.parseInt(inDay));
+                setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 panel.refreshData();
             }
