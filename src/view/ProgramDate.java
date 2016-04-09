@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.awt.GraphicsEnvironment.*;
 public class ProgramDate {
 
     /**
@@ -85,13 +86,16 @@ public class ProgramDate {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-
+        
+        frame.setPreferredSize(new Dimension(400, 80));
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.pack();
+        frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
+       /* Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         System.out.println(dim.width/2-frame.getSize().width/2);
-        System.out.println(dim.height/2-frame.getSize().height/2);
+        System.out.println(dim.height/2-frame.getSize().height/2);*/
     }
 
     public void changeTime(final MainFrame mainFrame) {
@@ -112,6 +116,7 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     public void changeTime(final ProjectJPanels panel) {
@@ -131,6 +136,7 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     private void removeSaveActionListener(JButton save) {
