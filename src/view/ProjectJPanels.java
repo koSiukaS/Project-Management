@@ -21,7 +21,7 @@ public class ProjectJPanels {
         JPanel panel = new JPanel();
 
         JLabel labelName = new JLabel(project.getName());
-        JLabel labelStudentList = new JLabel("Student list");
+        JLabel labelStudentList = new JLabel("Students list:");
         JLabel labelSupervisor = new JLabel("Supervisor: "+project.getSupervisor());
         JTextArea textAreaDescription = new JTextArea(project.getDescription(),5,60);
         JPanel panelStudents = new JPanel();
@@ -78,11 +78,11 @@ public class ProjectJPanels {
 
         JLabel studentNameLabel = new JLabel(student.getFirstNameLetterAndLastName());
         JLabel tasksCountLabel = new JLabel("Tasks count: " + student.getTasks().size());
-        JLabel studentAgeLabel = new JLabel("Age: " + 15);
+        JLabel studentAgeLabel = new JLabel("Age: " + student.countYears(frame.getDate()));
 
         panelStudentFull.add(studentNameLabel);
-        panelStudentFull.add(tasksCountLabel);
         panelStudentFull.add(studentAgeLabel);
+        panelStudentFull.add(tasksCountLabel);
 
         JButton buttonStudent = new JButton("Details");
         buttonStudent.setPreferredSize(new Dimension(100,45));
@@ -132,7 +132,8 @@ public class ProjectJPanels {
                 frame.getFrame().repaint();
             }
         });
-
         return button;
     }
+
+
 }

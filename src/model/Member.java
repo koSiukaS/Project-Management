@@ -1,5 +1,7 @@
 package model;
 
+import view.ProgramDate;
+
 import java.util.*;
 
 public class Member {
@@ -10,6 +12,26 @@ public class Member {
     private int birthYear, birthMonth, birthDay;
     private String id;
     private ArrayList<Task> tasks = new ArrayList<Task>();
+
+    public String countYears(ProgramDate date) {
+        int years;
+        int programYear = date.getProgramYear();
+        int programMonth = date.getProgramMonth();
+        int programDay = date.getProgramDay();
+        if(programYear < birthYear) {
+            return "Unborn";
+        } else {
+            years = programYear - birthYear;
+            if(programMonth - birthMonth >= 0) {
+                if(programDay - birthDay < 0) {
+                    years--;
+                }
+            } else {
+                years--;
+            }
+            return String.valueOf(years);
+        }
+    }
 
     public String getFirstNameLetterAndLastName() {
         return (firstName.charAt(0) + ". " + lastName);

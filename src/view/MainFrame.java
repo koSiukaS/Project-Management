@@ -30,6 +30,10 @@ public class MainFrame {
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
     }
 
+    public ProgramDate getDate() {
+        return date;
+    }
+
     public JPanel getCenter() {
         return center;
     }
@@ -100,7 +104,7 @@ public class MainFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                date.time(MainFrame.this);
+                date.changeTime(MainFrame.this);
             }
         });
         panel.add(dateStr);

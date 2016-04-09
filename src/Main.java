@@ -31,7 +31,7 @@ public class Main {
         final MainFrame main = new MainFrame(projects, date);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                date.time(main);
+                date.changeTime(main);
                 main.showMainFrame();
             }
         });

@@ -8,7 +8,8 @@ import java.util.*;
 public class ProgramDate {
 
     private int programYear, programMonth, programDay;
-
+    private JFrame frame = new JFrame("Date");
+    private JPanel f;
     /**
      * Today's date chosen as initial date
      */
@@ -16,10 +17,8 @@ public class ProgramDate {
     private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
     private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-    public void time(final MainFrame mainFrame){
-        final JFrame frame = new JFrame("Date");
-        JPanel f = new JPanel(new FlowLayout());
-        
+    public void createChangeTimeGUI(){
+        f = new JPanel(new FlowLayout());
         /**
          * Years list starting from this year(2016),
          * ending - 1970;
@@ -74,24 +73,6 @@ public class ProgramDate {
             }
         });
 
-        JButton save = new JButton("Save");
-        f.add(save);
-        save.addActionListener(new ActionListener()
-        {
-        public void actionPerformed(ActionEvent e)
-          		{
-                    setProgramYear(Integer.parseInt(inYear));
-                    setProgramMonth(Integer.parseInt(inMonth));
-                    setProgramDay(Integer.parseInt(inDay));
-                    frame.dispose();
-                    mainFrame.refresh();
-                    /*SwingUtilities.updateComponentTreeUI(mainFrame);
-                    mainFrame.revalidate();
-                    mainFrame.repaint();*/
-                    mainFrame.getFrame().setVisible(true);
-          		}
-        });
-
         f.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Date",
@@ -102,10 +83,31 @@ public class ProgramDate {
 
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.add(f);
-        frame.pack();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+    }
+
+    public void changeTime(final MainFrame mainFrame) {
+        createChangeTimeGUI();
+        JButton save = new JButton("Save");
+        f.add(save);
+        save.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                setProgramYear(Integer.parseInt(inYear));
+                setProgramMonth(Integer.parseInt(inMonth));
+                setProgramDay(Integer.parseInt(inDay));
+                frame.dispose();
+                mainFrame.refresh();
+                    /*SwingUtilities.updateComponentTreeUI(mainFrame);
+                    mainFrame.revalidate();
+                    mainFrame.repaint();*/
+                mainFrame.getFrame().setVisible(true);
+            }
+        });
+        frame.add(f);
+        frame.pack();
         frame.setVisible(true);
     }
    
