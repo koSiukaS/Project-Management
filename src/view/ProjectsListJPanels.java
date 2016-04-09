@@ -40,10 +40,10 @@ public class ProjectsListJPanels {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new ProjectJPanels(frame).createAndShowFullProjectPanel(project));
+                frame.setCenter(new ProjectJPanels(frame, project).createAndShowFullProjectPanel());
                 frame.getFrame().add(frame.getCenter());
                 frame.getFrame().remove(frame.getEast());
-                frame.setEast(frame.showMenu(new ProjectJPanels(frame).createMemberButtons()));
+                frame.setEast(new ProjectJPanels(frame, project).showMenu());
                 frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
                 frame.getFrame().revalidate();
                 frame.getFrame().repaint();

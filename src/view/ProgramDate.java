@@ -7,17 +7,22 @@ import java.awt.event.*;
 import java.util.*;
 public class ProgramDate {
 
-    private int programYear, programMonth, programDay;
-    private JFrame frame = new JFrame("Date");
-    private JPanel f;
     /**
      * Today's date chosen as initial date
      */
+    private int programYear;
+    private int programMonth;
+    private int programDay;
     private String inYear = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
     private String inMonth = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
     private String inDay = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
+    private JFrame frame;
+    private JPanel f;
+    private JButton save = new JButton("Save");
+
     public void createChangeTimeGUI(){
+        frame = new JFrame("Date");
         f = new JPanel(new FlowLayout());
         /**
          * Years list starting from this year(2016),
@@ -85,24 +90,22 @@ public class ProgramDate {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        System.out.println(dim.width/2-frame.getSize().width/2);
+        System.out.println(dim.height/2-frame.getSize().height/2);
     }
 
     public void changeTime(final MainFrame mainFrame) {
         createChangeTimeGUI();
-        JButton save = new JButton("Save");
         f.add(save);
-        save.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        removeSaveActionListener(save);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 setProgramYear(Integer.parseInt(inYear));
                 setProgramMonth(Integer.parseInt(inMonth));
                 setProgramDay(Integer.parseInt(inDay));
                 frame.dispose();
                 mainFrame.refresh();
-                    /*SwingUtilities.updateComponentTreeUI(mainFrame);
-                    mainFrame.revalidate();
-                    mainFrame.repaint();*/
                 mainFrame.getFrame().setVisible(true);
             }
         });
@@ -110,7 +113,33 @@ public class ProgramDate {
         frame.pack();
         frame.setVisible(true);
     }
-   
+
+    public void changeTime(final ProjectJPanels panel) {
+        createChangeTimeGUI();
+        f.add(save);
+        removeSaveActionListener(save);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setProgramYear(Integer.parseInt(inYear));
+                setProgramMonth(Integer.parseInt(inMonth));
+                setProgramDay(Integer.parseInt(inDay));
+                frame.dispose();
+                panel.refreshData();
+            }
+        });
+        frame.add(f);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    private void removeSaveActionListener(JButton save) {
+        ActionListener[] list = save.getActionListeners();
+        for(int i = 0; i < list.length; i++) {
+            save.removeActionListener(list[i]);
+        }
+    }
+
     public int getProgramYear() {
         return programYear;
     }
@@ -134,4 +163,4 @@ public class ProgramDate {
     public void setProgramDay(int programDay) {
         this.programDay = programDay;
     }
-    }
+}

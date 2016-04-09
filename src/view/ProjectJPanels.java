@@ -4,21 +4,27 @@ import model.Student;
 import model.UniversityProject;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class ProjectJPanels {
 
     private MainFrame frame;
+    private UniversityProject project;
+    private JLabel dateLabel;
+    private ProgramDate date;
+    private JPanel singleProjectPanel;
 
-    public ProjectJPanels(MainFrame frame) {
+    public ProjectJPanels(MainFrame frame, UniversityProject project) {
         this.frame = frame;
+        this.project = project;
+        this.date = frame.getDate();
     }
 
-    public JPanel createAndShowFullProjectPanel(UniversityProject project) {
-        JPanel panel = new JPanel();
+    public JPanel createAndShowFullProjectPanel() {
+        singleProjectPanel = new JPanel();
 
         JLabel labelName = new JLabel(project.getName());
         JLabel labelStudentList = new JLabel("Students list:");
@@ -48,25 +54,25 @@ public class ProjectJPanels {
         }
 
         SpringLayout spring = new SpringLayout();
-        panel.setLayout(spring);
-        panel.add(labelName);
-        panel.add(labelSupervisor);
-        panel.add(scrollingDescription);
-        panel.add(labelStudentList);
-        panel.add(scrollingStudents);
+        singleProjectPanel.setLayout(spring);
+        singleProjectPanel.add(labelName);
+        singleProjectPanel.add(labelSupervisor);
+        singleProjectPanel.add(scrollingDescription);
+        singleProjectPanel.add(labelStudentList);
+        singleProjectPanel.add(scrollingStudents);
 
-        spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelName, 10, SpringLayout.NORTH, panel);
-        spring.putConstraint(SpringLayout.WEST, labelSupervisor, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.SOUTH, labelSupervisor, -10, SpringLayout.SOUTH, panel);
-        spring.putConstraint(SpringLayout.HORIZONTAL_CENTER, scrollingDescription, 0, SpringLayout.HORIZONTAL_CENTER, panel);
+        spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, singleProjectPanel);
+        spring.putConstraint(SpringLayout.NORTH, labelName, 10, SpringLayout.NORTH, singleProjectPanel);
+        spring.putConstraint(SpringLayout.WEST, labelSupervisor, 10, SpringLayout.WEST, singleProjectPanel);
+        spring.putConstraint(SpringLayout.SOUTH, labelSupervisor, -10, SpringLayout.SOUTH, singleProjectPanel);
+        spring.putConstraint(SpringLayout.HORIZONTAL_CENTER, scrollingDescription, 0, SpringLayout.HORIZONTAL_CENTER, singleProjectPanel);
         spring.putConstraint(SpringLayout.NORTH, scrollingDescription, 10, SpringLayout.SOUTH, labelName);
         spring.putConstraint(SpringLayout.WEST, labelStudentList, 0, SpringLayout.WEST, scrollingDescription);
         spring.putConstraint(SpringLayout.NORTH, labelStudentList, 10, SpringLayout.SOUTH, scrollingDescription);
         spring.putConstraint(SpringLayout.WEST, scrollingStudents, 0, SpringLayout.WEST, labelStudentList);
         spring.putConstraint(SpringLayout.NORTH, scrollingStudents, 5, SpringLayout.SOUTH, labelStudentList);
 
-        return panel;
+        return singleProjectPanel;
     }
 
     private JPanel createStudentsList(Student student){
@@ -90,6 +96,26 @@ public class ProjectJPanels {
         panel.add(panelStudentFull);
         panel.add(buttonStudent);
         return panel;
+    }
+
+    public JPanel showMenu() {
+        JPanel mainPanel = new JPanel();
+        SpringLayout layout = new SpringLayout();
+        mainPanel.setLayout(layout);
+        mainPanel.setPreferredSize(new Dimension(138, 0));
+        mainPanel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.black),
+                "Menu",
+                TitledBorder.LEADING,
+                TitledBorder.CENTER,
+                new Font("Times New Roman", Font.BOLD, 20),
+                Color.BLACK));
+        JPanel memberButtons = createMemberButtons();
+        mainPanel.add(memberButtons);
+        JPanel timePanel = this.createTimePanel();
+        mainPanel.add(timePanel);
+        layout.putConstraint(SpringLayout.SOUTH, timePanel, 0, SpringLayout.SOUTH, mainPanel);
+        return mainPanel;
     }
 
     public JPanel createMemberButtons() {
@@ -136,4 +162,38 @@ public class ProjectJPanels {
     }
 
 
+    public JPanel createTimePanel() {
+        JPanel panel = new JPanel();
+        SpringLayout layout = new SpringLayout();
+        panel.setLayout(layout);
+        panel.setPreferredSize(new Dimension(128, 55));
+        JButton button = new JButton("Change date");
+        button.setPreferredSize(new Dimension(128, 30));
+        JLabel dateStr = new JLabel("Date:");
+        dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        dateLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                date.changeTime(ProjectJPanels.this);
+            }
+        });
+        panel.add(dateStr);
+        layout.putConstraint(SpringLayout.WEST, dateStr, 0, SpringLayout.WEST, panel);
+        panel.add(dateLabel);
+        layout.putConstraint(SpringLayout.WEST, dateLabel, 44, SpringLayout.WEST, panel);
+        panel.add(button);
+        layout.putConstraint(SpringLayout.NORTH, button, 24, SpringLayout.NORTH, panel);
+        return panel;
+    }
+
+    public void refreshData() {
+        dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        frame.getFrame().remove(frame.getCenter());
+        frame.setCenter(createAndShowFullProjectPanel());
+        frame.getFrame().add(frame.getCenter());
+        frame.getFrame().revalidate();
+        frame.getFrame().repaint();
+    }
 }
