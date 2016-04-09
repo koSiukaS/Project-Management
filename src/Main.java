@@ -1,3 +1,5 @@
+import model.Student;
+import model.Task;
 import model.UniversityProject;
 import view.MainFrame;
 import view.ProgramDate;

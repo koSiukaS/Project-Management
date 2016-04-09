@@ -79,11 +79,11 @@ public class Member {
         this.id = id;
     }
     
-    void addTask(Task task){
+    public void addTask(Task task){
         tasks.add(task);
     }
-    
-    void removeTask(int task){
+
+    public void removeTask(int task){
         tasks.remove(task);
     }
 }

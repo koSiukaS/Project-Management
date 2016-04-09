@@ -31,7 +31,6 @@ public class FilesInputOutput {
             UniversityProject project = new UniversityProject();
 
             Student student = new Student();
-            ArrayList<Task> tasks = new ArrayList<>();
             boolean firstStudent = true;
 
             File projectTxtFile = new File(String.format("./src/resources/university/%s", fileNames[i]));
@@ -41,10 +40,8 @@ public class FilesInputOutput {
                 switch (line) {
                     case "@":
                         if(!firstStudent) {
-                            student.setTasks(tasks);
                             project.addStudent(student);
                             student = new Student();
-                            tasks = new ArrayList<>();
                         }
                         student.setFirstName(in.nextLine());
                         student.setLastName(in.nextLine());
@@ -70,8 +67,8 @@ public class FilesInputOutput {
                         date = stringDateToIntArray(in.nextLine());
                         task.setDeadlineYear(date[0]);
                         task.setDeadlineMonth(date[1]);
-                        task.setDeadlineDay(date[2]);
-                        tasks.add(task);
+                        task.setDeadlineDay(date[2]);;
+                        student.addTask(task);
                         break;
                     default:
                         project.setName(line);
@@ -80,9 +77,12 @@ public class FilesInputOutput {
                         break;
                 }
             }
-            project.addStudent(student);
+            if(!firstStudent) {
+                project.addStudent(student);
+            }
             projects.add(project);
         }
+
         return projects;
     }
 
