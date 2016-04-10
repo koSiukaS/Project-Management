@@ -1,5 +1,3 @@
-import model.Student;
-import model.Task;
 import model.UniversityProject;
 import view.MainFrame;
 import view.ProgramDate;
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public ArrayList<UniversityProject> projects = new ArrayList<>();
+    private ArrayList<UniversityProject> projects = new ArrayList<>();
 
     public static void main(String[] args) {
         Main start = new Main();
@@ -32,7 +30,6 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 date.changeTime(main);
-                main.showMainFrame();
             }
         });
     }

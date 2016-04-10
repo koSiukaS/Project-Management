@@ -16,6 +16,12 @@ public class ProjectsListJPanels {
         this.frame = frame;
     }
 
+    /**
+     * Method gets certain university project, builds a JPanel and returns it
+     *
+     * @param project   single UniversityProject
+     * @return          JPanel with all content for given project
+     */
     public JPanel createProjectPanel(final UniversityProject project) {
         final JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING, 10, 5));
 
@@ -40,7 +46,7 @@ public class ProjectsListJPanels {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new ProjectJPanels(frame, project).createAndShowFullProjectPanel());
+                frame.setCenter(new ProjectJPanels(frame, project).createFullProjectPanel());
                 frame.getFrame().add(frame.getCenter());
                 frame.getFrame().remove(frame.getEast());
                 frame.setEast(new ProjectJPanels(frame, project).showMenu());
@@ -64,6 +70,13 @@ public class ProjectsListJPanels {
         return panel;
     }
 
+    /**
+     * Receives ArrayList of all university projects and returns JPanel
+     * of all single JPanels combined
+     *
+     * @param universityProjects    list of all university projects
+     * @return                      JPanel with all JPanels of each university project
+     */
     public JPanel createProjectsList(ArrayList<UniversityProject> universityProjects) {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
@@ -91,6 +104,11 @@ public class ProjectsListJPanels {
         return mainPanel;
     }
 
+    /**
+     * Creates a JPanel with project buttons inside it
+     *
+     * @return JPanel with all buttons inside it
+     */
     public JPanel createProjectButtons() {
         JPanel buttonPanel = new JPanel();
         SpringLayout layout = new SpringLayout();

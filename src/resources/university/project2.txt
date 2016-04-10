@@ -1,103 +1,78 @@
-Version Control System
-Common reports and programs or information blocks are modified by several users as the latest version of any material should be accessible for all project (group) members. The system should be able to show the last version and all the previous versions, and to recover to some previous version if the last version is broken. The system should show what was changed in each version, who made the modification, who worked and committed most frequently.
-S. Miller
+Rent of Conference Equipment
+The company rents various equipment for conferences and other events. Auditoriums and classrooms are of different sizes and need different equipment. But rooms and equipment can be rented separately. The system should choose the rooms and auditoriums automatically based on various requirements (number of participants, type of event, planned activities, etc.) and the system should choose only this equipment and those rooms that are not reserved for a particular day (period). If no rooms are available the system should suggest other days.
+A. Trevor
 @
-Ezra
-Tang
-Web developer
-1991 12 25
-s1713113
-Information Technology
-2
-2015 09 01
-#
-Buy hosting
-Purchase the best hosting plan from hosting.com website.
-2016 06 05
-#
-Buy domain name
-Purchase domain named 'justblog.com' from cheapest service provider.
-2016 05 21
-#
-Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
-2016 05 30
-#
-Build user friendly website
-Build easy to use website.
-2016 06 08
-@
-Douglas	
-Coleman
-Designer
-1991 08 11
-s1125152
-Graphics Design
-2
-2015 09 01
-#
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
-#
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
-#
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
-#
-End task
-End task complate all the work.
-2016 06 07
-@
-Herman
-Bell
-Second designer
-1992 04 22
-s1719109
-Information Technology
-2
-2015 09 01
-#
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
-#
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
-#
-Draw a design
-Helps draw a design for WordPress website, must have white and green colors.
-2016 05 30
-#
-End task
-End task complate all the work.
-2016 06 07
-@
-Emmett
-Marshall
+Oliver
+Hagen
 Lead programmer
-1992 10 31
-s1755573
+1990 07 25
+s1763173
 Information Technology
-2
+4
 2015 09 01
 #
 Make a plan
-Make a plan what program will have.
-2016 05 25
+Make a plan and distribute the work.
+2016 05 15
 #
-Make GUI
-Make GUI ready for use.
+Create classes
+Create basic classes of the program.
+2016 05 21
+#
+Create variables
+Create variables for the classes.
 2016 05 30
 #
-Put all classes to GUI
-Put all classes to GUI check if it is working.
-2016 06 10
+Create set and get methods
+Create set and get methods for variables
+2016 06 08
+@
+Craig
+Brooks
+Programmer
+1991 08 02
+s1715132
+Graphics Design
+4
+2015 09 01
 #
-End project
-End project make sure everything is working and give it for marking.
-2016 06 15
+Create GUI
+Create main window.
+2016 05 25
+#
+Create search window
+Create window to search for needed equipment.
+2016 05 28
+#
+Create search method
+Create method which searchs forequipment.
+2016 05 30
+#
+Create method: if we don't have the equipment at needed time
+Create method: if we don't have the equipment at needed time and to suggest other day.
+2016 06 07
+@
+Kara
+Rose
+Tester
+1992 11 12
+s1700173
+Information Technology
+4
+2015 09 01
+#
+Find client
+Find client which wants to barrow equipment or rooms.
+2016 05 25
+#
+Make a list
+Make a list of what kind of things do they want to borrow.
+2016 05 28
+#
+Check if we got it
+Check if we got what they want.
+2016 05 30
+#
+Send answer
+Send answer if they will rent it or not.
+2016 06 07

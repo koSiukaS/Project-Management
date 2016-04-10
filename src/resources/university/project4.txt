@@ -1,103 +1,103 @@
-Rent of Conference Equipment
-The company rents various equipment for conferences and other events. Auditoriums and classrooms are of different sizes and need different equipment. But rooms and equipment can be rented separately. The system should choose the rooms and auditoriums automatically based on various requirements (number of participants, type of event, planned activities, etc.) and the system should choose only this equipment and those rooms that are not reserved for a particular day (period). If no rooms are available the system should suggest other days.
-A. Trevor
+Make table parts
+Make table parts from an oak tree. You have to make sure you have made table parts perfect because in the next project we will use them. So at the start you have to make a plan what you'll need and then make a sketch. After that, go to work you have to make it the right size and the right smoothness. Also, don't forget sanding the wood is very important. And for the end make screw holes. After that, give it to the other workers to construct it. 
+F. Gayelord
 @
-Oliver
-Hagen
-Web Developer
-1990 07 25
-s1763173
-Information Technology
-4
+Clinton
+Dunstan
+Manager
+1995 11 13
+s1324687
+Bioinformatics
+1
 2015 09 01
 #
-Buy Hosting
-Purchase the best hosting plan from hosting.com website.
-2016 05 20
+Receive order
+Receive order to build a table.
+2016 06 03
 #
-Buy domain name
-Purchase domain named 'justblog.com' from cheapest service provider.
-2016 05 21
+Counts the cost
+Counts the cost of the table
+2016 06 05
 #
-Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
-2016 05 30
-#
-Build user friendly website
-Build easy to use website.
+Sets the price
+Both parties agree on the price.
 2016 06 08
+#
+Send order to build
+Sends order to build the table.
+2016 06 09
 @
-Craig
-Brooks
-Designer
-1991 08 02
-s1715132
-Graphics Design
-4
+Cale
+Porter
+Technologist
+1995 06 04
+s1357945
+Bioinformatics
+1
 2015 09 01
 #
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
+Plan the dimensions
+Plan the dimensions of the table.
+2016 06 16
 #
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
+Drows the sketch
+Drows the sketch how table will look like.
+2016 06 19
 #
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
+Chooses which bolts will be used
+Chooses which bolts will be used in the process.
+2016 06 22
 #
-End task
-End task complate all the work.
-2016 06 07
+Foresee manufacturing process
+Foresee manufacturing process of the table.
+2016 06 25
 @
-Kara
-Rose
-Second designer
-1992 11 12
-s1700173
-Information Technology
-4
+Beckett
+Graeme
+Machinist
+1996 01 03
+s1549234
+Bioinformatics
+1
 2015 09 01
 #
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
+Wood selection
+Select wood of the right size.
+2016 06 27
 #
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
+Wood planing
+Planing wood to smooth it out.
+2016 06 30
 #
-Draw a design
-Helps draw a design for WordPress website, must have white and green colors.
-2016 05 30
+Sanding wood planes
+Sanding wood planes.
+2016 07 07
 #
-End task
-End task complate all the work.
-2016 06 07
+Edgesanding wood
+Edgesanding wood.
+2016 07 15
 @
-Jasmine
-Blair
-Lead programmer
-1990 05 25
-s1753193
-Information Technology
-4
+Ormond
+Jerry
+Machinist
+1994 12 25
+s1346846
+Bioinformatics
+1
 2015 09 01
 #
-Make a plan
-Make a plan what program will have.
-2016 05 25
+Tabletop milling
+Tabletop milling to get the right size.
+2016 07 25
 #
-Make GUI
-Make GUI ready for use.
-2016 05 30
+Legs milling
+Legs milling to get the right size.
+2016 08 05
 #
-Put all classes to GUI
-Put all classes to GUI check if it is working.
-2016 06 10
+Tabletop drilling
+Tabletop drilling to get ready for construction.
+2016 08 15
 #
-End project
-End project make sure everything is working and give it for marking.
-2016 06 15
+Legs drilling
+Legs drilling to get ready for construction.
+2016 08 30

@@ -1,12 +1,12 @@
-BLOG site
-Individuals or their groups can have their blogs. Blog messages are represented by showing the newest material at the top, old messages are in archives (special catalogues). Blog messages (or diary blocks) can contain text and pictures. Readers can leave comments and get answers. All users are registered, thus, the system should be able to show a list of blogs, the content of a particular blog, expand the comments, enable conversations, and search on different criteria, e.g. user name, date, some keyword (phrase).
-M.Ellis
+E-Shop of Clothes and Accessories
+Some brands have shops in the shopping centers and e-shops. Thus, things can be bought online using cards and at the shop using cash. Also, the number of clothes and accessories is limited. If someone buys a pair of trousers of some type and size, it might be that another person would not get it. But the system should inform where to search for the necessary thing, another shop, another city, etc. Clothes have a lot of properties, e.g. size, color, type, model. If the use does not get what is needed the system should suggest to try another model of the same size (if this particle is at the shop, of course).
+A. Johnson
 @
-Richard
-Gates
+Asher
+Thorton
 Web Developer
-1992 07 25
-s1713173
+1993 07 25
+s1713103
 Information Technology
 1
 2015 09 01
@@ -27,17 +27,17 @@ Build user friendly website
 Build easy to use website.
 2016 06 08
 @
-Leonardo
-Snow
+Abraham
+Franklin
 Designer
-1993 08 01
+1992 08 01
 s1715152
 Graphics Design
-3
+1
 2015 09 01
 #
 Plan design
-Plan design to have a general understanding what should it look like.
+Plan design to have a general understanding what should it have.
 2016 05 25
 #
 Make a sketch
@@ -52,11 +52,11 @@ End task
 End task complate all the work.
 2016 06 07
 @
-Tad
-Ali
+Luther
+Fitzgerald
 Second designer
-1992 01 12
-s1719173
+1992 01 20
+s1019173
 Information Technology
 1
 2015 09 01
@@ -73,15 +73,19 @@ Make a sketch
 Make a sketch of the plan.
 2016 05 28
 #
+Draw a design
+Helps draw a design for WordPress website, must have white and green colors.
+2016 05 30
+#
 End task
-End task completes all the work.
+End task complate all the work.
 2016 06 07
 @
-Andre
-Ness
+Ray
+Manning
 Lead programmer
-1992 05 25
-s1753173
+1992 07 25
+s1753170
 Information Technology
 1
 2015 09 01

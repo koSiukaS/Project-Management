@@ -13,6 +13,12 @@ public class Member {
     private String id;
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
+    /**
+     * Calculates age
+     *
+     * @param date  current program date
+     * @return      member's age or "Unborn" if program's date is lower than member's birth date
+     */
     public String countYears(ProgramDate date) {
         int years;
         int programYear = date.getProgramYear();

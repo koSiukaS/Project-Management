@@ -1,37 +1,74 @@
-BLOG site
-Individuals or their groups can have their blogs. Blog messages are represented by showing the newest material at the top, old messages are in archives (special catalogues). Blog messages (or diary blocks) can contain text and pictures. Readers can leave comments and get answers. All users are registered, thus, the system should be able to show a list of blogs, the content of a particular blog, expand the comments, enable conversations, and search on different criteria, e.g. user name, date, some keyword (phrase).
-M. Ellis
+Creating a Board Game
+You are a board game manufacturer, and you have been assigned the task of creating a board game that will help students review everything they read in a fun and interesting way! The game has to have cards with questions. It can't be boring, so make it as colorful as you can. And make not one set of rules so as to different age groups could play.
+R. Kiaran
 @
-Richard
-Gates
-Web Developer
-1992 07 25
-s1713173
-Information Technology
+Hamnet
+Jonathan
+Designer
+1990 03 21
+s1654987
+Architecture
 1
 2015 09 01
 #
-Buy Hosting (cheap)
-Purchase the best hosting plan from hosting.com website.
-2016 05 20
+Create a plan
+Create a plan what kind of game it will be.
+2016 06 03
 #
-Buy domain name
-Purchase domain named 'justblog.com' from cheapest service provider.
-2016 05 21
+Create a board
+Create a board on which game will be played.
+2016 06 09
 #
-Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
-2016 05 30
+Create question cards
+Create the form of question cards.
+2016 06 12
+#
+Create figures
+Create figures which will be moved.
+2016 06 15
 @
-Leonardo
-Snow
-Designer
-1993 08 01
-s1715152
-Graphics Design
-3
+Warrick
+Kendrick
+2nd designer
+1990 06 09
+s1554789
+Architecture
+2
 2015 09 01
 #
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
+Create game rules
+Create interesting game rules.
+2016 06 09
+#
+Make board colorful
+Paint the board.
+2016 06 13
+#
+Make figures colorful
+Paint figures.
+2016 06 18
+#
+Think of the questions
+Think of the questions for the cards.
+2016 06 21
+@
+Winton
+Shayne
+Writer
+1990 05 22
+s1785921
+Architecture
+1
+2014 09 01
+#
+Write short description
+Write short description of the game.
+1990 06 20
+#
+Write 1st game tutorial
+Write tutorial for teenagers.
+1990 06 22
+#
+Write 2st game tutorial
+Write tutorial for children.
+1990 06 25

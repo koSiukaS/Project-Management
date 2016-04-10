@@ -1,107 +1,198 @@
-E-Shop of Clothes and Accessories
-Some brands have shops in the shopping centers and e-shops. Thus, things can be bought online using cards and at the shop using cash. Also, the number of clothes and accessories is limited. If someone buys a pair of trousers of some type and size, it might be that another person would not get it. But the system should inform where to search for the necessary thing, another shop, another city, etc. Clothes have a lot of properties, e.g. size, color, type, model. If the use does not get what is needed the system should suggest to try another model of the same size (if this particle is at the shop, of course).
-C. McGregor
+Grow an eucalyptus
+Grow an eucalyptus tree as soon as possible. Take care of it. You have to water it, fertilize it and even use pesticides. Don't forget to prune branches for better grow to.For it to grow big and strong don't forget to talk with it sometimes too. Because it is eucalyptus it will grow very fast so be ready in a year or two to see it become very large. The only problem is that it will be hard to destroy it after it is so big.
+D. Franklin
 @
-Asher
-Thorton
-Web Developer
-1993 07 25
-s1713103
-Information Technology
-1
-2015 09 01
-#
-Buy Hosting
-Purchase the best hosting plan from hosting.com website.
-2016 05 20
-#
-Buy domain name
-Purchase domain named 'justblog.com' from cheapest service provider.
-2016 05 21
-#
-Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
-2016 05 30
-#
-Build user friendly website
-Build easy to use website.
-2016 06 08
-@
-Abraham
-Franklin
-Designer
-1992 08 01
-s1715152
-Graphics Design
-1
-2015 09 01
-#
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
-#
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
-#
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
-#
-End task
-End task complate all the work.
-2016 06 07
-@
-Luther
-Fitzgerald
-Second designer
-1992 01 20
-s1019173
-Information Technology
-1
-2015 09 01
-#
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
-#
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
-#
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
-#
-Draw a design
-Helps draw a design for WordPress website, must have white and green colors.
-2016 05 30
-#
-End task
-End task complate all the work.
-2016 06 07
-@
-Ray
-Manning
-Lead programmer
-1992 07 25
-s1753170
-Information Technology
+John 
+Appiah
+Supervisor
+1985 12 11
+s1516188
+Gardener
 1
 2015 09 01
 #
 Make a plan
-Make a plan what program will have.
-2016 05 25
+Make a plan how tree will be grown.
+2016 05 15
+@
+Dunstan
+Edgar
+Lead grower
+1985 05 03
+s1456766
+Gardener
+1
+2015 09 01
 #
-Make GUI
-Make GUI ready for use.
+Fertilize the soil
+Fertilize the soil where the seed will be planted.
 2016 05 30
+@
+Pierce
+Benny
+2nd grower
+1985 10 01
+s1016188
+Gardener
+1
+2015 09 01
 #
-Put all classes to GUI
-Put all classes to GUI check if it is working.
-2016 06 10
-#
-End project
-End project make sure everything is working and give it for marking.
+Plant a tree
+Plant a tree in good ground.
 2016 06 15
+@
+Randy
+Gladwin
+3rd grower
+1984 05 03
+s1452266
+Gardener
+1
+2015 09 01
+#
+Water the seed
+Water the seed and look after it.
+2016 06 30
+@
+Hedley
+Edward
+4th grower
+1986 12 11
+s1516688
+Gardener
+1
+2015 09 01
+#
+Fertilize the soil
+Fertilize  soil again for better growth.
+2016 07 15
+@
+Tylor
+Laz
+5th grower
+1982 12 30
+s1444466
+Gardener
+1
+2015 09 01
+#
+Water the sprout
+Water the sprout and look after it.
+2016 07 30
+@
+Pierce
+Benny
+6th grower
+1985 01 01
+s1016188
+Gardener
+2
+2015 09 01
+#
+Talk with it
+Talk with it for better growth.
+2016 08 15
+@
+Jae
+Billie
+7th grower
+1984 05 25
+s1450066
+Gardener
+1
+2015 09 01
+#
+Prune branches
+Prune branches for eucalyptus to grow better.
+2016 08 30
+@
+Osbert
+Deryck
+8th grower
+1985 12 20
+s1511778
+Gardener
+1
+2015 09 01
+#
+Weeding soil
+Weeding soil.
+2016 09 15
+@
+Dunstan
+Edgar
+9th grower
+1985 05 22
+s1414466
+Gardener
+1
+2015 09 01
+#
+Loosening of the soil
+Loosening of the soil.
+2016 09 30
+@
+Pat
+Walton
+10th grower
+1983 10 01
+s1015188
+Gardener
+1
+2015 09 01
+#
+Spraying pesticides
+Spraying pesticides to kill bugs.
+2016 10 15
+@
+Bertram
+Bronte
+11th grower
+1986 05 03
+s1412366
+Gardener
+3
+2015 09 01
+#
+Water the plant
+Water the plant and look after it.
+2016 10 30
+@
+Blake
+Dayton
+12th grower
+1986 12 11
+s1516688
+Gardener
+1
+2015 09 01
+#
+Prune branches
+Prune branches of eucalyptus to grow better.
+2016 11 15
+@
+Ansel
+Van
+13th grower
+1982 12 30
+s1444466
+Gardener
+1
+2015 09 01
+#
+Spraying pesticides second time
+Spraying pesticides to kill bugs for better effect.
+2016 11 30
+@
+Isiah
+Andie
+14th grower
+1985 01 01
+s1016188
+Gardener
+2
+2015 09 01
+#
+Water the plant for the last time
+Water the plant.
+2016 12 15

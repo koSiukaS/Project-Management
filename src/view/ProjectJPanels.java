@@ -15,7 +15,6 @@ public class ProjectJPanels {
     private UniversityProject project;
     private JLabel dateLabel;
     private ProgramDate date;
-    private JPanel singleProjectPanel;
 
     public ProjectJPanels(MainFrame frame, UniversityProject project) {
         this.frame = frame;
@@ -23,8 +22,13 @@ public class ProjectJPanels {
         this.date = frame.getDate();
     }
 
-    public JPanel createAndShowFullProjectPanel() {
-        singleProjectPanel = new JPanel();
+    /**
+     * Creates a JPanel with all details about project
+     *
+     * @return  JPanel of the single university project with more details
+     */
+    public JPanel createFullProjectPanel() {
+        JPanel singleProjectPanel = new JPanel();
 
         JLabel labelName = new JLabel(project.getName());
         JLabel labelStudentList = new JLabel("Students list:");
@@ -75,6 +79,13 @@ public class ProjectJPanels {
         return singleProjectPanel;
     }
 
+    /**
+     * Creates a JPanel with some information about certain student.
+     * Created only to make {@link #createFullProjectPanel()} code cleaner
+     *
+     * @param student   specific student
+     * @return          JPanel with some information about student
+     */
     private JPanel createStudentsList(Student student){
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 5));
@@ -191,7 +202,7 @@ public class ProjectJPanels {
     public void refreshData() {
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
         frame.getFrame().remove(frame.getCenter());
-        frame.setCenter(createAndShowFullProjectPanel());
+        frame.setCenter(createFullProjectPanel());
         frame.getFrame().add(frame.getCenter());
         frame.getFrame().revalidate();
         frame.getFrame().repaint();

@@ -1,7 +1,5 @@
 package model;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class UniversityProject extends Project {

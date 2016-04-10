@@ -10,10 +10,14 @@ import java.util.Scanner;
 
 public class FilesInputOutput {
 
+    /**
+     * Method gets file names, reads information from each file
+     * and puts that information into certain objects
+     *
+     * @return  ArrayList of all university projects
+     * @throws IOException
+     */
     public ArrayList<UniversityProject> readFiles() throws IOException{
-        /**
-         * Getting file names
-         */
         File directory = new File("./src/resources/university/");
         File[] allFiles = directory.listFiles();
         String[] fileNames = new String[allFiles.length];
@@ -21,10 +25,6 @@ public class FilesInputOutput {
             fileNames[i] = allFiles[i].getName();
         }
 
-        /**
-         * Reading information from each file
-         * Adding that information to objects
-         */
         int[] date;
         ArrayList<UniversityProject> projects = new ArrayList<>();
         for(int i = 0; i < fileNames.length; i++) {
@@ -86,6 +86,14 @@ public class FilesInputOutput {
         return projects;
     }
 
+    /**
+     * Gets a single line of date and converts it into int[] array
+     *
+     * @param dateLine  line of a date in this format "YYYY MM DD"
+     * @return          int[0] = year;<br>
+     *                  int[1] = month;<br>
+     *                  int[2] = day;<br>
+     */
     private int[] stringDateToIntArray(String dateLine) {
         int[] date = new int[3];
         date[0] = Integer.parseInt(dateLine.substring(0, 4));

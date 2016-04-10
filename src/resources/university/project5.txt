@@ -1,103 +1,99 @@
-Group Timetable/Calendar
-The system should store timetables of several persons. Common meetings, lectures, events should be presented, also, the system should store personal timetables/calendars. Thus, the person should see his own calendar and common (actual) events. E.g. OOP is valid for the teacher and all first year students of IT, but some students also attend MIFSA meetings.
-D. Hold
+Make tables
+Make tables from the parts we have. We already have table parts now we need to make sure the tables are built and ready for transportation. But first we need to varnish it after that we need to lacquer it two times. If that is done, than we can start constructing a table. We use screws and glue for that. After that is done, we load it in boxes and transport it. 
+F. Gayelord
 @
-James
-Merrick
-Web Developer
-1991 07 25
-s1453173
-Information Technology
-2
-2015 09 01
+Trent
+Conway
+Decorator
+1995 05 05
+s1346897
+Bioinformatics
+1
+2016 09 01
 #
-Buy Hosting
-Purchase the best hosting plan from hosting.com website.
-2016 05 20
+Wood varnishing
+Wood varnishing to get the color we want.
+2016 09 05
 #
-Buy domain name
-Purchase domain named 'justblog.com' from cheapest service provider.
-2016 05 21
+Wood lacquering
+Wood lacquering for it to stay good for long.
+2016 09 09
 #
-Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
-2016 05 30
+Sanding
+Sanding for smooth surfaces.
+2016 09 15
 #
-Build user friendly website
-Build easy to use website.
-2016 06 08
+2nd lacquering
+2nd lacquering.
+2016 09 21
 @
-Kayla
-Tate
-Designer
-1990 08 01
-s1714562
-Graphics Design
-4
-2015 09 01
+Sly
+Rollo
+Collector
+1995 02 05
+s1495235
+Bioinformatics
+1
+2016 09 01
 #
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
+Glue oiling
+Oiling table parts.
+2016 09 25
 #
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
+Nailing dowels
+Nailing dowels for stability.
+2016 09 30
 #
-Draw a design
-Draw a design for WordPress website, must have white and green colors.
-2016 05 30
+Screwdriving
+Screwdriving for stability.
+2016 10 05
 #
-End task
-End task complate all the work.
-2016 06 07
+Assembly of table
+Assembly of table.
+2016 10 10
 @
-Jenna
-Ellis
-Second designer
-1991 01 12
-s1769173
-Information Technology
-2
-2015 09 01
+Marty
+Derren
+Packer
+1994 05 04
+s1456789
+Bioinformatics
+1
+2016 09 01
 #
-Plan design
-Plan design to have a general understanding what should it have.
-2016 05 25
+Selection of packaging material
+Selection of packaging material.
+2016 10 15
 #
-Make a sketch
-Make a sketch of the plan.
-2016 05 28
+Corrugated cardboard preparation
+Corrugated cardboard preparation for use.
+2016 10 17
 #
-Draw a design
-Helps draw a design for WordPress website, must have white and green colors.
-2016 05 30
+Placing tables in protective film
+Placing tables in protective film.
+2016 10 20
 #
-End task
-End task complate all the work.
-2016 06 07
+Product packaging
+Product packaging for transportation.
+2016 10 25
 @
-Angel
-Lowe
-Lead programmer
-1991 10 25
-s1759373
-Information Technology
-2
-2015 09 01
+Joe
+Roosevelt
+Manager
+1995 11 12
+s1349752
+Bioinformatics
+1
+2016 09 01
 #
-Make a plan
-Make a plan what program will have.
-2016 05 25
+Transportation time coordination
+Time then package will be transported.
+2016 10 30
 #
-Make GUI
-Make GUI ready for use.
-2016 05 30
+Transport booking
+Transport booking for travel.
+2016 11 02
 #
-Put all classes to GUI
-Put all classes to GUI check if it is working.
-2016 06 10
-#
-End project
-End project make sure everything is working and give it for marking.
-2016 06 15
+Supervision of loading work
+Supervision of loading work.
+2016 11 04

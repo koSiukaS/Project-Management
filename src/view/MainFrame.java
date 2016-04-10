@@ -12,30 +12,31 @@ import java.util.ArrayList;
 public class MainFrame {
 
     private JFrame frame = new JFrame("Project Management");
+    private ProjectsListJPanels projectsWindow = new ProjectsListJPanels(MainFrame.this);
     private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
     private ProgramDate date;
     private JPanel center;
     private JPanel east;
     private JLabel dateLabel;
 
+    /**
+     * When Object is created specific params must be passed,
+     * GUI is created too (but is not visible until date is saved)
+     *
+     * @param universityProjects    list of all university projects
+     * @param date                  application date
+     */
     public MainFrame(ArrayList<UniversityProject> universityProjects, ProgramDate date) {
         this.universityProjects = universityProjects;
         this.date = date;
+
+        east = showMenu(projectsWindow.createProjectButtons());
+        center = projectsWindow.createProjectsList(universityProjects);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(860, 500);
         frame.setResizable(false);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
-        System.out.println(dim.width/2-frame.getSize().width/2);
-        System.out.println(dim.height/2-frame.getSize().height/2);
-    }
-
-    private ProjectsListJPanels projectsWindow = new ProjectsListJPanels(MainFrame.this);
-
-    public void showMainFrame() {
-        east = showMenu(projectsWindow.createProjectButtons());
-        center = projectsWindow.createProjectsList(universityProjects);
-
         frame.add(east, BorderLayout.EAST);
         frame.add(center);
         frame.setVisible(false);
