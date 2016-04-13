@@ -86,7 +86,7 @@ public class ProjectJPanels {
      * @param student   specific student
      * @return          JPanel with some information about student
      */
-    private JPanel createStudentsList(Student student){
+    private JPanel createStudentsList(final Student student){
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 5));
         JPanel panelStudentFull = new JPanel();
@@ -103,6 +103,20 @@ public class ProjectJPanels {
 
         JButton buttonStudent = new JButton("Details");
         buttonStudent.setPreferredSize(new Dimension(100,45));
+        
+        buttonStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getFrame().remove(frame.getCenter());
+                frame.setCenter(new SingleStudentGui(frame, student).initiateStudentGui());
+                frame.getFrame().add(frame.getCenter());
+                frame.getFrame().remove(frame.getEast());
+                frame.setEast(new ProjectJPanels(frame, project).showMenu());
+                frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
+                frame.getFrame().revalidate();
+                frame.getFrame().repaint();
+            }
+        });
 
         panel.add(panelStudentFull);
         panel.add(buttonStudent);
