@@ -20,7 +20,7 @@ public class Main {
         try {
             projects = new FilesInputOutput().readFiles();
         } catch(IOException e) {
-            System.exit(1);
+            System.err.println("Couldn't read files");
         }
     }
 
