@@ -19,7 +19,7 @@ public class ProgramDate {
     private JSpinner spinnerMonth;
     private JSpinner spinnerDay;
 
-    private JFrame frame;
+    private JDialog frame;
     private JPanel f;
     private JButton save = new JButton("Save");
 
@@ -27,7 +27,7 @@ public class ProgramDate {
      * Creates a GUI in which date will be changed
      */
     private void createChangeTimeGUI(){
-        frame = new JFrame("Date");
+        frame = new JDialog();
         f = new JPanel(new FlowLayout());
 
         if(programYear == 0) {
@@ -82,7 +82,9 @@ public class ProgramDate {
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
-        frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
+        frame.setLocationRelativeTo(null);
+        frame.setModal(true);
+        //frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
     }
 
     /**
