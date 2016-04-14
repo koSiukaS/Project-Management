@@ -53,7 +53,7 @@ public class StudentJPanels {
         scrollingTasks.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         for(int i=0; i<globalStudent.getTasks().size(); i++){
-            panelTasks.add(createTasksList(globalStudent.getTasks().get(i)));
+            panelTasks.add(createTasksList(i));
             panelTasks.add(new JSeparator(SwingConstants.HORIZONTAL));
         }
         
@@ -97,31 +97,14 @@ public class StudentJPanels {
         return panel;
     }
 
-    private JPanel createTasksList(final Task task){
+    private JPanel createTasksList(int i){
         JPanel student = new JPanel();
         student.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
-        JPanel panelTask = new JPanel(new FlowLayout(FlowLayout.LEADING, 0, 5));
-        JButton buttonTaskDetails = new JButton("Details");
+        JPanel panelTask = new JPanel();
         panelTask.setLayout(new BoxLayout(panelTask, BoxLayout.PAGE_AXIS));
-        panelTask.setPreferredSize(new Dimension(230,30));
-        
-        buttonTaskDetails.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new TaskJPanel(frame, task).initiateTaskGui());
-                frame.getFrame().add(frame.getCenter());
-                //globalTime.getFrame().remove(globalTime.getEast());
-                //globalTime.setEast(new ProjectJPanels(globalTime, project).showMenu());
-                //globalTime.getFrame().add(globalTime.getEast(), BorderLayout.EAST);
-                frame.getFrame().revalidate();
-                frame.getFrame().repaint();
-            }
-        });
-        
-        panelTask.add(new JLabel(task.getName()));
+        panelTask.setPreferredSize(new Dimension(200,30));
+        panelTask.add(new JLabel(globalStudent.getTasks().get(i).getName()));
         student.add(panelTask);
-        student.add(buttonTaskDetails);
         return student;
     }
 
