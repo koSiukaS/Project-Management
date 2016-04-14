@@ -1,11 +1,9 @@
-package view;
+package project.view;
 
-import model.UniversityProject;
+import project.model.UniversityProject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProjectsListJPanels {
@@ -41,23 +39,12 @@ public class ProjectsListJPanels {
         String members = "Students count: " + project.getStudentsCount();
         membersLabel.setText(members);
 
-        JButton detailsButton = new JButton("Details");
-        detailsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new ProjectJPanels(frame, project).createFullProjectPanel());
-                frame.getFrame().add(frame.getCenter());
-                frame.getFrame().remove(frame.getEast());
-                frame.setEast(new ProjectJPanels(frame, project).showMenu());
-                frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
-                frame.getFrame().revalidate();
-                frame.getFrame().repaint();
-            }
-        });
+        JButton button = new JButton("Details");
+        NavigationButtons detailsButton = new NavigationButtons(frame, project);
+        detailsButton.setProjectActionListener(button);
 
         JPanel informationPanel = new JPanel();
-        informationPanel.setPreferredSize(new Dimension(600,75));
+        informationPanel.setPreferredSize(new Dimension(570,75));
         informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.PAGE_AXIS));
         informationPanel.add(nameLabel);
         informationPanel.add(descriptionLabel);
@@ -65,7 +52,7 @@ public class ProjectsListJPanels {
         informationPanel.add(membersLabel);
 
         panel.add(informationPanel);
-        panel.add(detailsButton);
+        panel.add(button);
         
         return panel;
     }
@@ -102,31 +89,5 @@ public class ProjectsListJPanels {
         mainPanel.add(namePanel);
         mainPanel.add(scrollPane);
         return mainPanel;
-    }
-
-    /**
-     * Creates a JPanel with project buttons inside it
-     *
-     * @return JPanel with all buttons inside it
-     */
-    public JPanel createProjectButtons() {
-        JPanel buttonPanel = new JPanel();
-        SpringLayout layout = new SpringLayout();
-        buttonPanel.setLayout(layout);
-        buttonPanel.setPreferredSize(new Dimension(128, 100));
-        JButton addProject = new JButton("Add project");
-        addProject.setPreferredSize(new Dimension(128, 30));
-        JButton editProject = new JButton("Edit project");
-        editProject.setPreferredSize(new Dimension(128, 30));
-        JButton removeProject = new JButton("Remove project");
-        removeProject.setPreferredSize(new Dimension(128, 30));
-
-        buttonPanel.add(addProject);
-        layout.putConstraint(SpringLayout.NORTH, addProject, 0, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(editProject);
-        layout.putConstraint(SpringLayout.NORTH, editProject, 35, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(removeProject);
-        layout.putConstraint(SpringLayout.NORTH, removeProject, 70, SpringLayout.NORTH, buttonPanel);
-        return buttonPanel;
     }
 }

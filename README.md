@@ -1,5 +1,5 @@
-# model.Project-Management
-model.Task: During any project (student or enterprise) activities are planned and tracked in order to evaluate the effectiveness of the work. Each project member gets tasks and also plans own tasks, predicts the time to finish the task, and notifies about the status of the task at some points.   The system should present all projects of the company (student group), present the timeline, tasks and their status of one project, and show effectiveness of the particular project member.
+# project.model.Project-Management
+project.model.Task: During any project (student or enterprise) activities are planned and tracked in order to evaluate the effectiveness of the work. Each project member gets tasks and also plans own tasks, predicts the time to finish the task, and notifies about the status of the task at some points.   The system should present all projects of the company (student group), present the timeline, tasks and their status of one project, and show effectiveness of the particular project member.
 
 
 I will update this list everyday, will add what is done by everyone, what is needed to be done.
@@ -8,7 +8,7 @@ After you make your tasks, just pull request to this github repo.
 ###### Žygis:
 * GUI
 * JPanels communication
-* view.ProgramDate control
+* project.ProgramDategramDate control
 
 =====
 ###### Dainius:
@@ -24,8 +24,8 @@ After you make your tasks, just pull request to this github repo.
 ###### Žygis:
 * Base classes
 * Project packages and structure
-* view.ProgramDate.java - GUI and functionality
-* FilesInputOutput.java - reading from files
+* project.ProgramDategramDate.java - GUI and functionality
+* project.FilesInputOutput.java - reading from files
 * MainFramse.java - main GUI window
 * ProjectsWindow.java - JPanels
 

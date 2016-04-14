@@ -1,6 +1,6 @@
-package model;
+package project.model;
 
-import view.ProgramDate;
+import project.ProgramDate;
 
 public class Student extends Member {
     private int courseStartYear, courseStartMonth, courseStartDay;
@@ -12,19 +12,19 @@ public class Student extends Member {
         int years;
         int programYear = date.getProgramYear();
         int programMonth = date.getProgramMonth();
-        int programDay = date.getProgramDay();
         if(programYear < courseStartYear) {
             return "Not yet attending";
         } else {
-            years = programYear - courseStartYear + 1;
-            if(programMonth - courseStartMonth >= 0) {
-                if(programDay - courseStartDay < 0) {
-                    years--;
-                }
-            } else {
+            years = programYear - courseStartYear;
+            if(programMonth < 9 && years == 0) {
+                return "Not yet attending";
+            } else if(programMonth < 9){
                 years--;
             }
-            return String.valueOf(years);
+            if(years > 5) {
+                return "Course finished";
+            }
+            return String.valueOf(years + 1);
         }
     }
     

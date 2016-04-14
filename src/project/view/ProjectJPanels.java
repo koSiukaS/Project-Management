@@ -1,7 +1,8 @@
-package view;
+package project.view;
 
-import model.Student;
-import model.UniversityProject;
+import project.ProgramDate;
+import project.model.Student;
+import project.model.UniversityProject;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -15,11 +16,13 @@ public class ProjectJPanels {
     private UniversityProject project;
     private JLabel dateLabel;
     private ProgramDate date;
+    private NavigationButtons buttons;
 
     public ProjectJPanels(MainFrame frame, UniversityProject project) {
         this.frame = frame;
         this.project = project;
         this.date = frame.getDate();
+        this.buttons = frame.getButtons();
     }
 
     /**
@@ -103,20 +106,9 @@ public class ProjectJPanels {
 
         JButton buttonStudent = new JButton("Details");
         buttonStudent.setPreferredSize(new Dimension(100,45));
-        
-        buttonStudent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new SingleStudentGui(frame, student).initiateStudentGui());
-                frame.getFrame().add(frame.getCenter());
-                frame.getFrame().remove(frame.getEast());
-                frame.setEast(new ProjectJPanels(frame, project).showMenu());
-                frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
-                frame.getFrame().revalidate();
-                frame.getFrame().repaint();
-            }
-        });
+
+        NavigationButtons detailsButton = new NavigationButtons(frame, project, student);
+        detailsButton.setStudentActionListener(buttonStudent);
 
         panel.add(panelStudentFull);
         panel.add(buttonStudent);
@@ -127,7 +119,7 @@ public class ProjectJPanels {
         JPanel mainPanel = new JPanel();
         SpringLayout layout = new SpringLayout();
         mainPanel.setLayout(layout);
-        mainPanel.setPreferredSize(new Dimension(138, 0));
+        mainPanel.setPreferredSize(new Dimension(148, 0));
         mainPanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Menu",
@@ -135,7 +127,7 @@ public class ProjectJPanels {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-        JPanel memberButtons = createMemberButtons();
+        JPanel memberButtons = buttons.projectButtons();
         mainPanel.add(memberButtons);
         JPanel timePanel = this.createTimePanel();
         mainPanel.add(timePanel);
@@ -143,57 +135,13 @@ public class ProjectJPanels {
         return mainPanel;
     }
 
-    public JPanel createMemberButtons() {
-        JPanel buttonPanel = new JPanel();
-        SpringLayout layout = new SpringLayout();
-        buttonPanel.setLayout(layout);
-        buttonPanel.setPreferredSize(new Dimension(128, 150));
-        JButton addStudent = new JButton("Add student");
-        addStudent.setPreferredSize(new Dimension(128, 30));
-        JButton editStudent = new JButton("Edit student");
-        editStudent.setPreferredSize(new Dimension(128, 30));
-        JButton removeStudent = new JButton("Remove student");
-        removeStudent.setPreferredSize(new Dimension(128, 30));
-        JButton backToProject = backToProject();
-        backToProject.setPreferredSize(new Dimension(128, 30));
-
-        buttonPanel.add(addStudent);
-        layout.putConstraint(SpringLayout.NORTH, addStudent, 0, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(editStudent);
-        layout.putConstraint(SpringLayout.NORTH, editStudent, 35, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(removeStudent);
-        layout.putConstraint(SpringLayout.NORTH, removeStudent, 70, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(backToProject);
-        layout.putConstraint(SpringLayout.NORTH, backToProject, 120, SpringLayout.NORTH, buttonPanel);
-        return buttonPanel;
-    }
-
-    private JButton backToProject() {
-        JButton button = new JButton("<< Projects");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(frame.getProjectsWindow().createProjectsList(frame.getUniversityProjects()));
-                frame.getFrame().add(frame.getCenter());
-                frame.getFrame().remove(frame.getEast());
-                frame.setEast(frame.showMenu(frame.getProjectsWindow().createProjectButtons()));
-                frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
-                frame.getFrame().revalidate();
-                frame.getFrame().repaint();
-            }
-        });
-        return button;
-    }
-
-
     public JPanel createTimePanel() {
         JPanel panel = new JPanel();
         SpringLayout layout = new SpringLayout();
         panel.setLayout(layout);
-        panel.setPreferredSize(new Dimension(128, 55));
+        panel.setPreferredSize(new Dimension(138, 55));
         JButton button = new JButton("Change date");
-        button.setPreferredSize(new Dimension(128, 30));
+        button.setPreferredSize(new Dimension(138, 30));
         JLabel dateStr = new JLabel("Date:");
         dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
         this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));

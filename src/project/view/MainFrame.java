@@ -1,12 +1,16 @@
-package view;
+package project.view;
 
-import model.UniversityProject;
+import project.FilesInputOutput;
+import project.ProgramDate;
+import project.model.UniversityProject;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class MainFrame {
@@ -18,6 +22,7 @@ public class MainFrame {
     private JPanel center;
     private JPanel east;
     private JLabel dateLabel;
+    private NavigationButtons buttons = new NavigationButtons(MainFrame.this);
 
     /**
      * When Object is created specific params must be passed,
@@ -30,9 +35,15 @@ public class MainFrame {
         this.universityProjects = universityProjects;
         this.date = date;
 
-        east = showMenu(projectsWindow.createProjectButtons());
+        east = showMenu(buttons.mainProjectsButtons());
         center = projectsWindow.createProjectsList(universityProjects);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new FilesInputOutput().createAndShowExit(MainFrame.this);
+            }
+        });
         frame.setSize(860, 500);
         frame.setResizable(false);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -46,7 +57,7 @@ public class MainFrame {
         JPanel mainPanel = new JPanel();
         SpringLayout layout = new SpringLayout();
         mainPanel.setLayout(layout);
-        mainPanel.setPreferredSize(new Dimension(138, 0));
+        mainPanel.setPreferredSize(new Dimension(148, 0));
         mainPanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.black),
                 "Menu",
@@ -65,9 +76,9 @@ public class MainFrame {
         JPanel panel = new JPanel();
         SpringLayout layout = new SpringLayout();
         panel.setLayout(layout);
-        panel.setPreferredSize(new Dimension(128, 55));
+        panel.setPreferredSize(new Dimension(138, 55));
         JButton button = new JButton("Change date");
-        button.setPreferredSize(new Dimension(128, 30));
+        button.setPreferredSize(new Dimension(138, 30));
         JLabel dateStr = new JLabel("Date:");
         dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
         this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
@@ -89,6 +100,10 @@ public class MainFrame {
 
     public void refresh() {
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+    }
+
+    public NavigationButtons getButtons() {
+        return this.buttons;
     }
 
     public ProgramDate getDate() {

@@ -1,20 +1,29 @@
-package view;
+package project.view;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Calendar;
-import model.*;
 
-public class SingleStudentGui{
-    Student globalStudent;
-    MainFrame globalTime;
-    public SingleStudentGui(MainFrame time, Student student){
-        globalTime = time;
+import project.ProgramDate;
+import project.model.*;
+
+public class StudentJPanels {
+
+    private Student globalStudent;
+    private MainFrame frame;
+    private ProgramDate date;
+    private JLabel dateLabel;
+    private NavigationButtons buttons;
+
+    public StudentJPanels(MainFrame frame, Student student, UniversityProject project){
+        this.frame = frame;
         globalStudent = student;
-        initiateStudentGui();
-}
-    public JPanel initiateStudentGui(){
+        date = frame.getDate();
+        buttons = new NavigationButtons(frame, project);
+    }
+
+    public JPanel createFullStudentPanel(){
         JPanel panel = new JPanel();
         
         JLabel labelFirstName = new JLabel("First Name: "+globalStudent.getFirstName());
@@ -22,9 +31,10 @@ public class SingleStudentGui{
         JLabel labelId = new JLabel("Id: "+globalStudent.getId());
         JLabel labelPosition = new JLabel("Position: "+globalStudent.getPosition());
         JLabel labelBirthDate = new JLabel("Birth date: "+globalStudent.getBirthYear()+"/"+globalStudent.getBirthMonth()+"/"+globalStudent.getBirthDay());
-        JLabel labelAge = new JLabel("Current age: "+globalStudent.countYears(globalTime.getDate()));
+        JLabel labelAge = new JLabel("Current age: "+globalStudent.countYears(frame.getDate()));
         JLabel labelCourseName = new JLabel("Course name: "+globalStudent.getCourseName());
-        JLabel labelCourseYear = new JLabel("Course Year: "+globalStudent.countCourseYears(globalTime.getDate()));
+        JLabel labelCourseStartYear = new JLabel("Course start year: " + globalStudent.getCourseStartYear() + "/" + globalStudent.getCourseStartMonth() + "/" + globalStudent.getCourseStartDay());
+        JLabel labelCourseYear = new JLabel("Course Year: "+globalStudent.countCourseYears(frame.getDate()));
         JLabel labelTaskList = new JLabel("Task list: ");
         JTextArea textAreaDescription = new JTextArea(globalStudent.getCourseName(),5,60);
         JPanel panelTasks = new JPanel();
@@ -43,7 +53,7 @@ public class SingleStudentGui{
         scrollingTasks.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         for(int i=0; i<globalStudent.getTasks().size(); i++){
-            panelTasks.add(makingTasks(i));
+            panelTasks.add(createTasksList(i));
             panelTasks.add(new JSeparator(SwingConstants.HORIZONTAL));
         }
         
@@ -56,6 +66,7 @@ public class SingleStudentGui{
         panel.add(labelBirthDate);
         panel.add(labelAge);
         panel.add(labelCourseName);
+        panel.add(labelCourseStartYear);
         panel.add(labelCourseYear);
         panel.add(labelTaskList);
         panel.add(scrollingTasks);
@@ -74,8 +85,10 @@ public class SingleStudentGui{
         spring.putConstraint(SpringLayout.NORTH, labelAge, 10, SpringLayout.SOUTH, labelBirthDate);
         spring.putConstraint(SpringLayout.WEST, labelCourseName, 10, SpringLayout.WEST, panel);
         spring.putConstraint(SpringLayout.NORTH, labelCourseName, 10, SpringLayout.SOUTH, labelAge);
+        spring.putConstraint(SpringLayout.WEST, labelCourseStartYear, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelCourseStartYear, 10, SpringLayout.SOUTH, labelCourseName);
         spring.putConstraint(SpringLayout.WEST, labelCourseYear, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelCourseYear, 10, SpringLayout.SOUTH, labelCourseName);
+        spring.putConstraint(SpringLayout.NORTH, labelCourseYear, 10, SpringLayout.SOUTH, labelCourseStartYear);
         spring.putConstraint(SpringLayout.WEST, labelTaskList, 10, SpringLayout.WEST, panel);
         spring.putConstraint(SpringLayout.NORTH, labelTaskList, 10, SpringLayout.SOUTH, labelCourseYear);
         spring.putConstraint(SpringLayout.WEST, scrollingTasks, 10, SpringLayout.EAST, labelTaskList);
@@ -84,7 +97,7 @@ public class SingleStudentGui{
         return panel;
     }
 
-    private JPanel makingTasks(int i){
+    private JPanel createTasksList(int i){
         JPanel student = new JPanel();
         student.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
         JPanel panelTask = new JPanel();
@@ -93,9 +106,61 @@ public class SingleStudentGui{
         panelTask.add(new JLabel(globalStudent.getTasks().get(i).getName()));
         student.add(panelTask);
         return student;
-    } 
-    
-    private int countAge(){
-        return 15;
+    }
+
+    public JPanel showMenu() {
+        JPanel mainPanel = new JPanel();
+        SpringLayout layout = new SpringLayout();
+        mainPanel.setLayout(layout);
+        mainPanel.setPreferredSize(new Dimension(148, 0));
+        mainPanel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.black),
+                "Menu",
+                TitledBorder.LEADING,
+                TitledBorder.CENTER,
+                new Font("Times New Roman", Font.BOLD, 20),
+                Color.BLACK));
+        JPanel memberButtons = buttons.studentButtons();
+        mainPanel.add(memberButtons);
+        JPanel timePanel = this.createTimePanel();
+        mainPanel.add(timePanel);
+        layout.putConstraint(SpringLayout.SOUTH, timePanel, 0, SpringLayout.SOUTH, mainPanel);
+        return mainPanel;
+    }
+
+
+    public JPanel createTimePanel() {
+        JPanel panel = new JPanel();
+        SpringLayout layout = new SpringLayout();
+        panel.setLayout(layout);
+        panel.setPreferredSize(new Dimension(138, 55));
+        JButton button = new JButton("Change date");
+        button.setPreferredSize(new Dimension(138, 30));
+        JLabel dateStr = new JLabel("Date:");
+        dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        dateLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                date.changeTime(StudentJPanels.this);
+            }
+        });
+        panel.add(dateStr);
+        layout.putConstraint(SpringLayout.WEST, dateStr, 0, SpringLayout.WEST, panel);
+        panel.add(dateLabel);
+        layout.putConstraint(SpringLayout.WEST, dateLabel, 44, SpringLayout.WEST, panel);
+        panel.add(button);
+        layout.putConstraint(SpringLayout.NORTH, button, 24, SpringLayout.NORTH, panel);
+        return panel;
+    }
+
+    public void refreshData() {
+        dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        frame.getFrame().remove(frame.getCenter());
+        frame.setCenter(createFullStudentPanel());
+        frame.getFrame().add(frame.getCenter());
+        frame.getFrame().revalidate();
+        frame.getFrame().repaint();
     }
 }

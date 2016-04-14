@@ -1,6 +1,7 @@
-import model.UniversityProject;
-import view.MainFrame;
-import view.ProgramDate;
+package project;
+
+import project.model.UniversityProject;
+import project.view.MainFrame;
 
 import javax.swing.*;
 import java.io.IOException;

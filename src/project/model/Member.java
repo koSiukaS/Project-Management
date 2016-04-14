@@ -1,6 +1,6 @@
-package model;
+package project.model;
 
-import view.ProgramDate;
+import project.ProgramDate;
 
 import java.util.*;
 
