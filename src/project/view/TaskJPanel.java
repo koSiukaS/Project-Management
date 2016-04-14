@@ -1,28 +1,28 @@
-package view;
+package project.view;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Calendar;
-import model.*;
+import project.model.*;
 
 public class TaskJPanel{
-    Task globalTask;
-    MainFrame globalTime;
-    public TaskJPanel(MainFrame time, Task task){
-        globalTime = time;
-        globalTask = task;
+    Task task;
+    MainFrame frame;
+    public TaskJPanel(MainFrame frame, Task task){
+        this.frame = frame;
+        this.task = task;
         initiateTaskGui();
 }
     public JPanel initiateTaskGui(){
         JPanel panel = new JPanel();
         
-        JLabel labelTaskName = new JLabel(globalTask.getName());
+        JLabel labelTaskName = new JLabel(task.getName());
         JLabel labelTaskDescription = new JLabel("Description:");
         JLabel labelETA = new JLabel("ETA:");
-        JLabel labelETADate = new JLabel(globalTask.getDeadlineYear()+"/"+globalTask.getDeadlineMonth()+"/"+globalTask.getDeadlineDay());
-        JLabel labelStatus = new JLabel("Task status: "+globalTask.getStatus());
-        JTextArea textAreaDescription = new JTextArea(globalTask.getDescription(),5,25);
+        JLabel labelETADate = new JLabel(task.getDeadlineYear()+"/"+task.getDeadlineMonth()+"/"+task.getDeadlineDay());
+        JLabel labelStatus = new JLabel("Task status: "+task.getStatus());
+        JTextArea textAreaDescription = new JTextArea(task.getDescription(),5,25);
         
         labelTaskName.setFont(new Font("Times New Roman", Font.BOLD, 35));
         
