@@ -3,6 +3,7 @@ package project;
 import project.view.MainFrame;
 import project.view.ProjectJPanels;
 import project.view.StudentJPanels;
+import project.view.TaskJPanels;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -153,6 +154,34 @@ public class ProgramDate {
      * @param panel object which JPanels will be refreshed after date change
      */
     public void changeTime(final StudentJPanels panel) {
+        createChangeTimeGUI();
+        f.add(save);
+        removeSaveActionListener(save);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
+                frame.dispose();
+                panel.refreshData();
+            }
+        });
+        frame.add(f);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+    }
+
+    /**
+     * changeTime method invokes createChangeTimeGUI method, this way graphics are created
+     * after saving the new date, frame disposes.
+     * Next time new frame will be created and old actionListeners will be deleted
+     * because this method is overloaded and different params results in different functionality
+     *
+     * @param panel object which JPanels will be refreshed after date change
+     */
+    public void changeTime(final TaskJPanels panel) {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
