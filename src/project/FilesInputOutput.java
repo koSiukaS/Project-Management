@@ -96,7 +96,7 @@ public class FilesInputOutput {
     private void writeFiles(ArrayList<UniversityProject> projects) throws IOException{
         File directory = new File("./src/project/university/");
         File[] allFiles = directory.listFiles();
-        System.out.println(allFiles.length);
+
         for(int i = 0; i < allFiles.length; i++) {
             allFiles[i].delete();
         }
@@ -159,7 +159,7 @@ public class FilesInputOutput {
         }
     }
 
-    public int createAndShowExit(final MainFrame frame) {
+    public void createAndShowExit(final MainFrame frame) {
         JDialog dialog = new JDialog();
         dialog.setSize(300, 150);
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -208,7 +208,7 @@ public class FilesInputOutput {
         panel.add(noButton);
 
         dialog.add(panel);
+        dialog.setModal(true);
         dialog.setVisible(true);
-        return 0;
     }
 }

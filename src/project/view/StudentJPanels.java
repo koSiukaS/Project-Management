@@ -10,6 +10,7 @@ import project.model.*;
 
 public class StudentJPanels {
 
+    private UniversityProject project;
     private Student globalStudent;
     private MainFrame frame;
     private ProgramDate date;
@@ -20,6 +21,7 @@ public class StudentJPanels {
         this.frame = frame;
         globalStudent = student;
         date = frame.getDate();
+        this.project = project;
         buttons = new NavigationButtons(frame, project);
     }
 
@@ -101,26 +103,13 @@ public class StudentJPanels {
         JPanel student = new JPanel();
         student.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
         JPanel panelTask = new JPanel(new FlowLayout(FlowLayout.LEADING, 0, 5));
-        JButton buttonTaskDetails = new JButton("Details");
         panelTask.setLayout(new BoxLayout(panelTask, BoxLayout.PAGE_AXIS));
         panelTask.setPreferredSize(new Dimension(230,30));
-        
-        buttonTaskDetails.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getFrame().remove(frame.getCenter());
-                frame.setCenter(new TaskJPanel(frame, task).initiateTaskGui());
-                frame.getFrame().add(frame.getCenter());
-                //globalTime.getFrame().remove(globalTime.getEast());
-                //globalTime.setEast(new ProjectJPanels(globalTime, project).showMenu());
-                //globalTime.getFrame().add(globalTime.getEast(), BorderLayout.EAST);
-                frame.getFrame().revalidate();
-                frame.getFrame().repaint();
-            }
-        });
-        
         panelTask.add(new JLabel(task.getName()));
         student.add(panelTask);
+        JButton buttonTaskDetails = new JButton("Details");
+        NavigationButtons detailsButton = new NavigationButtons(frame, project, globalStudent, task);
+        detailsButton.setTaskActionListener(buttonTaskDetails);
         student.add(buttonTaskDetails);
         return student;
     }

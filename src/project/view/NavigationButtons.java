@@ -2,6 +2,7 @@ package project.view;
 
 
 import project.model.Student;
+import project.model.Task;
 import project.model.UniversityProject;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class NavigationButtons {
     private MainFrame frame;
     private UniversityProject project;
     private Student student;
+    private Task task;
 
     NavigationButtons(MainFrame frame) {
         this.frame = frame;
@@ -28,6 +30,13 @@ public class NavigationButtons {
         this.frame = frame;
         this.project = project;
         this.student = student;
+    }
+
+    NavigationButtons(MainFrame frame, UniversityProject project, Student student, Task task) {
+        this.frame = frame;
+        this.project = project;
+        this.student = student;
+        this.task = task;
     }
 
     private JButton backToProjects() {
@@ -140,8 +149,11 @@ public class NavigationButtons {
         JPanel buttonPanel = new JPanel();
         SpringLayout layout = new SpringLayout();
         buttonPanel.setLayout(layout);
-        buttonPanel.setPreferredSize(new Dimension(138, 190));
+        buttonPanel.setPreferredSize(new Dimension(138, 225));
         JButton editTask = new JButton("Edit task");
+        editTask.setPreferredSize(new Dimension(138, 30));
+        JButton backToStudent = backToStudent();
+        backToStudent.setPreferredSize(new Dimension(138, 30));
         JButton backToProject = backtoProject();
         backToProject.setPreferredSize(new Dimension(138, 30));
         JButton backToProjects = backToProjects();
@@ -149,10 +161,12 @@ public class NavigationButtons {
 
         buttonPanel.add(editTask);
         layout.putConstraint(SpringLayout.NORTH, editTask, 0, SpringLayout.NORTH, buttonPanel);
+        buttonPanel.add(backToStudent);
+        layout.putConstraint(SpringLayout.NORTH, backToStudent, 125, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToProject);
-        layout.putConstraint(SpringLayout.NORTH, backToProject, 125, SpringLayout.NORTH, buttonPanel);
+        layout.putConstraint(SpringLayout.NORTH, backToProject, 160, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToProjects);
-        layout.putConstraint(SpringLayout.NORTH, backToProjects, 160, SpringLayout.NORTH, buttonPanel);
+        layout.putConstraint(SpringLayout.NORTH, backToProjects, 195, SpringLayout.NORTH, buttonPanel);
         return buttonPanel;
     }
 
@@ -180,6 +194,23 @@ public class NavigationButtons {
                 StudentJPanels panels = new StudentJPanels(frame, student, project);
                 frame.getFrame().remove(frame.getCenter());
                 frame.setCenter(panels.createFullStudentPanel());
+                frame.getFrame().add(frame.getCenter());
+                frame.getFrame().remove(frame.getEast());
+                frame.setEast(panels.showMenu());
+                frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
+                frame.getFrame().revalidate();
+                frame.getFrame().repaint();
+            }
+        });
+    }
+
+    public void setTaskActionListener(JButton button) {
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TaskJPanels panels = new TaskJPanels(frame, task, project, student);
+                frame.getFrame().remove(frame.getCenter());
+                frame.setCenter(panels.createFullTaskPanel());
                 frame.getFrame().add(frame.getCenter());
                 frame.getFrame().remove(frame.getEast());
                 frame.setEast(panels.showMenu());
