@@ -137,16 +137,10 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue()) {
+                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
                     setProgramDay((Integer)spinnerDay.getValue());
                 }
-                else if (programMonth < (Integer)spinnerMonth.getValue()){
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
-                else if(programYear < (Integer)spinnerYear.getValue()) {
+                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
                     setProgramMonth((Integer)spinnerMonth.getValue());
                 }
                 setProgramYear((Integer)spinnerYear.getValue());
@@ -207,16 +201,10 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue()) {
+                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
                     setProgramDay((Integer)spinnerDay.getValue());
                 }
-                else if (programMonth < (Integer)spinnerMonth.getValue()){
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
-                else if(programYear < (Integer)spinnerYear.getValue()) {
+                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
                     setProgramMonth((Integer)spinnerMonth.getValue());
                 }
                 setProgramYear((Integer)spinnerYear.getValue());
@@ -275,16 +263,10 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue()) {
+                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
                     setProgramDay((Integer)spinnerDay.getValue());
                 }
-                else if (programMonth < (Integer)spinnerMonth.getValue()){
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
-                else if(programYear < (Integer)spinnerYear.getValue()) {
+                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
                     setProgramMonth((Integer)spinnerMonth.getValue());
                 }
                 setProgramYear((Integer)spinnerYear.getValue());
@@ -343,16 +325,10 @@ public class ProgramDate {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue()) {
+                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
                     setProgramDay((Integer)spinnerDay.getValue());
                 }
-                else if (programMonth < (Integer)spinnerMonth.getValue()){
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
-                else if(programYear < (Integer)spinnerYear.getValue()) {
+                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
                     setProgramMonth((Integer)spinnerMonth.getValue());
                 }
                 setProgramYear((Integer)spinnerYear.getValue());
