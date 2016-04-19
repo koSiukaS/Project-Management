@@ -10,6 +10,7 @@ s1763173
 Information Technology
 4
 2015 09 01
+2019 06 20
 #
 Make a plan
 Make a plan and distribute the work.
@@ -35,6 +36,7 @@ s1715132
 Graphics Design
 4
 2015 09 01
+2019 06 20
 #
 Create GUI
 Create main window.
@@ -60,6 +62,7 @@ s1700173
 Information Technology
 4
 2015 09 01
+2019 06 20
 #
 Find client
 Find client which wants to barrow equipment or rooms.

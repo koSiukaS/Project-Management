@@ -10,6 +10,7 @@ s1654987
 Architecture
 1
 2015 09 01
+2019 06 30
 #
 Create a plan
 Create a plan what kind of game it will be.
@@ -35,6 +36,7 @@ s1554789
 Architecture
 2
 2015 09 01
+2019 06 30
 #
 Create game rules
 Create interesting game rules.
@@ -60,6 +62,7 @@ s1785921
 Architecture
 1
 2014 09 01
+2019 06 30
 #
 Write short description
 Write short description of the game.

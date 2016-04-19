@@ -13,6 +13,43 @@ public class Member {
     private String id;
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
+    public void markFailedTasks(ProgramDate date) {
+        System.out.println("marking failed tasks");
+        for(Task task : tasks) {
+            task.checkStatus(date);
+        }
+    }
+
+    public int countFinishedTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("Finished")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
+    public int countPendingTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("In progress")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
+    public int countFailedTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("Failed")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
     /**
      * Calculates age
      *

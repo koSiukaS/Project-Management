@@ -145,13 +145,31 @@ public class NavigationButtons {
         return buttonPanel;
     }
 
-    public JPanel taskButtons() {
+    public JPanel taskButtons(final TaskJPanels panel) {
         JPanel buttonPanel = new JPanel();
         SpringLayout layout = new SpringLayout();
         buttonPanel.setLayout(layout);
         buttonPanel.setPreferredSize(new Dimension(138, 225));
         JButton editTask = new JButton("Edit task");
         editTask.setPreferredSize(new Dimension(138, 30));
+        JButton markAsFinished = new JButton("Mark as finished");
+        markAsFinished.setPreferredSize(new Dimension(138, 30));
+        markAsFinished.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.getTask().setStatus(1);
+                panel.refreshData();
+            }
+        });
+        JButton markAsFailed = new JButton("Mark as failed");
+        markAsFailed.setPreferredSize(new Dimension(138, 30));
+        markAsFailed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.getTask().setStatus(-1);
+                panel.refreshData();
+            }
+        });
         JButton backToStudent = backToStudent();
         backToStudent.setPreferredSize(new Dimension(138, 30));
         JButton backToProject = backtoProject();
@@ -161,6 +179,10 @@ public class NavigationButtons {
 
         buttonPanel.add(editTask);
         layout.putConstraint(SpringLayout.NORTH, editTask, 0, SpringLayout.NORTH, buttonPanel);
+        buttonPanel.add(markAsFinished);
+        layout.putConstraint(SpringLayout.NORTH, markAsFinished, 40, SpringLayout.NORTH, buttonPanel);
+        buttonPanel.add(markAsFailed);
+        layout.putConstraint(SpringLayout.NORTH, markAsFailed, 75, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToStudent);
         layout.putConstraint(SpringLayout.NORTH, backToStudent, 125, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToProject);

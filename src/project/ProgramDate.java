@@ -10,8 +10,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class ProgramDate {
 
@@ -33,24 +31,22 @@ public class ProgramDate {
         frame = new JDialog();
         f = new JPanel(new FlowLayout());
 
-        JSpinner tavo = new JSpinner();
-        
         if(programYear == 0) {
-        programYear = Calendar.getInstance().get(Calendar.YEAR);
-        programMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
-        programDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+            programYear = Calendar.getInstance().get(Calendar.YEAR);
+            programMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
+            programDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         }
-        
-        SpinnerNumberModel modelYears = new SpinnerNumberModel(programYear, programYear, Calendar.getInstance().get(Calendar.YEAR) + 100, 1);
+
+        SpinnerNumberModel modelYears = new SpinnerNumberModel(programYear, 1950, Calendar.getInstance().get(Calendar.YEAR) + 100, 1);
         SpinnerNumberModel modelMonths = new SpinnerNumberModel(programMonth, 1, 12, 1);
         SpinnerNumberModel modelDays = new SpinnerNumberModel(programDay, 1, 31, 1);
-        
+
         spinnerYear = new JSpinner(modelYears);
         spinnerMonth = new JSpinner(modelMonths);
         spinnerDay = new JSpinner(modelDays);
-        
+
         Font boldFont = new Font("Calibri", Font.BOLD, 13);
-        
+
         spinnerYear.setEditor(new JSpinner.NumberEditor(spinnerYear,"#"));
         JComponent boxYear = spinnerYear.getEditor();
         JFormattedTextField textFieldYear = ((JSpinner.DefaultEditor)boxYear).getTextField();
@@ -67,7 +63,7 @@ public class ProgramDate {
         textFieldDay.setColumns(2);
         textFieldDay.setFont(boldFont);
         textFieldDay.setHorizontalAlignment(JTextField.CENTER);
-        
+
         f.add(new JLabel("Year"));
         f.add(spinnerYear);
         f.add(new JLabel("Month"));
@@ -82,7 +78,7 @@ public class ProgramDate {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-        
+
         frame.setPreferredSize(new Dimension(400, 80));
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -104,46 +100,12 @@ public class ProgramDate {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
-        spinnerMonth.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitMonth;
-                int tempMonth = (Integer)spinnerMonth.getValue();
-                if ((Integer)spinnerYear.getValue() == programYear){
-                    limitMonth = programMonth;
-                }
-                else {
-                    limitMonth = 1;
-                }
-                SpinnerNumberModel modelMonthsLimit = new SpinnerNumberModel(tempMonth, limitMonth, 12, 1);
-                spinnerMonth.setModel(modelMonthsLimit);
-            } 
-        }); 
-        spinnerDay.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitDay;
-                int tempDay = (Integer)spinnerDay.getValue();
-                if ((Integer)spinnerMonth.getValue() == programMonth){
-                    limitDay = programDay;
-                }
-                else {
-                    limitDay = 1;
-                }
-                SpinnerNumberModel modelDaysLimit = new SpinnerNumberModel(tempDay, limitDay, 31, 1);
-                spinnerDay.setModel(modelDaysLimit);
-            } 
-        }); 
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
                 setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 mainFrame.refresh();
                 mainFrame.getFrame().setVisible(true);
@@ -167,47 +129,12 @@ public class ProgramDate {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
-        spinnerMonth.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitMonth;
-                int tempMonth = (Integer)spinnerMonth.getValue();
-                if ((Integer)spinnerYear.getValue() == programYear){
-                    limitMonth = programMonth;
-                    System.out.println("Vagina");
-                }
-                else {
-                    limitMonth = 1;
-                }
-                SpinnerNumberModel modelMonthsLimit = new SpinnerNumberModel(tempMonth, limitMonth, 12, 1);
-                spinnerMonth.setModel(modelMonthsLimit);
-            } 
-        }); 
-        spinnerDay.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitDay;
-                int tempDay = (Integer)spinnerDay.getValue();
-                if ((Integer)spinnerMonth.getValue() == programMonth){
-                    limitDay = programDay;
-                }
-                else {
-                    limitDay = 1;
-                }
-                SpinnerNumberModel modelDaysLimit = new SpinnerNumberModel(tempDay, limitDay, 31, 1);
-                spinnerDay.setModel(modelDaysLimit);
-            } 
-        }); 
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
                 setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 panel.refreshData();
             }
@@ -230,46 +157,12 @@ public class ProgramDate {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
-        spinnerMonth.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitMonth;
-                int tempMonth = (Integer)spinnerMonth.getValue();
-                if ((Integer)spinnerYear.getValue() == programYear){
-                    limitMonth = programMonth;
-                }
-                else {
-                    limitMonth = 1;
-                }
-                SpinnerNumberModel modelMonthsLimit = new SpinnerNumberModel(tempMonth, limitMonth, 12, 1);
-                spinnerMonth.setModel(modelMonthsLimit);
-            } 
-        }); 
-        spinnerDay.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitDay;
-                int tempDay = (Integer)spinnerDay.getValue();
-                if ((Integer)spinnerMonth.getValue() == programMonth){
-                    limitDay = programDay;
-                }
-                else {
-                    limitDay = 1;
-                }
-                SpinnerNumberModel modelDaysLimit = new SpinnerNumberModel(tempDay, limitDay, 31, 1);
-                spinnerDay.setModel(modelDaysLimit);
-            } 
-        }); 
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
                 setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 panel.refreshData();
             }
@@ -292,46 +185,12 @@ public class ProgramDate {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
-        spinnerMonth.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitMonth;
-                int tempMonth = (Integer)spinnerMonth.getValue();
-                if ((Integer)spinnerYear.getValue() == programYear){
-                    limitMonth = programMonth;
-                }
-                else {
-                    limitMonth = 1;
-                }
-                SpinnerNumberModel modelMonthsLimit = new SpinnerNumberModel(tempMonth, limitMonth, 12, 1);
-                spinnerMonth.setModel(modelMonthsLimit);
-            } 
-        }); 
-        spinnerDay.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int limitDay;
-                int tempDay = (Integer)spinnerDay.getValue();
-                if ((Integer)spinnerMonth.getValue() == programMonth){
-                    limitDay = programDay;
-                }
-                else {
-                    limitDay = 1;
-                }
-                SpinnerNumberModel modelDaysLimit = new SpinnerNumberModel(tempDay, limitDay, 31, 1);
-                spinnerDay.setModel(modelDaysLimit);
-            } 
-        }); 
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (programDay < (Integer)spinnerDay.getValue() || programMonth < (Integer)spinnerMonth.getValue()) {
-                    setProgramDay((Integer)spinnerDay.getValue());
-                }
-                if (programMonth < (Integer)spinnerMonth.getValue() || programYear < (Integer)spinnerYear.getValue()) {
-                    setProgramMonth((Integer)spinnerMonth.getValue());
-                }
                 setProgramYear((Integer)spinnerYear.getValue());
+                setProgramMonth((Integer)spinnerMonth.getValue());
+                setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
                 panel.refreshData();
             }

@@ -17,6 +17,7 @@ public class TaskJPanels {
     private JLabel dateLabel;
     private ProgramDate date;
     private NavigationButtons buttons;
+    private JLabel labelStatus;
 
     public TaskJPanels(MainFrame frame, Task task, UniversityProject project, Student student){
         this.frame = frame;
@@ -32,7 +33,7 @@ public class TaskJPanels {
         JLabel labelTaskDescription = new JLabel("Description:");
         JLabel labelETA = new JLabel("ETA:");
         JLabel labelETADate = new JLabel(globalTask.getDeadlineYear()+"/"+globalTask.getDeadlineMonth()+"/"+globalTask.getDeadlineDay());
-        JLabel labelStatus = new JLabel("Task status: "+globalTask.getStatus());
+        labelStatus = new JLabel("Task status: "+globalTask.getStatus());
         JTextArea textAreaDescription = new JTextArea(globalTask.getDescription(),5,25);
         
         labelTaskName.setFont(new Font("Times New Roman", Font.BOLD, 35));
@@ -83,7 +84,7 @@ public class TaskJPanels {
                 TitledBorder.CENTER,
                 new Font("Times New Roman", Font.BOLD, 20),
                 Color.BLACK));
-        JPanel memberButtons = buttons.taskButtons();
+        JPanel memberButtons = buttons.taskButtons(this);
         mainPanel.add(memberButtons);
         JPanel timePanel = this.createTimePanel();
         mainPanel.add(timePanel);
@@ -119,11 +120,16 @@ public class TaskJPanels {
     }
 
     public void refreshData() {
+        labelStatus.setText("Task status: "+globalTask.getStatus());
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
         frame.getFrame().remove(frame.getCenter());
         frame.setCenter(createFullTaskPanel());
         frame.getFrame().add(frame.getCenter());
         frame.getFrame().revalidate();
         frame.getFrame().repaint();
+    }
+
+    public Task getTask() {
+        return globalTask;
     }
 }
