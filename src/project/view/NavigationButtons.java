@@ -81,6 +81,12 @@ public class NavigationButtons {
         buttonPanel.setPreferredSize(new Dimension(138, 65));
         JButton addProject = new JButton("Add project");
         addProject.setPreferredSize(new Dimension(138, 30));
+        addProject.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ProjectFrame().Add();
+            }
+        });
         JButton removeProject = new JButton("Remove project");
         removeProject.setPreferredSize(new Dimension(138, 30));
 
