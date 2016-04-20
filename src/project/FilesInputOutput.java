@@ -64,6 +64,10 @@ public class FilesInputOutput {
                         student.setCourseStartYear(date[0]);
                         student.setCourseStartMonth(date[1]);
                         student.setCourseStartDay(date[2]);
+                        date = stringDateToIntArray(in.nextLine());
+                        student.setCourseEndYear(date[0]);
+                        student.setCourseEndMonth(date[1]);
+                        student.setCourseEndDay(date[2]);
                         firstStudent = false;
                         break;
                     case "#":
@@ -121,6 +125,7 @@ public class FilesInputOutput {
                 writer.write(students.get(j).getCourseName() + "\n");
                 writer.write(students.get(j).getGroup() + "\n");
                 writer.write(String.format("%d %s %s\n", students.get(j).getCourseStartYear(), checkDate(students.get(j).getCourseStartMonth()), checkDate(students.get(j).getCourseStartDay())));
+                writer.write(String.format("%d %s %s\n", students.get(j).getCourseEndYear(), checkDate(students.get(j).getCourseEndMonth()), checkDate(students.get(j).getCourseEndDay())));
 
                 ArrayList<Task> tasks = students.get(j).getTasks();
                 for(int k = 0; k < tasks.size(); k++) {

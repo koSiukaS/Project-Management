@@ -10,6 +10,7 @@ s1324687
 Bioinformatics
 1
 2015 09 01
+2019 06 20
 #
 Receive order
 Receive order to build a table.
@@ -35,6 +36,7 @@ s1357945
 Bioinformatics
 1
 2015 09 01
+2019 06 20
 #
 Plan the dimensions
 Plan the dimensions of the table.
@@ -60,6 +62,7 @@ s1549234
 Bioinformatics
 1
 2015 09 01
+2019 06 20
 #
 Wood selection
 Select wood of the right size.
@@ -85,6 +88,7 @@ s1346846
 Bioinformatics
 1
 2015 09 01
+2019 06 20
 #
 Tabletop milling
 Tabletop milling to get the right size.

@@ -10,6 +10,7 @@ s1516188
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Make a plan
 Make a plan how tree will be grown.
@@ -23,6 +24,7 @@ s1456766
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Fertilize the soil
 Fertilize the soil where the seed will be planted.
@@ -36,6 +38,7 @@ s1016188
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Plant a tree
 Plant a tree in good ground.
@@ -49,6 +52,7 @@ s1452266
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Water the seed
 Water the seed and look after it.
@@ -62,6 +66,7 @@ s1516688
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Fertilize the soil
 Fertilize  soil again for better growth.
@@ -75,6 +80,7 @@ s1444466
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Water the sprout
 Water the sprout and look after it.
@@ -88,6 +94,7 @@ s1016188
 Gardener
 2
 2015 09 01
+2019 06 20
 #
 Talk with it
 Talk with it for better growth.
@@ -101,6 +108,7 @@ s1450066
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Prune branches
 Prune branches for eucalyptus to grow better.
@@ -114,6 +122,7 @@ s1511778
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Weeding soil
 Weeding soil.
@@ -127,6 +136,7 @@ s1414466
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Loosening of the soil
 Loosening of the soil.
@@ -140,6 +150,7 @@ s1015188
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Spraying pesticides
 Spraying pesticides to kill bugs.
@@ -153,6 +164,7 @@ s1412366
 Gardener
 3
 2015 09 01
+2019 06 20
 #
 Water the plant
 Water the plant and look after it.
@@ -166,6 +178,7 @@ s1516688
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Prune branches
 Prune branches of eucalyptus to grow better.
@@ -179,6 +192,7 @@ s1444466
 Gardener
 1
 2015 09 01
+2019 06 20
 #
 Spraying pesticides second time
 Spraying pesticides to kill bugs for better effect.
@@ -192,6 +206,7 @@ s1016188
 Gardener
 2
 2015 09 01
+2019 06 20
 #
 Water the plant for the last time
 Water the plant.

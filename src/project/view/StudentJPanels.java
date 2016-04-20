@@ -17,12 +17,18 @@ public class StudentJPanels {
     private JLabel dateLabel;
     private NavigationButtons buttons;
 
+    private JLabel labelTaskFinished;
+    private JLabel labelTaskPending;
+    private JLabel labelTaskFailed;
+
     public StudentJPanels(MainFrame frame, Student student, UniversityProject project){
         this.frame = frame;
         globalStudent = student;
         date = frame.getDate();
         this.project = project;
         buttons = new NavigationButtons(frame, project);
+
+        student.markFailedTasks(date);
     }
 
     public JPanel createFullStudentPanel(){
@@ -32,12 +38,14 @@ public class StudentJPanels {
         JLabel labelLastName = new JLabel("Last Name: "+globalStudent.getLastName());
         JLabel labelId = new JLabel("Id: "+globalStudent.getId());
         JLabel labelPosition = new JLabel("Position: "+globalStudent.getPosition());
-        JLabel labelBirthDate = new JLabel("Birth date: "+globalStudent.getBirthYear()+"/"+globalStudent.getBirthMonth()+"/"+globalStudent.getBirthDay());
         JLabel labelAge = new JLabel("Current age: "+globalStudent.countYears(frame.getDate()));
         JLabel labelCourseName = new JLabel("Course name: "+globalStudent.getCourseName());
-        JLabel labelCourseStartYear = new JLabel("Course start year: " + globalStudent.getCourseStartYear() + "/" + globalStudent.getCourseStartMonth() + "/" + globalStudent.getCourseStartDay());
+        JLabel labelGroup = new JLabel("Course group: " + globalStudent.getGroup());
         JLabel labelCourseYear = new JLabel("Course Year: "+globalStudent.countCourseYears(frame.getDate()));
-        JLabel labelTaskList = new JLabel("Task list: ");
+        labelTaskFinished = new JLabel("Finished tasks: " + globalStudent.countFinishedTasks());
+        labelTaskPending = new JLabel("Pending tasks: " + globalStudent.countPendingTasks());
+        labelTaskFailed = new JLabel("Failed tasks: " + globalStudent.countFailedTasks());
+        JLabel labelTaskList = new JLabel("Tasks list: ");
         JTextArea textAreaDescription = new JTextArea(globalStudent.getCourseName(),5,60);
         JPanel panelTasks = new JPanel();
         JScrollPane scrollingTasks = new JScrollPane(panelTasks);
@@ -65,36 +73,42 @@ public class StudentJPanels {
         panel.add(labelLastName);
         panel.add(labelId);
         panel.add(labelPosition);
-        panel.add(labelBirthDate);
         panel.add(labelAge);
         panel.add(labelCourseName);
-        panel.add(labelCourseStartYear);
+        panel.add(labelGroup);
         panel.add(labelCourseYear);
+        panel.add(labelTaskFinished);
+        panel.add(labelTaskPending);
+        panel.add(labelTaskFailed);
         panel.add(labelTaskList);
         panel.add(scrollingTasks);
         
         spring.putConstraint(SpringLayout.WEST, labelFirstName, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelFirstName, 10, SpringLayout.NORTH, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelFirstName, 9, SpringLayout.NORTH, panel);
         spring.putConstraint(SpringLayout.WEST, labelLastName, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelLastName, 10, SpringLayout.SOUTH, labelFirstName);
+        spring.putConstraint(SpringLayout.NORTH, labelLastName, 9, SpringLayout.SOUTH, labelFirstName);
         spring.putConstraint(SpringLayout.WEST, labelId, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelId, 10, SpringLayout.SOUTH, labelLastName);
+        spring.putConstraint(SpringLayout.NORTH, labelId, 9, SpringLayout.SOUTH, labelLastName);
         spring.putConstraint(SpringLayout.WEST, labelPosition, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelPosition, 10, SpringLayout.SOUTH, labelId);
-        spring.putConstraint(SpringLayout.WEST, labelBirthDate, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelBirthDate, 10, SpringLayout.SOUTH, labelPosition);
+        spring.putConstraint(SpringLayout.NORTH, labelPosition, 9, SpringLayout.SOUTH, labelId);
         spring.putConstraint(SpringLayout.WEST, labelAge, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelAge, 10, SpringLayout.SOUTH, labelBirthDate);
+        spring.putConstraint(SpringLayout.NORTH, labelAge, 9, SpringLayout.SOUTH, labelPosition);
         spring.putConstraint(SpringLayout.WEST, labelCourseName, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelCourseName, 10, SpringLayout.SOUTH, labelAge);
-        spring.putConstraint(SpringLayout.WEST, labelCourseStartYear, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelCourseStartYear, 10, SpringLayout.SOUTH, labelCourseName);
+        spring.putConstraint(SpringLayout.NORTH, labelCourseName, 9, SpringLayout.SOUTH, labelAge);
+        spring.putConstraint(SpringLayout.WEST, labelGroup, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelGroup, 9, SpringLayout.SOUTH, labelCourseName);
         spring.putConstraint(SpringLayout.WEST, labelCourseYear, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelCourseYear, 10, SpringLayout.SOUTH, labelCourseStartYear);
+        spring.putConstraint(SpringLayout.NORTH, labelCourseYear, 9, SpringLayout.SOUTH, labelGroup);
+        spring.putConstraint(SpringLayout.WEST, labelTaskFinished, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelTaskFinished, 9, SpringLayout.SOUTH, labelCourseYear);
+        spring.putConstraint(SpringLayout.WEST, labelTaskPending, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelTaskPending, 9, SpringLayout.SOUTH, labelTaskFinished);
+        spring.putConstraint(SpringLayout.WEST, labelTaskFailed, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, labelTaskFailed, 9, SpringLayout.SOUTH, labelTaskPending);
         spring.putConstraint(SpringLayout.WEST, labelTaskList, 10, SpringLayout.WEST, panel);
-        spring.putConstraint(SpringLayout.NORTH, labelTaskList, 10, SpringLayout.SOUTH, labelCourseYear);
-        spring.putConstraint(SpringLayout.WEST, scrollingTasks, 10, SpringLayout.EAST, labelTaskList);
-        spring.putConstraint(SpringLayout.NORTH, scrollingTasks, 5, SpringLayout.SOUTH, labelCourseYear);
+        spring.putConstraint(SpringLayout.NORTH, labelTaskList, 9, SpringLayout.SOUTH, labelTaskFailed);
+        spring.putConstraint(SpringLayout.WEST, scrollingTasks, 10, SpringLayout.WEST, panel);
+        spring.putConstraint(SpringLayout.NORTH, scrollingTasks, 9, SpringLayout.SOUTH, labelTaskList);
         
         return panel;
     }
@@ -162,6 +176,10 @@ public class StudentJPanels {
     }
 
     public void refreshData() {
+        globalStudent.markFailedTasks(date);
+        labelTaskFinished.setText("Finished tasks: " + globalStudent.countFinishedTasks());
+        labelTaskPending.setText("Pending tasks: " + globalStudent.countPendingTasks());
+        labelTaskFailed.setText("Failed tasks: " + globalStudent.countFailedTasks());
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
         frame.getFrame().remove(frame.getCenter());
         frame.setCenter(createFullStudentPanel());

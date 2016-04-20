@@ -10,6 +10,7 @@ s1346897
 Bioinformatics
 1
 2016 09 01
+2019 06 20
 #
 Wood varnishing
 Wood varnishing to get the color we want.
@@ -35,6 +36,7 @@ s1495235
 Bioinformatics
 1
 2016 09 01
+2019 06 20
 #
 Glue oiling
 Oiling table parts.
@@ -60,6 +62,7 @@ s1456789
 Bioinformatics
 1
 2016 09 01
+2019 06 20
 #
 Selection of packaging material
 Selection of packaging material.
@@ -85,6 +88,7 @@ s1349752
 Bioinformatics
 1
 2016 09 01
+2019 06 20
 #
 Transportation time coordination
 Time then package will be transported.
