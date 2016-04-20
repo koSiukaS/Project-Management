@@ -84,7 +84,7 @@ public class NavigationButtons {
         addProject.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ProjectFrame().Add();
+                new ProjectActionDialogs().addProject(frame.getUniversityProjects(), frame);
             }
         });
         JButton removeProject = new JButton("Remove project");

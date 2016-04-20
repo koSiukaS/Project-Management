@@ -8,18 +8,12 @@ import java.awt.event.*;
 import project.ProgramDate;
 import project.model.*;
 
-public class StudentJPanels {
+public class StudentJPanels extends BaseClass{
 
     private UniversityProject project;
     private Student globalStudent;
     private MainFrame frame;
-    private ProgramDate date;
-    private JLabel dateLabel;
     private NavigationButtons buttons;
-
-    private JLabel labelTaskFinished;
-    private JLabel labelTaskPending;
-    private JLabel labelTaskFailed;
 
     public StudentJPanels(MainFrame frame, Student student, UniversityProject project){
         this.frame = frame;
@@ -42,9 +36,9 @@ public class StudentJPanels {
         JLabel labelCourseName = new JLabel("Course name: "+globalStudent.getCourseName());
         JLabel labelGroup = new JLabel("Course group: " + globalStudent.getGroup());
         JLabel labelCourseYear = new JLabel("Course Year: "+globalStudent.countCourseYears(frame.getDate()));
-        labelTaskFinished = new JLabel("Finished tasks: " + globalStudent.countFinishedTasks());
-        labelTaskPending = new JLabel("Pending tasks: " + globalStudent.countPendingTasks());
-        labelTaskFailed = new JLabel("Failed tasks: " + globalStudent.countFailedTasks());
+        JLabel labelTaskFinished = new JLabel("Finished tasks: " + globalStudent.countFinishedTasks());
+        JLabel labelTaskPending = new JLabel("Pending tasks: " + globalStudent.countPendingTasks());
+        JLabel labelTaskFailed = new JLabel("Failed tasks: " + globalStudent.countFailedTasks());
         JLabel labelTaskList = new JLabel("Tasks list: ");
         JTextArea textAreaDescription = new JTextArea(globalStudent.getCourseName(),5,60);
         JPanel panelTasks = new JPanel();
@@ -118,8 +112,9 @@ public class StudentJPanels {
         student.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
         JPanel panelTask = new JPanel(new FlowLayout(FlowLayout.LEADING, 0, 5));
         panelTask.setLayout(new BoxLayout(panelTask, BoxLayout.PAGE_AXIS));
-        panelTask.setPreferredSize(new Dimension(230,30));
+        panelTask.setPreferredSize(new Dimension(230,35));
         panelTask.add(new JLabel(task.getName()));
+        panelTask.add(new JLabel("Status: " + task.getStatus()));
         student.add(panelTask);
         JButton buttonTaskDetails = new JButton("Details");
         NavigationButtons detailsButton = new NavigationButtons(frame, project, globalStudent, task);
@@ -148,38 +143,8 @@ public class StudentJPanels {
         return mainPanel;
     }
 
-
-    public JPanel createTimePanel() {
-        JPanel panel = new JPanel();
-        SpringLayout layout = new SpringLayout();
-        panel.setLayout(layout);
-        panel.setPreferredSize(new Dimension(138, 55));
-        JButton button = new JButton("Change date");
-        button.setPreferredSize(new Dimension(138, 30));
-        JLabel dateStr = new JLabel("Date:");
-        dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
-        dateLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                date.changeTime(StudentJPanels.this);
-            }
-        });
-        panel.add(dateStr);
-        layout.putConstraint(SpringLayout.WEST, dateStr, 0, SpringLayout.WEST, panel);
-        panel.add(dateLabel);
-        layout.putConstraint(SpringLayout.WEST, dateLabel, 44, SpringLayout.WEST, panel);
-        panel.add(button);
-        layout.putConstraint(SpringLayout.NORTH, button, 24, SpringLayout.NORTH, panel);
-        return panel;
-    }
-
     public void refreshData() {
         globalStudent.markFailedTasks(date);
-        labelTaskFinished.setText("Finished tasks: " + globalStudent.countFinishedTasks());
-        labelTaskPending.setText("Pending tasks: " + globalStudent.countPendingTasks());
-        labelTaskFailed.setText("Failed tasks: " + globalStudent.countFailedTasks());
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
         frame.getFrame().remove(frame.getCenter());
         frame.setCenter(createFullStudentPanel());

@@ -3,6 +3,7 @@ package project.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +14,9 @@ import javax.swing.JTextField;
 import project.model.UniversityProject;
 
 
-public class ProjectFrame{
+public class ProjectActionDialogs {
     
-    public void Add(){
+    public void addProject(final ArrayList<UniversityProject> projects, final MainFrame frame){
         final JFrame frameProject = new JFrame("Adding a project");
         JLabel labelName = new JLabel("Project name");
         JLabel labelDescription = new JLabel("Description:");
@@ -62,11 +63,18 @@ public class ProjectFrame{
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-            frameProject.dispose();
+                UniversityProject project = new UniversityProject();
+                project.setName(textFieldName.getText());
+                project.setDescription(textAreaDescription.getText());
+                project.setSupervisor(textFieldSupervisor.getText());
+                projects.add(project);
+                frame.refreshData();
+                frameProject.dispose();
             }
         });
     }
-        public void Edit(UniversityProject project){
+
+    public void Edit(UniversityProject project){
         final JFrame frameProject = new JFrame("Editing "+project.getName());
         JLabel labelName = new JLabel("Project name");
         JLabel labelDescription = new JLabel("Description:");

@@ -13,15 +13,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class MainFrame {
+public class MainFrame extends BaseClass{
 
     private JFrame frame = new JFrame("Project Management");
     private ProjectsListJPanels projectsWindow = new ProjectsListJPanels(MainFrame.this);
     private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
-    private ProgramDate date;
     private JPanel center;
     private JPanel east;
-    private JLabel dateLabel;
     private NavigationButtons buttons = new NavigationButtons(MainFrame.this);
 
     /**
@@ -72,34 +70,13 @@ public class MainFrame {
         return mainPanel;
     }
 
-    public JPanel createTimePanel() {
-        JPanel panel = new JPanel();
-        SpringLayout layout = new SpringLayout();
-        panel.setLayout(layout);
-        panel.setPreferredSize(new Dimension(138, 55));
-        JButton button = new JButton("Change date");
-        button.setPreferredSize(new Dimension(138, 30));
-        JLabel dateStr = new JLabel("Date:");
-        dateStr.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        this.dateLabel = new JLabel(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
-        dateLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                date.changeTime(MainFrame.this);
-            }
-        });
-        panel.add(dateStr);
-        layout.putConstraint(SpringLayout.WEST, dateStr, 0, SpringLayout.WEST, panel);
-        panel.add(dateLabel);
-        layout.putConstraint(SpringLayout.WEST, dateLabel, 44, SpringLayout.WEST, panel);
-        panel.add(button);
-        layout.putConstraint(SpringLayout.NORTH, button, 24, SpringLayout.NORTH, panel);
-        return panel;
-    }
-
-    public void refresh() {
+    public void refreshData() {
         dateLabel.setText(String.format("%d/%d/%d", date.getProgramYear(), date.getProgramMonth(), date.getProgramDay()));
+        frame.remove(center);
+        center = projectsWindow.createProjectsList(universityProjects);
+        frame.add(center);
+        frame.revalidate();
+        frame.repaint();
     }
 
     public NavigationButtons getButtons() {

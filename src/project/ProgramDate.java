@@ -1,9 +1,6 @@
 package project;
 
-import project.view.MainFrame;
-import project.view.ProjectJPanels;
-import project.view.StudentJPanels;
-import project.view.TaskJPanels;
+import project.view.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -29,6 +26,7 @@ public class ProgramDate {
      */
     private void createChangeTimeGUI(){
         frame = new JDialog();
+        frame.setTitle("Change date");
         f = new JPanel(new FlowLayout());
 
         if(programYear == 0) {
@@ -71,16 +69,7 @@ public class ProgramDate {
         f.add(new JLabel("Day"));
         f.add(spinnerDay);
 
-        f.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(Color.black),
-                "Date",
-                TitledBorder.CENTER,
-                TitledBorder.CENTER,
-                new Font("Times New Roman", Font.BOLD, 20),
-                Color.BLACK));
-
         frame.setPreferredSize(new Dimension(400, 80));
-        frame.setUndecorated(true);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -89,8 +78,8 @@ public class ProgramDate {
     }
 
     /**
-     * changeTime method invokes createChangeTimeGUI method, this way graphics are created
-     * after saving the new date, frame disposes.
+     * changeTime method invokes createChangeTimeGUI method, this way graphics are created. <br>
+     * After saving the new date, frame disposes. <br>
      * Next time new frame will be created and old actionListeners will be deleted
      * because this method is overloaded and different params results in different functionality
      *
@@ -107,7 +96,7 @@ public class ProgramDate {
                 setProgramMonth((Integer)spinnerMonth.getValue());
                 setProgramDay((Integer)spinnerDay.getValue());
                 frame.dispose();
-                mainFrame.refresh();
+                mainFrame.refreshData();
                 mainFrame.getFrame().setVisible(true);
             }
         });
@@ -118,79 +107,23 @@ public class ProgramDate {
     }
 
     /**
-     * changeTime method invokes createChangeTimeGUI method, this way graphics are created
-     * after saving the new date, frame disposes.
+     * changeTime method invokes createChangeTimeGUI method, this way graphics are created. <br>
+     * After saving the new date, frame disposes. <br>
      * Next time new frame will be created and old actionListeners will be deleted
      * because this method is overloaded and different params results in different functionality
      *
      * @param panel object which JPanels will be refreshed after date change
      */
-    public void changeTime(final ProjectJPanels panel) {
+    public void changeTime(final BaseClass panel) {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setProgramYear((Integer)spinnerYear.getValue());
-                setProgramMonth((Integer)spinnerMonth.getValue());
-                setProgramDay((Integer)spinnerDay.getValue());
-                frame.dispose();
-                panel.refreshData();
-            }
-        });
-        frame.add(f);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
-    }
-
-    /**
-     * changeTime method invokes createChangeTimeGUI method, this way graphics are created
-     * after saving the new date, frame disposes.
-     * Next time new frame will be created and old actionListeners will be deleted
-     * because this method is overloaded and different params results in different functionality
-     *
-     * @param panel object which JPanels will be refreshed after date change
-     */
-    public void changeTime(final StudentJPanels panel) {
-        createChangeTimeGUI();
-        f.add(save);
-        removeSaveActionListener(save);
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setProgramYear((Integer)spinnerYear.getValue());
-                setProgramMonth((Integer)spinnerMonth.getValue());
-                setProgramDay((Integer)spinnerDay.getValue());
-                frame.dispose();
-                panel.refreshData();
-            }
-        });
-        frame.add(f);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
-    }
-
-    /**
-     * changeTime method invokes createChangeTimeGUI method, this way graphics are created
-     * after saving the new date, frame disposes.
-     * Next time new frame will be created and old actionListeners will be deleted
-     * because this method is overloaded and different params results in different functionality
-     *
-     * @param panel object which JPanels will be refreshed after date change
-     */
-    public void changeTime(final TaskJPanels panel) {
-        createChangeTimeGUI();
-        f.add(save);
-        removeSaveActionListener(save);
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setProgramYear((Integer)spinnerYear.getValue());
-                setProgramMonth((Integer)spinnerMonth.getValue());
-                setProgramDay((Integer)spinnerDay.getValue());
+                setProgramYear((Integer) spinnerYear.getValue());
+                setProgramMonth((Integer) spinnerMonth.getValue());
+                setProgramDay((Integer) spinnerDay.getValue());
                 frame.dispose();
                 panel.refreshData();
             }

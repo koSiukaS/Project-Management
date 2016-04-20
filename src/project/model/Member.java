@@ -11,10 +11,9 @@ public class Member {
     private String position;
     private int birthYear, birthMonth, birthDay;
     private String id;
-    private ArrayList<Task> tasks = new ArrayList<Task>();
+    private ArrayList<Task> tasks = new ArrayList<>();
 
     public void markFailedTasks(ProgramDate date) {
-        System.out.println("marking failed tasks");
         for(Task task : tasks) {
             task.checkStatus(date);
         }
