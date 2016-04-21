@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,10 +16,34 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import project.model.UniversityProject;
 
+class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
 
-public class ProjectActionDialogs {
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
+
+public class ProjectActionDialogs{
     
     public void addProject(final ArrayList<UniversityProject> projects, final MainFrame frame){
         final JDialog dialogProject = new JDialog();
@@ -36,7 +62,9 @@ public class ProjectActionDialogs {
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
+        textFieldName.setDocument(new JTextFieldLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
+        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
         buttonSave.setPreferredSize(new Dimension(365, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -75,6 +103,33 @@ public class ProjectActionDialogs {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                if (textFieldName.getText().length() < 4) {
+                    textFieldName.setText("at least 4 characters");
+                    textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldName.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textFieldSupervisor.getText().length() < 4) {
+                    textFieldSupervisor.setText("At least 4 characters");
+                    textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldSupervisor.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else{
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
                 project.setDescription(textAreaDescription.getText());
@@ -82,9 +137,10 @@ public class ProjectActionDialogs {
                 projects.add(project);
                 frame.refreshData();
                 dialogProject.dispose();
+                }
             }
         });
-    }
+    } 
 
     public void Edit(UniversityProject project){     
         final JDialog dialogProject = new JDialog();
@@ -104,7 +160,9 @@ public class ProjectActionDialogs {
         textAreaDescription.setFont(new Font("", Font.BOLD, 12));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
+        textFieldName.setDocument(new JTextFieldLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
+        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
         buttonSave.setPreferredSize(new Dimension(440, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -144,7 +202,33 @@ public class ProjectActionDialogs {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                if (textFieldName.getText().length() < 4) {
+                    textFieldName.setText("at least 4 characters");
+                    textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldName.setText("");
+                } 
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textFieldSupervisor.getText().length() < 4) {
+                    textFieldSupervisor.setText("At least 4 characters");
+                    textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldSupervisor.setText("");
+                } 
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else{
             dialogProject.dispose();
+                }
             }
         });
     }
