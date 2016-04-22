@@ -5,36 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import project.model.UniversityProject;
 
-class JTextFieldLimit extends PlainDocument {
-  private int limit;
-  JTextFieldLimit(int limit) {
-    super();
-    this.limit = limit;
-  }
-
-  JTextFieldLimit(int limit, boolean upper) {
-    super();
-    this.limit = limit;
-  }
-
-  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
-    if (str == null)
-      return;
-
-    if ((getLength() + str.length()) <= limit) {
-      super.insertString(offset, str, attr);
-    }
-  }
-}
-
 public class ProjectActionDialogs{
+    private String tempTextName, tempTextSupervisor, tempTextDescription;
+    private Border compound, oldFieldBorder, oldAreaBorder;
+    private Boolean boolName, boolSupervisor, boolDescription;
     
     public void addProject(final ArrayList<UniversityProject> projects, final MainFrame frame){
         final JDialog dialogProject = new JDialog();
@@ -53,9 +36,9 @@ public class ProjectActionDialogs{
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldName.setDocument(new JTextFieldLimit(50));
+        textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
-        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
+        textFieldSupervisor.setDocument(new TextLimit(30));
         buttonSave.setPreferredSize(new Dimension(365, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -85,49 +68,85 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
         spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
         
+        Border redLine = BorderFactory.createLineBorder(Color.red);
+        Border spacing = BorderFactory.createEmptyBorder(2, 2, 2, 2);
+        compound = BorderFactory.createCompoundBorder(redLine, spacing);
+        oldFieldBorder = textFieldName.getBorder();
+        oldAreaBorder = textAreaDescription.getBorder();
+        
+                textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textFieldName.setText(tempTextName);
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextName = textFieldName.getText();
+                            if (textFieldName.getText().length() < 4) {
+                                textFieldName.setBackground(new Color(255, 180, 180));
+                                textFieldName.setBorder(compound);
+                                textFieldName.setText("At least 4 characters");
+                                boolName = false;
+                            }
+                            else {
+                                textFieldName.setBackground(new Color(255, 255, 255));
+                                textFieldName.setBorder(oldFieldBorder);
+                                boolName = true;
+                            }
+                        }
+                    });
+                
+                textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textFieldSupervisor.setText(tempTextSupervisor);
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextSupervisor = textFieldSupervisor.getText();
+                            if (textFieldSupervisor.getText().length() < 4) {
+                                textFieldSupervisor.setBackground(new Color(255, 180, 180));
+                                textFieldSupervisor.setBorder(compound);
+                                textFieldSupervisor.setText("At least 4 characters");
+                                boolSupervisor = false;
+                            }
+                            else {
+                                textFieldSupervisor.setBackground(new Color(255, 255, 255));
+                                textFieldSupervisor.setBorder(oldFieldBorder);
+                                boolSupervisor = true;
+                            }
+                        }
+                    });
+                
+                textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textAreaDescription.setText(tempTextDescription);
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextDescription = textAreaDescription.getText();
+                            if (textAreaDescription.getText().length() < 100) {
+                                textAreaDescription.setBackground(new Color(255, 180, 180));
+                                textAreaDescription.setBorder(compound);
+                                textAreaDescription.setText("The description must consist out of 100 characters at least");
+                                boolDescription = false;
+                            }
+                            else {
+                                textAreaDescription.setBackground(new Color(255, 255, 255));
+                                textAreaDescription.setBorder(oldAreaBorder);
+                                boolDescription = true;
+                            }
+                        }
+                    });
+        
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                if (textFieldName.getText().length() < 4) {
-                    textFieldName.setText("at least 4 characters");
-                    textFieldName.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textFieldName.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else if (textFieldSupervisor.getText().length() < 4) {
-                    textFieldSupervisor.setText("At least 4 characters");
-                    textFieldSupervisor.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textFieldSupervisor.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else if (textAreaDescription.getText().length() < 100) {
-                    textAreaDescription.setText("At least 100 characters");
-                    textAreaDescription.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textAreaDescription.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else{
+                if (boolName && boolSupervisor && boolDescription) {
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
                 project.setDescription(textAreaDescription.getText());
@@ -144,12 +163,14 @@ public class ProjectActionDialogs{
         dialogProject.setResizable(false);
         dialogProject.setModal(true);
         dialogProject.setVisible(true);
+        //Image img = ImageIO.read(getClass().getResource("./src/project/*.png"));
+        //dialogProject.setIconImage(img);
     } 
 
-    public void Edit(UniversityProject project){     
+    public void Edit(UniversityProject project) throws IOException{     
         final JDialog dialogProject = new JDialog();
         dialogProject.setTitle("Editing "+project.getName());
-        JPanel panelProject = new JPanel();
+        final JPanel panelProject = new JPanel();
         JLabel labelName = new JLabel("Project name:");
         JLabel labelDescription = new JLabel("Description:");
         JLabel labelSupervisor = new JLabel("Supervisor:");    
@@ -164,9 +185,9 @@ public class ProjectActionDialogs{
         textAreaDescription.setFont(new Font("", Font.BOLD, 12));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldName.setDocument(new JTextFieldLimit(50));
+        textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
-        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
+        textFieldSupervisor.setDocument(new TextLimit(30));
         buttonSave.setPreferredSize(new Dimension(440, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -195,51 +216,86 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelSupervisor, 0, SpringLayout.VERTICAL_CENTER, textFieldSupervisor);
         spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
         spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
+        
+        Border redLine = BorderFactory.createLineBorder(Color.red);
+        Border spacing = BorderFactory.createEmptyBorder(2, 2, 2, 2);
+        compound = BorderFactory.createCompoundBorder(redLine, spacing);
+        oldFieldBorder = textFieldName.getBorder();
+        oldAreaBorder = textAreaDescription.getBorder();
+        
+                textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textFieldName.setText(tempTextName);
+                } 
 
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextName = textFieldName.getText();
+                            if (textFieldName.getText().length() < 4) {
+                                textFieldName.setBackground(new Color(255, 180, 180));
+                                textFieldName.setBorder(compound);
+                                textFieldName.setText("At least 4 characters");
+                                boolName = false;
+                            }
+                            else {
+                                textFieldName.setBackground(new Color(255, 255, 255));
+                                textFieldName.setBorder(oldFieldBorder);
+                                boolName = true;
+                            }
+                        }
+                    });
+                
+                textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textFieldSupervisor.setText(tempTextSupervisor);
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextSupervisor = textFieldSupervisor.getText();
+                            if (textFieldSupervisor.getText().length() < 4) {
+                                textFieldSupervisor.setBackground(new Color(255, 180, 180));
+                                textFieldSupervisor.setBorder(compound);
+                                textFieldSupervisor.setText("At least 4 characters");
+                                boolSupervisor = false;
+                            }
+                            else {
+                                textFieldSupervisor.setBackground(new Color(255, 255, 255));
+                                textFieldSupervisor.setBorder(oldFieldBorder);
+                                boolSupervisor = true;
+                            }
+                        }
+                    });
+                
+                textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                           textAreaDescription.setText(tempTextDescription);
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                            tempTextDescription = textAreaDescription.getText();
+                            if (textAreaDescription.getText().length() < 100) {
+                                textAreaDescription.setBackground(new Color(255, 180, 180));
+                                textAreaDescription.setBorder(compound);
+                                textAreaDescription.setText("The description must consist out of 100 characters at least");
+                                boolDescription = false;
+                            }
+                            else {
+                                textAreaDescription.setBackground(new Color(255, 255, 255));
+                                textAreaDescription.setBorder(oldAreaBorder);
+                                boolDescription = true;
+                            }
+                        }
+                    });
 
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                if (textFieldName.getText().length() < 4) {
-                    textFieldName.setText("at least 4 characters");
-                    textFieldName.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textFieldName.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else if (textFieldSupervisor.getText().length() < 4) {
-                    textFieldSupervisor.setText("At least 4 characters");
-                    textFieldSupervisor.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textFieldSupervisor.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else if (textAreaDescription.getText().length() < 100) {
-                    textAreaDescription.setText("At least 100 characters");
-                    textAreaDescription.addFocusListener(new FocusListener() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                    textAreaDescription.setText("");
-                } 
-
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                        }
-                    });
-                }
-                else{
+                if (boolName && boolSupervisor && boolDescription) {
             dialogProject.dispose();
                 }
             }
@@ -250,6 +306,8 @@ public class ProjectActionDialogs{
         dialogProject.setResizable(false);
         dialogProject.setModal(true);
         dialogProject.setVisible(true);
+        //Image img = ImageIO.read(getClass().getResource("./src/project/*.png"));
+        //dialogProject.setIconImage(img);
     }
         public void removeProject(final ArrayList<UniversityProject> projects, final MainFrame mainPanel){
             if(projects.size() > 0) {
