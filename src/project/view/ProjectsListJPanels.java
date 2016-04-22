@@ -28,7 +28,13 @@ public class ProjectsListJPanels{
         nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
         JLabel descriptionLabel = new JLabel();
-        String shortDescription = project.getDescription().substring(0, 95) + "...";
+        String shortDescription = new String();
+        if (project.getDescription().length() < 95) {
+            shortDescription = project.getDescription();
+        }
+        else {
+            shortDescription = project.getDescription().substring(0, 95) + "...";
+        }
         descriptionLabel.setText(shortDescription);
 
         JLabel supervisorLabel = new JLabel();

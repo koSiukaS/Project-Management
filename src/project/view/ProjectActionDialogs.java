@@ -1,129 +1,264 @@
 package project.view;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import project.model.UniversityProject;
 
+class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
 
-public class ProjectActionDialogs {
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
+
+public class ProjectActionDialogs{
     
     public void addProject(final ArrayList<UniversityProject> projects, final MainFrame frame){
-        final JFrame frameProject = new JFrame("Adding a project");
-        JLabel labelName = new JLabel("Project name");
+        final JDialog dialogProject = new JDialog();
+        dialogProject.setTitle("Adding a project");
+        JPanel panelProject = new JPanel();
+        JLabel labelName = new JLabel("Project name:");
         JLabel labelDescription = new JLabel("Description:");
-        JLabel labelSupervisor = new JLabel("Supervisor");    
-        final JTextField textFieldName = new JTextField();       
-        final JTextArea textAreaDescription = new JTextArea();
-        final JTextField textFieldSupervisor = new JTextField();
+        JLabel labelSupervisor = new JLabel("Supervisor:");    
+        final JTextField textFieldName = new JTextField(15);
+        final JTextField textFieldSupervisor = new JTextField(10);
+        final JTextArea textAreaDescription = new JTextArea(8, 32);
         JButton buttonSave = new JButton("Add project");
-        
-        frameProject.setSize(400, 450);
-        frameProject.setLayout(null);
-        frameProject.setVisible(true);
-        frameProject.setLocationRelativeTo(null);
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        textAreaDescription.setFont(new Font("", Font.BOLD, 12));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
+        textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
+        textFieldName.setDocument(new JTextFieldLimit(50));
+        textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
+        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
+        buttonSave.setPreferredSize(new Dimension(365, 30));
         
-        labelName.setBounds(10,10,100,30);
-        labelName.setFont(new Font("", Font.BOLD, 15));
-        textFieldName.setBounds(120,10,200,30);
-        textFieldName.setFont(new Font("", Font.BOLD, 15));
-        labelDescription.setBounds(10,50,110,30);
-        labelDescription.setFont(new Font("", Font.BOLD, 15));
-        scrollingDescription.setBounds(10,90,350,180);
-        labelSupervisor.setBounds(10,280,100,30);
-        labelSupervisor.setFont(new Font("", Font.BOLD, 15));
-        textFieldSupervisor.setBounds(120,280,200,30);
-        textFieldSupervisor.setFont(new Font("", Font.BOLD, 15));
-        buttonSave.setBounds(75,320,250,80);
-        buttonSave.setFont(new Font("",Font.BOLD,25));
+        SpringLayout spring = new SpringLayout();
+        panelProject.setLayout(spring);
+        panelProject.setPreferredSize(new Dimension(480, 240));
+        panelProject.add(labelName);
+        panelProject.add(textFieldName);
+        panelProject.add(labelDescription);
+        panelProject.add(scrollingDescription);
+        panelProject.add(labelSupervisor);
+        panelProject.add(textFieldSupervisor);
+        panelProject.add(buttonSave);
+        panelProject.setVisible(true);
 
-        frameProject.add(labelName);
-        frameProject.add(textFieldName);
-        frameProject.add(labelDescription);
-        frameProject.add(scrollingDescription);
-        frameProject.add(labelSupervisor);
-        frameProject.add(textFieldSupervisor);
-        frameProject.add(buttonSave);
-
-
+        spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, panelProject);
+        spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
+        spring.putConstraint(SpringLayout.WEST, textFieldName, 6, SpringLayout.EAST, labelName);
+        spring.putConstraint(SpringLayout.NORTH, textFieldName, 10, SpringLayout.NORTH, panelProject);
+        spring.putConstraint(SpringLayout.WEST, labelDescription, 0, SpringLayout.WEST, labelName);
+        spring.putConstraint(SpringLayout.NORTH, labelDescription, 0, SpringLayout.NORTH, scrollingDescription);
+        spring.putConstraint(SpringLayout.WEST, scrollingDescription, 0, SpringLayout.WEST, textFieldName);
+        spring.putConstraint(SpringLayout.NORTH, scrollingDescription, 10, SpringLayout.SOUTH, textFieldName);
+        spring.putConstraint(SpringLayout.EAST, textFieldSupervisor, 0, SpringLayout.EAST, scrollingDescription);
+        spring.putConstraint(SpringLayout.NORTH, textFieldSupervisor, 10, SpringLayout.NORTH, panelProject);
+        spring.putConstraint(SpringLayout.EAST, labelSupervisor, -6, SpringLayout.WEST, textFieldSupervisor);
+        spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelSupervisor, 0, SpringLayout.VERTICAL_CENTER, textFieldSupervisor);
+        spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
+        spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
+        
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                if (textFieldName.getText().length() < 4) {
+                    textFieldName.setText("at least 4 characters");
+                    textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldName.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textFieldSupervisor.getText().length() < 4) {
+                    textFieldSupervisor.setText("At least 4 characters");
+                    textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldSupervisor.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textAreaDescription.getText().length() < 100) {
+                    textAreaDescription.setText("At least 100 characters");
+                    textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textAreaDescription.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else{
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
                 project.setDescription(textAreaDescription.getText());
                 project.setSupervisor(textFieldSupervisor.getText());
                 projects.add(project);
                 frame.refreshData();
-                frameProject.dispose();
+                dialogProject.dispose();
+                }
             }
         });
-    }
+        dialogProject.add(panelProject);
+        dialogProject.pack();
+        dialogProject.setLocationRelativeTo(null);
+        dialogProject.setResizable(false);
+        dialogProject.setModal(true);
+        dialogProject.setVisible(true);
+    } 
 
-    public void Edit(UniversityProject project){
-        final JFrame frameProject = new JFrame("Editing "+project.getName());
-        JLabel labelName = new JLabel("Project name");
+    public void Edit(UniversityProject project){     
+        final JDialog dialogProject = new JDialog();
+        dialogProject.setTitle("Editing "+project.getName());
+        JPanel panelProject = new JPanel();
+        JLabel labelName = new JLabel("Project name:");
         JLabel labelDescription = new JLabel("Description:");
-        JLabel labelSupervisor = new JLabel("Supervisor");    
-        final JTextField textFieldName = new JTextField(project.getName());       
-        final JTextArea textAreaDescription = new JTextArea(project.getDescription());
-        final JTextField textFieldSupervisor = new JTextField(project.getSupervisor());
+        JLabel labelSupervisor = new JLabel("Supervisor:");    
+        final JTextField textFieldName = new JTextField((project.getName()),15);
+        final JTextField textFieldSupervisor = new JTextField((project.getDescription()),10);
+        final JTextArea textAreaDescription = new JTextArea((project.getSupervisor()),8, 32);
         JButton buttonSave = new JButton("Save project");
-        
-        frameProject.setSize(400, 450);
-        frameProject.setLayout(null);
-        frameProject.setVisible(true);
-        frameProject.setLocationRelativeTo(null);
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         textAreaDescription.setFont(new Font("", Font.BOLD, 12));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
+        textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
+        textFieldName.setDocument(new JTextFieldLimit(50));
+        textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
+        textFieldSupervisor.setDocument(new JTextFieldLimit(30));
+        buttonSave.setPreferredSize(new Dimension(440, 30));
         
-        labelName.setBounds(10,10,100,30);
-        labelName.setFont(new Font("", Font.BOLD, 15));
-        textFieldName.setBounds(120,10,200,30);
-        textFieldName.setFont(new Font("", Font.BOLD, 15));
-        labelDescription.setBounds(10,50,110,30);
-        labelDescription.setFont(new Font("", Font.BOLD, 15));
-        scrollingDescription.setBounds(10,90,350,180);
-        labelSupervisor.setBounds(10,280,100,30);
-        labelSupervisor.setFont(new Font("", Font.BOLD, 15));
-        textFieldSupervisor.setBounds(120,280,200,30);
-        textFieldSupervisor.setFont(new Font("", Font.BOLD, 15));
-        buttonSave.setBounds(75,320,250,80);
-        buttonSave.setFont(new Font("",Font.BOLD,25));
+        SpringLayout spring = new SpringLayout();
+        panelProject.setLayout(spring);
+        panelProject.setPreferredSize(new Dimension(480, 240));
+        panelProject.add(labelName);
+        panelProject.add(textFieldName);
+        panelProject.add(labelDescription);
+        panelProject.add(scrollingDescription);
+        panelProject.add(labelSupervisor);
+        panelProject.add(textFieldSupervisor);
+        panelProject.add(buttonSave);
+        panelProject.setVisible(true);
 
-        frameProject.add(labelName);
-        frameProject.add(textFieldName);
-        frameProject.add(labelDescription);
-        frameProject.add(scrollingDescription);
-        frameProject.add(labelSupervisor);
-        frameProject.add(textFieldSupervisor);
-        frameProject.add(buttonSave);
+        spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, panelProject);
+        spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
+        spring.putConstraint(SpringLayout.WEST, textFieldName, 6, SpringLayout.EAST, labelName);
+        spring.putConstraint(SpringLayout.NORTH, textFieldName, 10, SpringLayout.NORTH, panelProject);
+        spring.putConstraint(SpringLayout.EAST, labelDescription, -6, SpringLayout.WEST, scrollingDescription);
+        spring.putConstraint(SpringLayout.NORTH, labelDescription, 0, SpringLayout.NORTH, scrollingDescription);
+        spring.putConstraint(SpringLayout.WEST, scrollingDescription, 0, SpringLayout.WEST, textFieldName);
+        spring.putConstraint(SpringLayout.NORTH, scrollingDescription, 10, SpringLayout.SOUTH, textFieldName);
+        spring.putConstraint(SpringLayout.EAST, textFieldSupervisor, 0, SpringLayout.EAST, scrollingDescription);
+        spring.putConstraint(SpringLayout.NORTH, textFieldSupervisor, 10, SpringLayout.NORTH, panelProject);
+        spring.putConstraint(SpringLayout.EAST, labelSupervisor, -6, SpringLayout.WEST, textFieldSupervisor);
+        spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelSupervisor, 0, SpringLayout.VERTICAL_CENTER, textFieldSupervisor);
+        spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
+        spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
 
 
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-            frameProject.dispose();
+                if (textFieldName.getText().length() < 4) {
+                    textFieldName.setText("at least 4 characters");
+                    textFieldName.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldName.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textFieldSupervisor.getText().length() < 4) {
+                    textFieldSupervisor.setText("At least 4 characters");
+                    textFieldSupervisor.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textFieldSupervisor.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textAreaDescription.getText().length() < 100) {
+                    textAreaDescription.setText("At least 100 characters");
+                    textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textAreaDescription.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else{
+            dialogProject.dispose();
+                }
             }
         });
+        dialogProject.add(panelProject);
+        dialogProject.pack();
+        dialogProject.setLocationRelativeTo(null);
+        dialogProject.setResizable(false);
+        dialogProject.setModal(true);
+        dialogProject.setVisible(true);
     }
         public void Remove(){
     }
