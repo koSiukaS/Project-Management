@@ -2,7 +2,16 @@ package project.model;
 
 import project.ProgramDate;
 
-public class Student extends Member {
+import java.util.ArrayList;
+
+public class Student {
+
+    private String firstName;
+    private String lastName;
+    private String position;
+    private int birthYear, birthMonth, birthDay;
+    private String id;
+    private ArrayList<Task> tasks = new ArrayList<>();
     private int courseStartYear, courseStartMonth, courseStartDay;
     private int courseEndYear, courseEndMonth, courseEndDay;
     private int group;
@@ -103,5 +112,143 @@ public class Student extends Member {
     
     public void setCourse(int course){
         this.course = course;
+    }
+
+    public void markFailedTasks(ProgramDate date) {
+        for(Task task : tasks) {
+            task.checkStatus(date);
+        }
+    }
+
+    public int countFinishedTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("Finished")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
+    public int countPendingTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("In progress")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
+    public int countFailedTasks() {
+        int number = 0;
+        for(Task task : tasks) {
+            if(task.getStatus().equals("Failed")) {
+                number++;
+            }
+        }
+        return number;
+    }
+
+    /**
+     * Calculates age
+     *
+     * @param date  current program date
+     * @return      member's age or "Unborn" if program's date is lower than member's birth date
+     */
+    public String countYears(ProgramDate date) {
+        int years;
+        int programYear = date.getProgramYear();
+        int programMonth = date.getProgramMonth();
+        int programDay = date.getProgramDay();
+        if(programYear < birthYear) {
+            return "Unborn";
+        } else {
+            years = programYear - birthYear;
+            if(programMonth - birthMonth >= 0) {
+                if(programDay - birthDay < 0) {
+                    years--;
+                }
+            } else {
+                years--;
+            }
+            return String.valueOf(years);
+        }
+    }
+
+    public String getFirstNameLetterAndLastName() {
+        return (firstName.charAt(0) + ". " + lastName);
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+    public void removeTask(int task){
+        tasks.remove(task);
     }
 }

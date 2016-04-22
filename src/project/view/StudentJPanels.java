@@ -3,9 +3,7 @@ package project.view;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
 
-import project.ProgramDate;
 import project.model.*;
 
 public class StudentJPanels extends BaseClass{
@@ -13,14 +11,14 @@ public class StudentJPanels extends BaseClass{
     private UniversityProject project;
     private Student globalStudent;
     private MainFrame frame;
-    private NavigationButtons buttons;
+    private NavigationAndButtons buttons;
 
     public StudentJPanels(MainFrame frame, Student student, UniversityProject project){
         this.frame = frame;
         globalStudent = student;
         date = frame.getDate();
         this.project = project;
-        buttons = new NavigationButtons(frame, project);
+        buttons = new NavigationAndButtons(frame, project, student, this);
 
         student.markFailedTasks(date);
     }
@@ -117,7 +115,7 @@ public class StudentJPanels extends BaseClass{
         panelTask.add(new JLabel("Status: " + task.getStatus()));
         student.add(panelTask);
         JButton buttonTaskDetails = new JButton("Details");
-        NavigationButtons detailsButton = new NavigationButtons(frame, project, globalStudent, task);
+        NavigationAndButtons detailsButton = new NavigationAndButtons(frame, project, globalStudent, task);
         detailsButton.setTaskActionListener(buttonTaskDetails);
         student.add(buttonTaskDetails);
         return student;

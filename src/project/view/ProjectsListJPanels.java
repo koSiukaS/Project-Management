@@ -28,13 +28,7 @@ public class ProjectsListJPanels{
         nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
         JLabel descriptionLabel = new JLabel();
-        String shortDescription = new String();
-        if (project.getDescription().length() < 95) {
-            shortDescription = project.getDescription();
-        }
-        else {
-            shortDescription = project.getDescription().substring(0, 95) + "...";
-        }
+        String shortDescription = project.getDescription().substring(0, 95) + "...";
         descriptionLabel.setText(shortDescription);
 
         JLabel supervisorLabel = new JLabel();
@@ -46,7 +40,7 @@ public class ProjectsListJPanels{
         membersLabel.setText(members);
 
         JButton button = new JButton("Details");
-        NavigationButtons detailsButton = new NavigationButtons(frame, project);
+        NavigationAndButtons detailsButton = new NavigationAndButtons(frame, project);
         detailsButton.setProjectActionListener(button);
 
         JPanel informationPanel = new JPanel();

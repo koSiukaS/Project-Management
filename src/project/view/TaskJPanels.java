@@ -1,6 +1,5 @@
 package project.view;
 
-import project.ProgramDate;
 import project.model.*;
 
 import javax.swing.*;
@@ -11,14 +10,14 @@ public class TaskJPanels extends BaseClass{
 
     private Task globalTask;
     private MainFrame frame;
-    private NavigationButtons buttons;
+    private NavigationAndButtons buttons;
     private JLabel labelStatus;
 
     public TaskJPanels(MainFrame frame, Task task, UniversityProject project, Student student){
         this.frame = frame;
         globalTask = task;
         date = frame.getDate();
-        buttons = new NavigationButtons(frame, project, student, task);
+        buttons = new NavigationAndButtons(frame, project, student, task);
     }
 
     public JPanel createFullTaskPanel(){

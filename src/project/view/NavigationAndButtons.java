@@ -9,30 +9,48 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class NavigationButtons {
+public class NavigationAndButtons {
 
     private MainFrame frame;
+    private ProjectJPanels projectJPanels;
+    private StudentJPanels studentJPanels;
     private UniversityProject project;
     private Student student;
     private Task task;
 
-    NavigationButtons(MainFrame frame) {
+    NavigationAndButtons(){}
+
+    NavigationAndButtons(MainFrame frame) {
         this.frame = frame;
     }
 
-    NavigationButtons(MainFrame frame, UniversityProject project) {
+    NavigationAndButtons(MainFrame frame, UniversityProject project) {
         this.frame = frame;
         this.project = project;
     }
 
-    NavigationButtons(MainFrame frame, UniversityProject project, Student student) {
+    NavigationAndButtons(MainFrame frame, UniversityProject project, Student student, StudentJPanels studentJPanels) {
+        this.frame = frame;
+        this.project = project;
+        this.student = student;
+        this.studentJPanels = studentJPanels;
+    }
+
+    NavigationAndButtons(MainFrame frame, UniversityProject project, ProjectJPanels projectJPanels) {
+        this.frame = frame;
+        this.project = project;
+        this.projectJPanels = projectJPanels;
+    }
+
+    NavigationAndButtons(MainFrame frame, UniversityProject project, Student student) {
         this.frame = frame;
         this.project = project;
         this.student = student;
     }
 
-    NavigationButtons(MainFrame frame, UniversityProject project, Student student, Task task) {
+    NavigationAndButtons(MainFrame frame, UniversityProject project, Student student, Task task) {
         this.frame = frame;
         this.project = project;
         this.student = student;
@@ -89,6 +107,12 @@ public class NavigationButtons {
         });
         JButton removeProject = new JButton("Remove project");
         removeProject.setPreferredSize(new Dimension(138, 30));
+        removeProject.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ProjectActionDialogs().removeProject(frame.getUniversityProjects(), frame);
+            }
+        });
 
         buttonPanel.add(addProject);
         layout.putConstraint(SpringLayout.NORTH, addProject, 0, SpringLayout.NORTH, buttonPanel);
@@ -108,6 +132,12 @@ public class NavigationButtons {
         addStudent.setPreferredSize(new Dimension(138, 30));
         JButton removeStudent = new JButton("Remove student");
         removeStudent.setPreferredSize(new Dimension(138, 30));
+        removeStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StudentActionDialogs().removeStudent(project.getStudents(), projectJPanels);
+            }
+        });
         JButton backToProject = backToProjects();
         backToProject.setPreferredSize(new Dimension(138, 30));
 
@@ -127,23 +157,29 @@ public class NavigationButtons {
         SpringLayout layout = new SpringLayout();
         buttonPanel.setLayout(layout);
         buttonPanel.setPreferredSize(new Dimension(138, 190));
-        JButton addStudent = new JButton("Edit student");
-        addStudent.setPreferredSize(new Dimension(138, 30));
-        JButton editStudent = new JButton("Add task");
+        JButton editStudent = new JButton("Edit student");
         editStudent.setPreferredSize(new Dimension(138, 30));
-        JButton removeStudent = new JButton("Remove task");
-        removeStudent.setPreferredSize(new Dimension(138, 30));
+        JButton addTask = new JButton("Add task");
+        addTask.setPreferredSize(new Dimension(138, 30));
+        JButton removeTask = new JButton("Remove task");
+        removeTask.setPreferredSize(new Dimension(138, 30));
+        removeTask.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TaskActionDialogs().removeTask(student.getTasks(), studentJPanels);
+            }
+        });
         JButton backToProject = backtoProject();
         backToProject.setPreferredSize(new Dimension(138, 30));
         JButton backToProjects = backToProjects();
         backToProjects.setPreferredSize(new Dimension(138, 30));
 
-        buttonPanel.add(addStudent);
-        layout.putConstraint(SpringLayout.NORTH, addStudent, 0, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(editStudent);
-        layout.putConstraint(SpringLayout.NORTH, editStudent, 40, SpringLayout.NORTH, buttonPanel);
-        buttonPanel.add(removeStudent);
-        layout.putConstraint(SpringLayout.NORTH, removeStudent, 75, SpringLayout.NORTH, buttonPanel);
+        layout.putConstraint(SpringLayout.NORTH, editStudent, 0, SpringLayout.NORTH, buttonPanel);
+        buttonPanel.add(addTask);
+        layout.putConstraint(SpringLayout.NORTH, addTask, 40, SpringLayout.NORTH, buttonPanel);
+        buttonPanel.add(removeTask);
+        layout.putConstraint(SpringLayout.NORTH, removeTask, 75, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToProject);
         layout.putConstraint(SpringLayout.NORTH, backToProject, 125, SpringLayout.NORTH, buttonPanel);
         buttonPanel.add(backToProjects);
@@ -245,6 +281,17 @@ public class NavigationButtons {
                 frame.getFrame().add(frame.getEast(), BorderLayout.EAST);
                 frame.getFrame().revalidate();
                 frame.getFrame().repaint();
+            }
+        });
+    }
+
+    public void removeButton(JButton button, final ArrayList<?> arrayList, final JComboBox comboBox, final BaseClass mainPanel, final JDialog dialog) {
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrayList.remove(comboBox.getSelectedIndex());
+                mainPanel.refreshData();
+                dialog.dispose();
             }
         });
     }

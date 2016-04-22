@@ -7,8 +7,6 @@ import project.model.UniversityProject;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class MainFrame extends BaseClass{
     private ArrayList<UniversityProject> universityProjects = new ArrayList<>();
     private JPanel center;
     private JPanel east;
-    private NavigationButtons buttons = new NavigationButtons(MainFrame.this);
+    private NavigationAndButtons buttons = new NavigationAndButtons(MainFrame.this);
 
     /**
      * When Object is created specific params must be passed,
@@ -79,7 +77,7 @@ public class MainFrame extends BaseClass{
         frame.repaint();
     }
 
-    public NavigationButtons getButtons() {
+    public NavigationAndButtons getButtons() {
         return this.buttons;
     }
 

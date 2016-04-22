@@ -166,7 +166,7 @@ public class FilesInputOutput {
 
     public void createAndShowExit(final MainFrame frame) {
         JDialog dialog = new JDialog();
-        dialog.setSize(300, 150);
+        dialog.setSize(300, 140);
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         dialog.setTitle("Just before you exit...");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

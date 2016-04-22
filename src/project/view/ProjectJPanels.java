@@ -11,13 +11,13 @@ public class ProjectJPanels extends BaseClass{
 
     private MainFrame frame;
     private UniversityProject project;
-    private NavigationButtons buttons;
+    private NavigationAndButtons buttons;
 
     public ProjectJPanels(MainFrame frame, UniversityProject project) {
         this.frame = frame;
         this.project = project;
         this.date = frame.getDate();
-        this.buttons = frame.getButtons();
+        this.buttons = new NavigationAndButtons(frame, project, this);
     }
 
     /**
@@ -102,7 +102,7 @@ public class ProjectJPanels extends BaseClass{
         JButton buttonStudent = new JButton("Details");
         buttonStudent.setPreferredSize(new Dimension(100,45));
 
-        NavigationButtons detailsButton = new NavigationButtons(frame, project, student);
+        NavigationAndButtons detailsButton = new NavigationAndButtons(frame, project, student);
         detailsButton.setStudentActionListener(buttonStudent);
 
         panel.add(panelStudentFull);

@@ -1,21 +1,12 @@
 package project.view;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
@@ -260,7 +251,59 @@ public class ProjectActionDialogs{
         dialogProject.setModal(true);
         dialogProject.setVisible(true);
     }
-        public void Remove(){
+        public void removeProject(final ArrayList<UniversityProject> projects, final MainFrame mainPanel){
+            if(projects.size() > 0) {
+                final JDialog dialog = new JDialog();
+                dialog.setSize(360, 130);
+                dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                dialog.setTitle("Remove project");
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                dialog.setLocation(dim.width / 2 - dialog.getSize().width / 2, dim.height / 2 - dialog.getSize().height / 2);
+
+                JPanel panel = new JPanel();
+                SpringLayout layout = new SpringLayout();
+                panel.setLayout(layout);
+
+                JLabel projectLabel = new JLabel("Select project:");
+
+                String[] projectNames = new String[projects.size()];
+                for (int i = 0; i < projectNames.length; i++) {
+                    projectNames[i] = projects.get(i).getName();
+                }
+
+                final JComboBox projectList = new JComboBox(projectNames);
+                projectList.setSelectedIndex(0);
+                projectList.setPreferredSize(new Dimension(230, 25));
+
+                JButton button = new JButton("Remove");
+                button.setPreferredSize(new Dimension(230, 30));
+                new NavigationAndButtons().removeButton(button, projects, projectList, mainPanel, dialog);
+
+                panel.add(projectLabel);
+                panel.add(projectList);
+                panel.add(button);
+
+                layout.putConstraint(SpringLayout.NORTH, projectLabel, 13, SpringLayout.NORTH, panel);
+                layout.putConstraint(SpringLayout.WEST, projectLabel, 10, SpringLayout.WEST, panel);
+                layout.putConstraint(SpringLayout.NORTH, projectList, 10, SpringLayout.NORTH, panel);
+                layout.putConstraint(SpringLayout.WEST, projectList, 100, SpringLayout.WEST, projectLabel);
+                layout.putConstraint(SpringLayout.NORTH, button, 35, SpringLayout.NORTH, projectLabel);
+                layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, projectLabel);
+
+                dialog.add(panel);
+                dialog.setLocationRelativeTo(null);
+                dialog.setResizable(false);
+                dialog.setModal(true);
+                dialog.setVisible(true);
+            }
+            else {
+                JDialog dialog = new JDialog();
+                JOptionPane.showMessageDialog(dialog,
+                        "There is no projects",
+                        "Remove project",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
     }
 }
 
