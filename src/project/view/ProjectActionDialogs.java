@@ -78,12 +78,6 @@ public class ProjectActionDialogs{
         panelProject.add(textFieldSupervisor);
         panelProject.add(buttonSave);
         panelProject.setVisible(true);
-        
-        dialogProject.add(panelProject);
-        dialogProject.setResizable(false);
-        dialogProject.setVisible(true);
-        dialogProject.pack();
-        dialogProject.setLocationRelativeTo(null);
 
         spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, panelProject);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
@@ -129,6 +123,19 @@ public class ProjectActionDialogs{
                         }
                     });
                 }
+                else if (textAreaDescription.getText().length() < 100) {
+                    textAreaDescription.setText("At least 100 characters");
+                    textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textAreaDescription.setText("");
+                } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
                 else{
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
@@ -140,6 +147,12 @@ public class ProjectActionDialogs{
                 }
             }
         });
+        dialogProject.add(panelProject);
+        dialogProject.pack();
+        dialogProject.setLocationRelativeTo(null);
+        dialogProject.setResizable(false);
+        dialogProject.setModal(true);
+        dialogProject.setVisible(true);
     } 
 
     public void Edit(UniversityProject project){     
@@ -176,12 +189,6 @@ public class ProjectActionDialogs{
         panelProject.add(textFieldSupervisor);
         panelProject.add(buttonSave);
         panelProject.setVisible(true);
-        
-        dialogProject.add(panelProject);
-        dialogProject.setResizable(false);
-        dialogProject.setVisible(true);
-        dialogProject.pack();
-        dialogProject.setLocationRelativeTo(null);
 
         spring.putConstraint(SpringLayout.WEST, labelName, 10, SpringLayout.WEST, panelProject);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
@@ -209,6 +216,7 @@ public class ProjectActionDialogs{
                        public void focusGained(FocusEvent e) {
                     textFieldName.setText("");
                 } 
+
                         @Override
                         public void focusLost(FocusEvent e) {
                         }
@@ -221,6 +229,20 @@ public class ProjectActionDialogs{
                        public void focusGained(FocusEvent e) {
                     textFieldSupervisor.setText("");
                 } 
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                        }
+                    });
+                }
+                else if (textAreaDescription.getText().length() < 100) {
+                    textAreaDescription.setText("At least 100 characters");
+                    textAreaDescription.addFocusListener(new FocusListener() {
+                       @Override
+                       public void focusGained(FocusEvent e) {
+                    textAreaDescription.setText("");
+                } 
+
                         @Override
                         public void focusLost(FocusEvent e) {
                         }
@@ -231,6 +253,12 @@ public class ProjectActionDialogs{
                 }
             }
         });
+        dialogProject.add(panelProject);
+        dialogProject.pack();
+        dialogProject.setLocationRelativeTo(null);
+        dialogProject.setResizable(false);
+        dialogProject.setModal(true);
+        dialogProject.setVisible(true);
     }
         public void Remove(){
     }

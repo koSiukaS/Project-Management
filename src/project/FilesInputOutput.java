@@ -213,6 +213,8 @@ public class FilesInputOutput {
         panel.add(noButton);
 
         dialog.add(panel);
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
         dialog.setModal(true);
         dialog.setVisible(true);
     }

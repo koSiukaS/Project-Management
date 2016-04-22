@@ -62,6 +62,7 @@ public class ProgramDate {
         textFieldDay.setFont(boldFont);
         textFieldDay.setHorizontalAlignment(JTextField.CENTER);
 
+        f.setPreferredSize(new Dimension(400,40));
         f.add(new JLabel("Year"));
         f.add(spinnerYear);
         f.add(new JLabel("Month"));
@@ -69,11 +70,7 @@ public class ProgramDate {
         f.add(new JLabel("Day"));
         f.add(spinnerDay);
 
-        frame.setPreferredSize(new Dimension(400, 80));
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setModal(true);
         //frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
     }
 
@@ -102,8 +99,10 @@ public class ProgramDate {
         });
         frame.add(f);
         frame.pack();
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setModal(true);
+        frame.setVisible(true);
+        frame.setResizable(false);
     }
 
     /**
@@ -130,8 +129,10 @@ public class ProgramDate {
         });
         frame.add(f);
         frame.pack();
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setModal(true);
+        frame.setVisible(true);
+        frame.setResizable(false);
     }
 
     /**
