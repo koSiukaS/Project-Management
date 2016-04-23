@@ -5,13 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 import project.model.UniversityProject;
 
 public class ProjectActionDialogs{
@@ -167,17 +163,21 @@ public class ProjectActionDialogs{
         //dialogProject.setIconImage(img);
     } 
 
-    public void Edit(UniversityProject project) throws IOException{     
+    public void editProject(final UniversityProject project, final MainFrame frame){     
         final JDialog dialogProject = new JDialog();
         dialogProject.setTitle("Editing "+project.getName());
         final JPanel panelProject = new JPanel();
         JLabel labelName = new JLabel("Project name:");
         JLabel labelDescription = new JLabel("Description:");
         JLabel labelSupervisor = new JLabel("Supervisor:");    
-        final JTextField textFieldName = new JTextField((project.getName()),15);
-        final JTextField textFieldSupervisor = new JTextField((project.getDescription()),10);
-        final JTextArea textAreaDescription = new JTextArea((project.getSupervisor()),8, 32);
+        final JTextField textFieldName = new JTextField(15);
+        final JTextField textFieldSupervisor = new JTextField(10);
+        final JTextArea textAreaDescription = new JTextArea(project.getDescription(),8, 32);
         JButton buttonSave = new JButton("Save project");
+        
+        tempTextName = project.getName();
+        tempTextSupervisor = project.getSupervisor();
+        tempTextDescription = project.getDescription();
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
@@ -189,6 +189,10 @@ public class ProjectActionDialogs{
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
         textFieldSupervisor.setDocument(new TextLimit(30));
         buttonSave.setPreferredSize(new Dimension(440, 30));
+        
+        textFieldName.setText(tempTextName);
+        textFieldSupervisor.setText(tempTextSupervisor);
+        textAreaDescription.setText(tempTextDescription);
         
         SpringLayout spring = new SpringLayout();
         panelProject.setLayout(spring);
@@ -216,6 +220,8 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelSupervisor, 0, SpringLayout.VERTICAL_CENTER, textFieldSupervisor);
         spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
         spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
+        
+        boolName = boolSupervisor = boolDescription = true;
         
         Border redLine = BorderFactory.createLineBorder(Color.red);
         Border spacing = BorderFactory.createEmptyBorder(2, 2, 2, 2);
@@ -296,7 +302,11 @@ public class ProjectActionDialogs{
             @Override
             public void actionPerformed(ActionEvent e){
                 if (boolName && boolSupervisor && boolDescription) {
-            dialogProject.dispose();
+                    project.setName(textFieldName.getText());
+                    project.setSupervisor(textFieldSupervisor.getText());
+                    project.setDescription(textAreaDescription.getText());
+                    frame.refreshData();
+                    dialogProject.dispose();
                 }
             }
         });
@@ -357,7 +367,7 @@ public class ProjectActionDialogs{
             else {
                 JDialog dialog = new JDialog();
                 JOptionPane.showMessageDialog(dialog,
-                        "There is no projects",
+                        "There are no projects",
                         "Remove project",
                         JOptionPane.ERROR_MESSAGE);
 

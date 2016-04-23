@@ -128,8 +128,20 @@ public class NavigationAndButtons {
         buttonPanel.setPreferredSize(new Dimension(138, 155));
         JButton editProject = new JButton("Edit project");
         editProject.setPreferredSize(new Dimension(138, 30));
+        editProject.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ProjectActionDialogs().editProject(project, frame);
+            }
+        });
         JButton addStudent = new JButton("Add student");
         addStudent.setPreferredSize(new Dimension(138, 30));
+        addStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StudentActionDialogs().addStudent(project.getStudents(), projectJPanels);
+            }
+        });
         JButton removeStudent = new JButton("Remove student");
         removeStudent.setPreferredSize(new Dimension(138, 30));
         removeStudent.addActionListener(new ActionListener() {
@@ -159,6 +171,12 @@ public class NavigationAndButtons {
         buttonPanel.setPreferredSize(new Dimension(138, 190));
         JButton editStudent = new JButton("Edit student");
         editStudent.setPreferredSize(new Dimension(138, 30));
+        editStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StudentActionDialogs().editStudent(student, frame, studentJPanels);
+            }
+        });
         JButton addTask = new JButton("Add task");
         addTask.setPreferredSize(new Dimension(138, 30));
         JButton removeTask = new JButton("Remove task");
