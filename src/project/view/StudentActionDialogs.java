@@ -599,13 +599,13 @@ public class StudentActionDialogs{
         
         SpinnerNumberModel modelCourseGroup = new SpinnerNumberModel(student.getGroup(), 0, 99, 1);
         SpinnerNumberModel modelCourseStartYear = new SpinnerNumberModel(student.getCourseStartYear(), 1950, date.getProgramYear() + 100, 1);
-        SpinnerNumberModel modelCourseStartMonth = new SpinnerNumberModel(student.getCourseStartMonth()+1, 1, 12, 1);
+        SpinnerNumberModel modelCourseStartMonth = new SpinnerNumberModel(student.getCourseStartMonth(), 1, 12, 1);
         SpinnerNumberModel modelCourseStartDay = new SpinnerNumberModel(student.getCourseStartDay(), 1, 31, 1);
         SpinnerNumberModel modelCourseEndYear = new SpinnerNumberModel(student.getCourseEndYear(), 1950, date.getProgramYear() + 100, 1);
-        SpinnerNumberModel modelCourseEndMonth = new SpinnerNumberModel(student.getCourseEndMonth()+1, 1, 12, 1);
+        SpinnerNumberModel modelCourseEndMonth = new SpinnerNumberModel(student.getCourseEndMonth(), 1, 12, 1);
         SpinnerNumberModel modelCourseEndDay = new SpinnerNumberModel(student.getCourseEndDay(), 1, 31, 1);
         SpinnerNumberModel modelBirthYear = new SpinnerNumberModel(student.getBirthYear(), 1800, date.getProgramYear(), 1);
-        SpinnerNumberModel modelBirthMonth = new SpinnerNumberModel(student.getBirthMonth()+1, 1, 12, 1);
+        SpinnerNumberModel modelBirthMonth = new SpinnerNumberModel(student.getBirthMonth(), 1, 12, 1);
         SpinnerNumberModel modelBirthDay = new SpinnerNumberModel(student.getBirthDay(), 1, 31, 1);
         
         spinnerCourseGroup = new JSpinner(modelCourseGroup);

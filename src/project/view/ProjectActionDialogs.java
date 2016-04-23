@@ -24,18 +24,18 @@ public class ProjectActionDialogs{
         JLabel labelSupervisor = new JLabel("Supervisor:");    
         final JTextField textFieldName = new JTextField(15);
         final JTextField textFieldSupervisor = new JTextField(10);
-        final JTextArea textAreaDescription = new JTextArea(8, 32);
+        final JTextArea textAreaDescription = new JTextArea(9, 34);
         JButton buttonSave = new JButton("Add project");
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
-        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
         textFieldSupervisor.setDocument(new TextLimit(30));
-        buttonSave.setPreferredSize(new Dimension(365, 30));
+        buttonSave.setPreferredSize(new Dimension(382, 30));
         
         SpringLayout spring = new SpringLayout();
         panelProject.setLayout(spring);
@@ -142,6 +142,7 @@ public class ProjectActionDialogs{
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                checkFields(textFieldName, textFieldSupervisor, textAreaDescription);
                 if (boolName && boolSupervisor && boolDescription) {
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
@@ -163,7 +164,7 @@ public class ProjectActionDialogs{
         //dialogProject.setIconImage(img);
     } 
 
-    public void editProject(final UniversityProject project, final MainFrame frame){     
+    public void editProject(final UniversityProject project, final MainFrame frame, final ProjectJPanels panel){     
         final JDialog dialogProject = new JDialog();
         dialogProject.setTitle("Editing "+project.getName());
         final JPanel panelProject = new JPanel();
@@ -172,7 +173,7 @@ public class ProjectActionDialogs{
         JLabel labelSupervisor = new JLabel("Supervisor:");    
         final JTextField textFieldName = new JTextField(15);
         final JTextField textFieldSupervisor = new JTextField(10);
-        final JTextArea textAreaDescription = new JTextArea(project.getDescription(),8, 32);
+        final JTextArea textAreaDescription = new JTextArea(project.getDescription(),9, 34);
         JButton buttonSave = new JButton("Save project");
         
         tempTextName = project.getName();
@@ -181,14 +182,13 @@ public class ProjectActionDialogs{
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
-        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        textAreaDescription.setFont(new Font("", Font.BOLD, 12));
+        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
         textFieldSupervisor.setDocument(new TextLimit(30));
-        buttonSave.setPreferredSize(new Dimension(440, 30));
+        buttonSave.setPreferredSize(new Dimension(382, 30));
         
         textFieldName.setText(tempTextName);
         textFieldSupervisor.setText(tempTextSupervisor);
@@ -210,7 +210,7 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
         spring.putConstraint(SpringLayout.WEST, textFieldName, 6, SpringLayout.EAST, labelName);
         spring.putConstraint(SpringLayout.NORTH, textFieldName, 10, SpringLayout.NORTH, panelProject);
-        spring.putConstraint(SpringLayout.EAST, labelDescription, -6, SpringLayout.WEST, scrollingDescription);
+        spring.putConstraint(SpringLayout.WEST, labelDescription, 0, SpringLayout.WEST, labelName);
         spring.putConstraint(SpringLayout.NORTH, labelDescription, 0, SpringLayout.NORTH, scrollingDescription);
         spring.putConstraint(SpringLayout.WEST, scrollingDescription, 0, SpringLayout.WEST, textFieldName);
         spring.putConstraint(SpringLayout.NORTH, scrollingDescription, 10, SpringLayout.SOUTH, textFieldName);
@@ -298,14 +298,17 @@ public class ProjectActionDialogs{
                         }
                     });
 
+                boolName = boolSupervisor = boolDescription = true;
+                
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                checkFields(textFieldName, textFieldSupervisor, textAreaDescription);
                 if (boolName && boolSupervisor && boolDescription) {
                     project.setName(textFieldName.getText());
                     project.setSupervisor(textFieldSupervisor.getText());
                     project.setDescription(textAreaDescription.getText());
-                    frame.refreshData();
+                    panel.refreshData();
                     dialogProject.dispose();
                 }
             }
@@ -372,6 +375,27 @@ public class ProjectActionDialogs{
                         JOptionPane.ERROR_MESSAGE);
 
             }
+    }
+        
+        void checkFields(JTextField textFieldName, JTextField textFieldSupervisor, JTextArea textAreaDescription){
+        if(boolName == null){
+            tempTextName = textFieldName.getText();
+            textFieldName.setBackground(new Color(255, 180, 180));
+            textFieldName.setBorder(compound);
+            textFieldName.setText("At least 4 characters");
+        }
+        if(boolSupervisor == null){
+            tempTextSupervisor = textFieldSupervisor.getText();
+            textFieldSupervisor.setBackground(new Color(255, 180, 180));
+            textFieldSupervisor.setBorder(compound);
+            textFieldSupervisor.setText("At least 4 characters");
+        }
+        if(boolDescription == null){
+            tempTextDescription = textAreaDescription.getText();
+            textAreaDescription.setBackground(new Color(255, 180, 180));
+            textAreaDescription.setBorder(compound);
+            textAreaDescription.setText("The description must consist out of 20 characters at least");
+        }
     }
 }
 
