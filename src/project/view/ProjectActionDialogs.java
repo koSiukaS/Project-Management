@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.JTextComponent;
 
 import project.model.UniversityProject;
 
@@ -201,29 +202,10 @@ public class ProjectActionDialogs{
     private void createFocusListeners() {
         createSingleFocusListener(textFieldName, tempTextName, boolName);
         createSingleFocusListener(textFieldSupervisor, tempTextSupervisor, boolSupervisor);
-        textAreaDescription.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                textAreaDescription.setText(tempTextDescription);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                tempTextDescription = textAreaDescription.getText();
-                if (textAreaDescription.getText().length() < 100) {
-                    errorDescription();
-                    boolDescription.set(false);
-                }
-                else {
-                    textAreaDescription.setBackground(new Color(255, 255, 255));
-                    textAreaDescription.setBorder(oldAreaBorder);
-                    boolDescription.set(true);
-                }
-            }
-        });
+        createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription);
     }
 
-    private void createSingleFocusListener(final JTextField textField, final String tempText, final AtomicBoolean bool) {
+    private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
         textField.addFocusListener(new FocusListener() {
             String tmp = tempText;
             @Override
@@ -237,10 +219,13 @@ public class ProjectActionDialogs{
                 if (textField.getText().length() < 4) {
                     error(textField);
                     bool.set(false);
-                }
-                else {
+                } else {
                     textField.setBackground(new Color(255, 255, 255));
-                    textField.setBorder(oldFieldBorder);
+                    if(textField instanceof JTextField) {
+                        textField.setBorder(oldFieldBorder);
+                    } else {
+                        textField.setBorder(oldAreaBorder);
+                    }
                     bool.set(true);
                 }
             }
@@ -262,7 +247,7 @@ public class ProjectActionDialogs{
         }
     }
 
-    private void error(JTextField textField) {
+    private void error(JTextComponent textField) {
         textField.setBackground(new Color(255, 180, 180));
         textField.setBorder(compound);
         textField.setText("At least 4 characters");
