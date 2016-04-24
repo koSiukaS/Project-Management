@@ -131,7 +131,7 @@ public class NavigationAndButtons {
         editProject.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ProjectActionDialogs().editProject(project, frame, projectJPanels);
+                new ProjectActionDialogs().editProject(project, projectJPanels);
             }
         });
         JButton addStudent = new JButton("Add student");
