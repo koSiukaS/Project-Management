@@ -5,13 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 import project.model.UniversityProject;
 
 public class ProjectActionDialogs{
@@ -28,18 +24,18 @@ public class ProjectActionDialogs{
         JLabel labelSupervisor = new JLabel("Supervisor:");    
         final JTextField textFieldName = new JTextField(15);
         final JTextField textFieldSupervisor = new JTextField(10);
-        final JTextArea textAreaDescription = new JTextArea(8, 32);
+        final JTextArea textAreaDescription = new JTextArea(9, 34);
         JButton buttonSave = new JButton("Add project");
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
-        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
         textFieldSupervisor.setDocument(new TextLimit(30));
-        buttonSave.setPreferredSize(new Dimension(365, 30));
+        buttonSave.setPreferredSize(new Dimension(382, 30));
         
         SpringLayout spring = new SpringLayout();
         panelProject.setLayout(spring);
@@ -146,6 +142,7 @@ public class ProjectActionDialogs{
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                checkFields(textFieldName, textFieldSupervisor, textAreaDescription);
                 if (boolName && boolSupervisor && boolDescription) {
                 UniversityProject project = new UniversityProject();
                 project.setName(textFieldName.getText());
@@ -167,28 +164,35 @@ public class ProjectActionDialogs{
         //dialogProject.setIconImage(img);
     } 
 
-    public void Edit(UniversityProject project) throws IOException{     
+    public void editProject(final UniversityProject project, final MainFrame frame, final ProjectJPanels panel){     
         final JDialog dialogProject = new JDialog();
         dialogProject.setTitle("Editing "+project.getName());
         final JPanel panelProject = new JPanel();
         JLabel labelName = new JLabel("Project name:");
         JLabel labelDescription = new JLabel("Description:");
         JLabel labelSupervisor = new JLabel("Supervisor:");    
-        final JTextField textFieldName = new JTextField((project.getName()),15);
-        final JTextField textFieldSupervisor = new JTextField((project.getDescription()),10);
-        final JTextArea textAreaDescription = new JTextArea((project.getSupervisor()),8, 32);
+        final JTextField textFieldName = new JTextField(15);
+        final JTextField textFieldSupervisor = new JTextField(10);
+        final JTextArea textAreaDescription = new JTextArea(project.getDescription(),9, 34);
         JButton buttonSave = new JButton("Save project");
+        
+        tempTextName = project.getName();
+        tempTextSupervisor = project.getSupervisor();
+        tempTextDescription = project.getDescription();
         
         textAreaDescription.setWrapStyleWord(true);
         textAreaDescription.setLineWrap(true);
-        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        textAreaDescription.setFont(new Font("", Font.BOLD, 12));
+        textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         textFieldName.setDocument(new TextLimit(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2))); 
         textFieldSupervisor.setDocument(new TextLimit(30));
-        buttonSave.setPreferredSize(new Dimension(440, 30));
+        buttonSave.setPreferredSize(new Dimension(382, 30));
+        
+        textFieldName.setText(tempTextName);
+        textFieldSupervisor.setText(tempTextSupervisor);
+        textAreaDescription.setText(tempTextDescription);
         
         SpringLayout spring = new SpringLayout();
         panelProject.setLayout(spring);
@@ -206,7 +210,7 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelName, 0, SpringLayout.VERTICAL_CENTER, textFieldName);
         spring.putConstraint(SpringLayout.WEST, textFieldName, 6, SpringLayout.EAST, labelName);
         spring.putConstraint(SpringLayout.NORTH, textFieldName, 10, SpringLayout.NORTH, panelProject);
-        spring.putConstraint(SpringLayout.EAST, labelDescription, -6, SpringLayout.WEST, scrollingDescription);
+        spring.putConstraint(SpringLayout.WEST, labelDescription, 0, SpringLayout.WEST, labelName);
         spring.putConstraint(SpringLayout.NORTH, labelDescription, 0, SpringLayout.NORTH, scrollingDescription);
         spring.putConstraint(SpringLayout.WEST, scrollingDescription, 0, SpringLayout.WEST, textFieldName);
         spring.putConstraint(SpringLayout.NORTH, scrollingDescription, 10, SpringLayout.SOUTH, textFieldName);
@@ -216,6 +220,8 @@ public class ProjectActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelSupervisor, 0, SpringLayout.VERTICAL_CENTER, textFieldSupervisor);
         spring.putConstraint(SpringLayout.EAST, buttonSave, 0, SpringLayout.EAST, scrollingDescription);
         spring.putConstraint(SpringLayout.NORTH, buttonSave, 10, SpringLayout.SOUTH, scrollingDescription);
+        
+        boolName = boolSupervisor = boolDescription = true;
         
         Border redLine = BorderFactory.createLineBorder(Color.red);
         Border spacing = BorderFactory.createEmptyBorder(2, 2, 2, 2);
@@ -292,11 +298,18 @@ public class ProjectActionDialogs{
                         }
                     });
 
+                boolName = boolSupervisor = boolDescription = true;
+                
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                checkFields(textFieldName, textFieldSupervisor, textAreaDescription);
                 if (boolName && boolSupervisor && boolDescription) {
-            dialogProject.dispose();
+                    project.setName(textFieldName.getText());
+                    project.setSupervisor(textFieldSupervisor.getText());
+                    project.setDescription(textAreaDescription.getText());
+                    panel.refreshData();
+                    dialogProject.dispose();
                 }
             }
         });
@@ -357,11 +370,32 @@ public class ProjectActionDialogs{
             else {
                 JDialog dialog = new JDialog();
                 JOptionPane.showMessageDialog(dialog,
-                        "There is no projects",
+                        "There are no projects",
                         "Remove project",
                         JOptionPane.ERROR_MESSAGE);
 
             }
+    }
+        
+        void checkFields(JTextField textFieldName, JTextField textFieldSupervisor, JTextArea textAreaDescription){
+        if(boolName == null){
+            tempTextName = textFieldName.getText();
+            textFieldName.setBackground(new Color(255, 180, 180));
+            textFieldName.setBorder(compound);
+            textFieldName.setText("At least 4 characters");
+        }
+        if(boolSupervisor == null){
+            tempTextSupervisor = textFieldSupervisor.getText();
+            textFieldSupervisor.setBackground(new Color(255, 180, 180));
+            textFieldSupervisor.setBorder(compound);
+            textFieldSupervisor.setText("At least 4 characters");
+        }
+        if(boolDescription == null){
+            tempTextDescription = textAreaDescription.getText();
+            textAreaDescription.setBackground(new Color(255, 180, 180));
+            textAreaDescription.setBorder(compound);
+            textAreaDescription.setText("The description must consist out of 20 characters at least");
+        }
     }
 }
 
