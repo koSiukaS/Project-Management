@@ -65,6 +65,10 @@ public class ProjectActionDialogs{
         textFieldName.setText(tempTextName);
         textFieldSupervisor.setText(tempTextSupervisor);
         textAreaDescription.setText(tempTextDescription);
+        
+        boolName.set(true);
+        boolSupervisor.set(true);
+        boolDescription.set(true);
 
         createFocusListeners();
 
@@ -216,8 +220,11 @@ public class ProjectActionDialogs{
             @Override
             public void focusLost(FocusEvent e) {
                 tmp = textField.getText();
-                if (textField.getText().length() < 4) {
+                if (textField.getText().length() < 4 && textField instanceof JTextField) {
                     error(textField);
+                    bool.set(false);
+                } else if (textField.getText().length() < 50 && textField instanceof JTextArea) {
+                    errorDescription();
                     bool.set(false);
                 } else {
                     textField.setBackground(new Color(255, 255, 255));
@@ -256,7 +263,7 @@ public class ProjectActionDialogs{
     private void errorDescription() {
         textAreaDescription.setBackground(new Color(255, 180, 180));
         textAreaDescription.setBorder(compound);
-        textAreaDescription.setText("The description must consist out of 100 characters at least");
+        textAreaDescription.setText("The description must consist out of 50 characters at least");
     }
 }
 

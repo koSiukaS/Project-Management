@@ -182,7 +182,7 @@ public class NavigationAndButtons {
         addTask.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new TaskActionDialogs().addTask(student.getTasks(), frame, studentJPanels);
+                new TaskActionDialogs().addTask(student.getTasks(), studentJPanels, frame);
             }
         });
         JButton removeTask = new JButton("Remove task");
