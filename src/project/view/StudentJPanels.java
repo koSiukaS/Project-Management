@@ -6,7 +6,7 @@ import java.awt.*;
 
 import project.model.*;
 
-public class StudentJPanels extends BaseClass{
+public class StudentJPanels extends BaseJDialogs {
 
     private UniversityProject project;
     private Student globalStudent;

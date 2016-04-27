@@ -11,7 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class MainFrame extends BaseClass{
+public class MainFrame extends BaseJDialogs {
 
     private JFrame frame = new JFrame("Project Management");
     private ProjectsListJPanels projectsWindow = new ProjectsListJPanels(MainFrame.this);

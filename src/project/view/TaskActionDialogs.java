@@ -13,15 +13,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.border.Border;
 import javax.swing.text.JTextComponent;
 
-public class TaskActionDialogs {
+public class TaskActionDialogs extends BaseActionDialogs{
     private String tempTextName, tempTextDescription;
-    private Border compound, oldFieldBorder, oldAreaBorder;
     private AtomicBoolean boolName = new AtomicBoolean();
     private AtomicBoolean boolDescription = new AtomicBoolean();
     private JSpinner spinnerETAYear, spinnerETAMonth,spinnerETADay;
-    private JButton buttonSave;
     private JTextField textFieldName;
-    private JTextArea textAreaDescription;
+    private JButton buttonSave;
     private JDialog dialogTask;
     private int startYear, startMonth, startDay;
     
@@ -181,7 +179,7 @@ public class TaskActionDialogs {
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldName.setDocument(new TextLimit(50));
+        textFieldName.setDocument(new BaseActionDialogs(50));
         buttonSave.setPreferredSize(new Dimension(382, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -239,7 +237,7 @@ public class TaskActionDialogs {
     createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription);
 }
     
-   private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
+    private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
         textField.addFocusListener(new FocusListener() {
             String temp = tempText;
             
@@ -253,10 +251,10 @@ public class TaskActionDialogs {
             public void focusLost(FocusEvent e) {
                 temp = textField.getText();
                 if (textField.getText().length() < 50 && textField instanceof JTextArea) {
-                    errorDescription();
+                    errorDescription(50);
                     bool.set(false);
                 } else if (textField.getText().length() < 4 && textField instanceof JTextField) {
-                    error();
+                    error(textField);
                     bool.set(false);
                 } else {
                     textField.setBackground(new Color(255, 255, 255));
@@ -271,36 +269,16 @@ public class TaskActionDialogs {
         });
     }
     
-    void customSpinner(JSpinner spinner){
-        Font boldFont = new Font("Calibri", Font.BOLD, 13);
-        spinner.setEditor(new JSpinner.NumberEditor(spinner,"#"));
-        JComponent boxSpinner = spinner.getEditor();
-        JFormattedTextField textFieldSpinner = ((JSpinner.DefaultEditor)boxSpinner).getTextField();
-        textFieldSpinner.setColumns(3);
-        textFieldSpinner.setFont(boldFont);
-        textFieldSpinner.setHorizontalAlignment(JTextField.CENTER);
-    }
+
     
     void checkFields(){
         if(!boolName.get()){
             tempTextName = textFieldName.getText();
-            error();
+            error(textFieldName);
         }
         if(!boolDescription.get()){
             tempTextDescription = textAreaDescription.getText();
-            errorDescription();
+            errorDescription(50);
         }
-    }
-    
-    private void error() {
-        textFieldName.setBackground(new Color(255, 180, 180));
-        textFieldName.setBorder(compound);
-        textFieldName.setText("At least 4 characters");
-    }
-
-    private void errorDescription() {
-        textAreaDescription.setBackground(new Color(255, 180, 180));
-        textAreaDescription.setBorder(compound);
-        textAreaDescription.setText("The description must consist out of 50 characters at least");
     }
 }

@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 import project.ProgramDate;
 
 
-public class StudentActionDialogs{
+public class StudentActionDialogs extends BaseActionDialogs{
     private String tempFirstName, tempLastName, tempId, tempPosition, tempCourseName;
     private Border compound, oldFieldBorder, oldAreaBorder;
     private JSpinner spinnerCourseGroup, spinnerCourseStartYear, spinnerCourseStartMonth,spinnerCourseStartDay,
@@ -84,15 +84,15 @@ public class StudentActionDialogs{
         customSpinner(spinnerCourseEndDay);
         
         textFieldFirstName.setBorder(BorderFactory.createCompoundBorder(textFieldFirstName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldFirstName.setDocument(new TextLimit(30));
+        textFieldFirstName.setDocument(new BaseActionDialogs(30));
         textFieldLastName.setBorder(BorderFactory.createCompoundBorder(textFieldLastName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldLastName.setDocument(new TextLimit(30));
+        textFieldLastName.setDocument(new BaseActionDialogs(30));
         textFieldId.setBorder(BorderFactory.createCompoundBorder(textFieldId.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldId.setDocument(new TextLimit(30));
+        textFieldId.setDocument(new BaseActionDialogs(30));
         textFieldPosition.setBorder(BorderFactory.createCompoundBorder(textFieldPosition.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldPosition.setDocument(new TextLimit(30));
+        textFieldPosition.setDocument(new BaseActionDialogs(30));
         textFieldCourseName.setBorder(BorderFactory.createCompoundBorder(textFieldCourseName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldCourseName.setDocument(new TextLimit(60));
+        textFieldCourseName.setDocument(new BaseActionDialogs(60));
         buttonSave.setPreferredSize(new Dimension(365, 30));
         
         SpringLayout spring = new SpringLayout();
@@ -337,21 +337,21 @@ public class StudentActionDialogs{
                 
                 
                 textFieldCourseGroup.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((Integer)spinnerCourseGroup.getValue() == 0) {
-                                spinnerRed(spinnerCourseGroup);
-                                boolCourseGroup = false;
-                            }
-                            else {
-                                spinnerOld(spinnerCourseGroup);
-                                boolCourseGroup = true;
-                            }
+                   @Override
+                   public void focusGained(FocusEvent e) {
+                    }
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        if ((Integer)spinnerCourseGroup.getValue() == 0) {
+                            spinnerRed(spinnerCourseGroup);
+                            boolCourseGroup = false;
                         }
-                    });
+                        else {
+                            spinnerOld(spinnerCourseGroup);
+                            boolCourseGroup = true;
+                        }
+                    }
+                });
                 
                 textFieldBirthYear.addFocusListener(new FocusAdapter() {
                        @Override
@@ -631,15 +631,15 @@ public class StudentActionDialogs{
         customSpinner(spinnerCourseEndDay);
         
         textFieldFirstName.setBorder(BorderFactory.createCompoundBorder(textFieldFirstName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldFirstName.setDocument(new TextLimit(30));
+        textFieldFirstName.setDocument(new BaseActionDialogs(30));
         textFieldLastName.setBorder(BorderFactory.createCompoundBorder(textFieldLastName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldLastName.setDocument(new TextLimit(30));
+        textFieldLastName.setDocument(new BaseActionDialogs(30));
         textFieldId.setBorder(BorderFactory.createCompoundBorder(textFieldId.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldId.setDocument(new TextLimit(30));
+        textFieldId.setDocument(new BaseActionDialogs(30));
         textFieldPosition.setBorder(BorderFactory.createCompoundBorder(textFieldPosition.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldPosition.setDocument(new TextLimit(30));
+        textFieldPosition.setDocument(new BaseActionDialogs(30));
         textFieldCourseName.setBorder(BorderFactory.createCompoundBorder(textFieldCourseName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldCourseName.setDocument(new TextLimit(60));
+        textFieldCourseName.setDocument(new BaseActionDialogs(60));
         buttonSave.setPreferredSize(new Dimension(365, 30));
         
         textFieldFirstName.setText(tempFirstName);

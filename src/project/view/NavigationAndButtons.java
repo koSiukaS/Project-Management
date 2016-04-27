@@ -315,7 +315,7 @@ public class NavigationAndButtons {
         });
     }
 
-    public void removeButton(JButton button, final ArrayList<?> arrayList, final JComboBox comboBox, final BaseClass mainPanel, final JDialog dialog) {
+    public void removeButton(JButton button, final ArrayList<?> arrayList, final JComboBox comboBox, final BaseJDialogs mainPanel, final JDialog dialog) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

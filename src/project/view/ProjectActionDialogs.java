@@ -13,9 +13,8 @@ import javax.swing.text.JTextComponent;
 
 import project.model.UniversityProject;
 
-public class ProjectActionDialogs{
+public class ProjectActionDialogs extends BaseActionDialogs{
     private String tempTextName, tempTextSupervisor, tempTextDescription;
-    private Border compound, oldFieldBorder, oldAreaBorder;
     private AtomicBoolean boolName = new AtomicBoolean();
     private AtomicBoolean boolSupervisor = new AtomicBoolean();
     private AtomicBoolean boolDescription = new AtomicBoolean();
@@ -23,7 +22,6 @@ public class ProjectActionDialogs{
     private JDialog dialogProject;
     private JTextField textFieldName;
     private JTextField textFieldSupervisor;
-    private JTextArea textAreaDescription;
     private JButton buttonSave;
 
     public void addProject(final ArrayList<UniversityProject> projects, final MainFrame frame){
@@ -163,9 +161,9 @@ public class ProjectActionDialogs{
         textAreaDescription.setBorder(BorderFactory.createCompoundBorder(textAreaDescription.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         JScrollPane scrollingDescription = new JScrollPane(textAreaDescription);
         textFieldName.setBorder(BorderFactory.createCompoundBorder(textFieldName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldName.setDocument(new TextLimit(50));
+        textFieldName.setDocument(new BaseActionDialogs(50));
         textFieldSupervisor.setBorder(BorderFactory.createCompoundBorder(textFieldSupervisor.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
-        textFieldSupervisor.setDocument(new TextLimit(30));
+        textFieldSupervisor.setDocument(new BaseActionDialogs(30));
         buttonSave.setPreferredSize(new Dimension(382, 30));
 
         SpringLayout spring = new SpringLayout();
@@ -223,8 +221,8 @@ public class ProjectActionDialogs{
                 if (textField.getText().length() < 4 && textField instanceof JTextField) {
                     error(textField);
                     bool.set(false);
-                } else if (textField.getText().length() < 50 && textField instanceof JTextArea) {
-                    errorDescription();
+                } else if (textField.getText().length() < 100 && textField instanceof JTextArea) {
+                    errorDescription(100);
                     bool.set(false);
                 } else {
                     textField.setBackground(new Color(255, 255, 255));
@@ -250,20 +248,8 @@ public class ProjectActionDialogs{
         }
         if(!boolDescription.get()){
             tempTextDescription = textAreaDescription.getText();
-            errorDescription();
+            errorDescription(100);
         }
-    }
-
-    private void error(JTextComponent textField) {
-        textField.setBackground(new Color(255, 180, 180));
-        textField.setBorder(compound);
-        textField.setText("At least 4 characters");
-    }
-
-    private void errorDescription() {
-        textAreaDescription.setBackground(new Color(255, 180, 180));
-        textAreaDescription.setBorder(compound);
-        textAreaDescription.setText("The description must consist out of 50 characters at least");
     }
 }
 

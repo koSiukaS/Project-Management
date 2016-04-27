@@ -3,7 +3,6 @@ package project;
 import project.view.*;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -113,7 +112,7 @@ public class ProgramDate {
      *
      * @param panel object which JPanels will be refreshed after date change
      */
-    public void changeTime(final BaseClass panel) {
+    public void changeTime(final BaseJDialogs panel) {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
