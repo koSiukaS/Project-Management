@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class TaskJPanels extends BaseClass{
+public class TaskJPanels extends BaseJDialogs {
 
     private Task globalTask;
     private MainFrame frame;

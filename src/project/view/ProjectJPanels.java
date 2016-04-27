@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class ProjectJPanels extends BaseClass{
+public class ProjectJPanels extends BaseJDialogs {
 
     private MainFrame frame;
     private UniversityProject project;

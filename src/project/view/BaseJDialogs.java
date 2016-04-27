@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class BaseClass {
+public abstract class BaseJDialogs {
 
     public JLabel dateLabel;
     public ProgramDate date;
@@ -26,7 +26,7 @@ public abstract class BaseClass {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                date.changeTime(BaseClass.this);
+                date.changeTime(BaseJDialogs.this);
             }
         });
         panel.add(dateStr);
