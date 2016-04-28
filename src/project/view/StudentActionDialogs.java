@@ -235,20 +235,20 @@ public class StudentActionDialogs extends BaseActionDialogs{
         JLabel labelCourseEndYear = new JLabel("Course end date:   Year");
         JLabel labelCourseEndMonth = new JLabel("Month");
         JLabel labelCourseEndDay = new JLabel("Day");
-        JLabel labelBirthYear = new JLabel("Birth date:                Year");
+        JLabel labelBirthYear = new JLabel(String.format("Birth date:%19s", "Year"));
         JLabel labelBirthMonth = new JLabel("Month");
         JLabel labelBirthDay = new JLabel("Day");
         textFieldFirstName = new JTextField(12);
         textFieldLastName = new JTextField(12);
-        textFieldId = new JTextField(12);
-        textFieldPosition = new JTextField(12);
+        textFieldId = new JTextField(35);
+        textFieldPosition = new JTextField(34);
         textFieldCourseName = new JTextField(20);
         buttonSave = new JButton("Add student");
         
         SpinnerNumberModel modelCourseGroup = new SpinnerNumberModel(courseGroup, 0, 99, 1);
         SpinnerNumberModel modelCourseStartYear = new SpinnerNumberModel(startYear, 1950, startYear + 100, 1);
         SpinnerNumberModel modelCourseStartMonth = new SpinnerNumberModel(startMonth, 1, 12, 1);
-        SpinnerNumberModel modelCourseStartDay = new SpinnerNumberModel(startMonth, 1, 31, 1);
+        SpinnerNumberModel modelCourseStartDay = new SpinnerNumberModel(startDay, 1, 31, 1);
         SpinnerNumberModel modelCourseEndYear = new SpinnerNumberModel(endYear, 1950, endYear + 100, 1);
         SpinnerNumberModel modelCourseEndMonth = new SpinnerNumberModel(endMonth, 1, 12, 1);
         SpinnerNumberModel modelCourseEndDay = new SpinnerNumberModel(endDay, 1, 31, 1);
@@ -386,7 +386,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseEndDay, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseEndYear);
         spring.putConstraint(SpringLayout.WEST, spinnerCourseEndDay, 10, SpringLayout.EAST, labelCourseEndDay);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, spinnerCourseEndDay, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseEndYear);
-        spring.putConstraint(SpringLayout.HORIZONTAL_CENTER, buttonSave, 0, SpringLayout.HORIZONTAL_CENTER, panelStudent);
+        spring.putConstraint(SpringLayout.WEST, buttonSave, 0, SpringLayout.WEST, textFieldFirstName);
         spring.putConstraint(SpringLayout.SOUTH, buttonSave, -10, SpringLayout.SOUTH, panelStudent);
         
         
