@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ProgramDate {
 
@@ -17,7 +18,7 @@ public class ProgramDate {
     private JSpinner spinnerDay;
 
     private JDialog frame;
-    private JPanel f;
+    private JPanel f, jpanel;
     private JButton save = new JButton("Save");
 
     /**
@@ -70,7 +71,6 @@ public class ProgramDate {
         f.add(spinnerDay);
 
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        //frame.setLocation(new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint()));
     }
 
     /**
@@ -116,14 +116,32 @@ public class ProgramDate {
         createChangeTimeGUI();
         f.add(save);
         removeSaveActionListener(save);
+        final AtomicBoolean firstTimeMistake = new AtomicBoolean(true);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setProgramYear((Integer) spinnerYear.getValue());
-                setProgramMonth((Integer) spinnerMonth.getValue());
-                setProgramDay((Integer) spinnerDay.getValue());
-                frame.dispose();
-                panel.refreshData();
+                int year = (Integer) spinnerYear.getValue();
+                int month = (Integer) spinnerMonth.getValue();
+                int day = (Integer) spinnerDay.getValue();
+                if(year < getProgramYear() || (year == getProgramYear() && month < getProgramMonth()) || (year == getProgramYear() && month == getProgramMonth() && day < getProgramDay())) {
+                    if(firstTimeMistake.get()) {
+                        JLabel error = new JLabel("<html><font color='#7E0000' size='5'>Moving back in time is not allowed</font></html>");
+                        JPanel errorPanel = new JPanel(new FlowLayout());
+                        errorPanel.add(error);
+                        jpanel = new JPanel(new GridLayout(2, 1));
+                        jpanel.add(f);
+                        jpanel.add(errorPanel);
+                        frame.add(jpanel);
+                        frame.pack();
+                        firstTimeMistake.set(false);
+                    }
+                } else {
+                    setProgramYear((Integer) spinnerYear.getValue());
+                    setProgramMonth((Integer) spinnerMonth.getValue());
+                    setProgramDay((Integer) spinnerDay.getValue());
+                    frame.dispose();
+                    panel.refreshData();
+                }
             }
         });
         frame.add(f);

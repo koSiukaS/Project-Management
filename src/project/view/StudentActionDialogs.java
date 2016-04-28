@@ -42,19 +42,19 @@ public class StudentActionDialogs extends BaseActionDialogs{
     private AtomicBoolean boolBirthDay= new AtomicBoolean();
     
     public void addStudent(final ArrayList<Student> students, final ProjectJPanels mainPanel){
-		bYear = mainPanel.date.getProgramYear();
+		bYear = mainPanel.date.getProgramYear() - 18;
         bMonth = mainPanel.date.getProgramMonth();
         bDay = mainPanel.date.getProgramDay();
 		startYear = mainPanel.date.getProgramYear();
-        startMonth = mainPanel.date.getProgramMonth();
-        startDay = mainPanel.date.getProgramDay();
-		endYear = mainPanel.date.getProgramYear();
-        endMonth = mainPanel.date.getProgramMonth();
-        endDay = mainPanel.date.getProgramDay();
+        startMonth = 9;
+        startDay = 1;
+		endYear = mainPanel.date.getProgramYear() + 4;
+        endMonth = 6;
+        endDay = 30;
 		courseGroup = 0;
 		
-		createDialogStudent(mainPanel);
-		dialogStudent.setTitle("Adding a student");
+		createDialogStudent();
+		dialogStudent.setTitle("Add student");
 		
 		createFocusListeners();
 		
@@ -63,27 +63,27 @@ public class StudentActionDialogs extends BaseActionDialogs{
             public void actionPerformed(ActionEvent e){
 				checkInfo();
                 if(boolCourseGroup.get() && boolCourseStartYear.get() && boolCourseStartMonth.get() && boolCourseStartDay.get() && boolCourseEndYear.get() &&
-                   boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
-                   boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
-                Student student = new Student();
-                student.setFirstName(textFieldFirstName.getText());
-                student.setLastName(textFieldLastName.getText());
-                student.setPosition(textFieldPosition.getText());
-                student.setCourseName(textFieldCourseName.getText());
-                student.setId(textFieldId.getText());
-                student.setGroup((Integer)spinnerCourseGroup.getValue());
-                student.setBirthYear((Integer)spinnerBirthYear.getValue());
-                student.setBirthMonth((Integer)spinnerBirthMonth.getValue());
-                student.setBirthDay((Integer)spinnerBirthDay.getValue());
-                student.setCourseStartYear((Integer)spinnerCourseStartYear.getValue());
-                student.setCourseStartMonth((Integer)spinnerCourseStartMonth.getValue());
-                student.setCourseStartDay((Integer)spinnerCourseStartDay.getValue());
-                student.setCourseEndYear((Integer)spinnerCourseEndYear.getValue());
-                student.setCourseEndMonth((Integer)spinnerCourseEndMonth.getValue());
-                student.setCourseEndDay((Integer)spinnerCourseEndDay.getValue());
-                students.add(student);
-                mainPanel.refreshData();
-                dialogStudent.dispose();
+                        boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
+                        boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
+                    Student student = new Student();
+                    student.setFirstName(textFieldFirstName.getText());
+                    student.setLastName(textFieldLastName.getText());
+                    student.setPosition(textFieldPosition.getText());
+                    student.setCourseName(textFieldCourseName.getText());
+                    student.setId(textFieldId.getText());
+                    student.setGroup((Integer)spinnerCourseGroup.getValue());
+                    student.setBirthYear((Integer)spinnerBirthYear.getValue());
+                    student.setBirthMonth((Integer)spinnerBirthMonth.getValue());
+                    student.setBirthDay((Integer)spinnerBirthDay.getValue());
+                    student.setCourseStartYear((Integer)spinnerCourseStartYear.getValue());
+                    student.setCourseStartMonth((Integer)spinnerCourseStartMonth.getValue());
+                    student.setCourseStartDay((Integer)spinnerCourseStartDay.getValue());
+                    student.setCourseEndYear((Integer)spinnerCourseEndYear.getValue());
+                    student.setCourseEndMonth((Integer)spinnerCourseEndMonth.getValue());
+                    student.setCourseEndDay((Integer)spinnerCourseEndDay.getValue());
+                    students.add(student);
+                    mainPanel.refreshData();
+                    dialogStudent.dispose();
                 }
             }
         });
@@ -94,7 +94,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         dialogStudent.setVisible(true);
     } 
 
-    public void editStudent(final Student student, ProjectJPanels mainPanel, final StudentJPanels panel){
+    public void editStudent(final Student student, final StudentJPanels panel){
 		bYear = student.getBirthYear();
         bMonth = student.getBirthMonth();
         bDay = student.getBirthDay();
@@ -106,8 +106,8 @@ public class StudentActionDialogs extends BaseActionDialogs{
         endDay = student.getCourseEndDay();
 		courseGroup = student.getGroup();
 		
-		createDialogStudent(mainPanel);
-		dialogStudent.setTitle("Editing " + student.getFirstName() + student.getLastName());
+		createDialogStudent();
+		dialogStudent.setTitle("Edit student");
 		
 		tempFirstName = student.getFirstName();
         tempLastName = student.getLastName();
@@ -135,25 +135,25 @@ public class StudentActionDialogs extends BaseActionDialogs{
             public void actionPerformed(ActionEvent e){
                 checkInfo();
                 if(boolCourseGroup.get() && boolCourseStartYear.get() && boolCourseStartMonth.get() && boolCourseStartDay.get() && boolCourseEndYear.get() &&
-                   boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
-                   boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
-                student.setFirstName(textFieldFirstName.getText());
-                student.setLastName(textFieldLastName.getText());
-                student.setPosition(textFieldPosition.getText());
-                student.setCourseName(textFieldCourseName.getText());
-                student.setId(textFieldId.getText());
-                student.setGroup((Integer)spinnerCourseGroup.getValue());
-                student.setBirthYear((Integer)spinnerBirthYear.getValue());
-                student.setBirthMonth((Integer)spinnerBirthMonth.getValue());
-                student.setBirthDay((Integer)spinnerBirthDay.getValue());
-                student.setCourseStartYear((Integer)spinnerCourseStartYear.getValue());
-                student.setCourseStartMonth((Integer)spinnerCourseStartMonth.getValue());
-                student.setCourseStartDay((Integer)spinnerCourseStartDay.getValue());
-                student.setCourseEndYear((Integer)spinnerCourseEndYear.getValue());
-                student.setCourseEndMonth((Integer)spinnerCourseEndMonth.getValue());
-                student.setCourseEndDay((Integer)spinnerCourseEndDay.getValue());
-                panel.refreshData();
-                dialogStudent.dispose();
+                        boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
+                        boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
+                    student.setFirstName(textFieldFirstName.getText());
+                    student.setLastName(textFieldLastName.getText());
+                    student.setPosition(textFieldPosition.getText());
+                    student.setCourseName(textFieldCourseName.getText());
+                    student.setId(textFieldId.getText());
+                    student.setGroup((Integer)spinnerCourseGroup.getValue());
+                    student.setBirthYear((Integer)spinnerBirthYear.getValue());
+                    student.setBirthMonth((Integer)spinnerBirthMonth.getValue());
+                    student.setBirthDay((Integer)spinnerBirthDay.getValue());
+                    student.setCourseStartYear((Integer)spinnerCourseStartYear.getValue());
+                    student.setCourseStartMonth((Integer)spinnerCourseStartMonth.getValue());
+                    student.setCourseStartDay((Integer)spinnerCourseStartDay.getValue());
+                    student.setCourseEndYear((Integer)spinnerCourseEndYear.getValue());
+                    student.setCourseEndMonth((Integer)spinnerCourseEndMonth.getValue());
+                    student.setCourseEndDay((Integer)spinnerCourseEndDay.getValue());
+                    panel.refreshData();
+                    dialogStudent.dispose();
                 }
             }
         });
@@ -219,7 +219,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         }
     }
 	
-	public void createDialogStudent(ProjectJPanels mainPanel){
+	public void createDialogStudent(){
         dialogStudent = new JDialog();
         dialogStudent.setTitle("Adding a student");
         JPanel panelStudent = new JPanel();
@@ -395,349 +395,91 @@ public class StudentActionDialogs extends BaseActionDialogs{
         compound = BorderFactory.createCompoundBorder(redLine, spacing);
         oldFieldBorder = textFieldFirstName.getBorder();
                         
-				boolCourseStartYear.set(true);
-				boolCourseStartMonth.set(true);
-				boolCourseStartDay.set(true);
-				boolCourseEndYear .set(true);
-                boolCourseEndMonth.set(true);
-				boolCourseEndDay.set(true);
-				boolBirthYear.set(true);
-				boolBirthMonth.set(true);
-				boolBirthDay.set(true);
-                boolCourseGroup.set(false);
-                
-                JSpinner.DefaultEditor editorCourseGroup = (JSpinner.DefaultEditor)spinnerCourseGroup.getEditor();
-                textFieldCourseGroup = editorCourseGroup.getTextField();
-                JSpinner.DefaultEditor editorBirthYear = (JSpinner.DefaultEditor)spinnerBirthYear.getEditor();
-                textFieldBirthYear = editorBirthYear.getTextField();
-                JSpinner.DefaultEditor editorBirthMonth = (JSpinner.DefaultEditor)spinnerBirthMonth.getEditor();
-				textFieldBirthMonth = editorBirthMonth.getTextField();
-                JSpinner.DefaultEditor editorBirthDay = (JSpinner.DefaultEditor)spinnerBirthDay.getEditor();
-                textFieldBirthDay = editorBirthDay.getTextField();
-                JSpinner.DefaultEditor editorCourseStartYear = (JSpinner.DefaultEditor)spinnerCourseStartYear.getEditor();
-                textFieldCourseStartYear = editorCourseStartYear.getTextField();
-                JSpinner.DefaultEditor editorCourseStartMonth = (JSpinner.DefaultEditor)spinnerCourseStartMonth.getEditor();
-                textFieldCourseStartMonth = editorCourseStartMonth.getTextField();
-                JSpinner.DefaultEditor editorCourseStartDay = (JSpinner.DefaultEditor)spinnerCourseStartDay.getEditor();
-                textFieldCourseStartDay = editorCourseStartDay.getTextField();
-                JSpinner.DefaultEditor editorCourseEndYear = (JSpinner.DefaultEditor)spinnerCourseEndYear.getEditor();
-                textFieldCourseEndYear = editorCourseEndYear.getTextField();
-                JSpinner.DefaultEditor editorCourseEndMonth = (JSpinner.DefaultEditor)spinnerCourseEndMonth.getEditor();
-                textFieldCourseEndMonth = editorCourseEndMonth.getTextField();
-                JSpinner.DefaultEditor editorCourseEndDay = (JSpinner.DefaultEditor)spinnerCourseEndDay.getEditor();
-                textFieldCourseEndDay = editorCourseEndDay.getTextField();
-                
-                
-                textFieldCourseGroup.addFocusListener(new FocusAdapter() {
-                   @Override
-                   public void focusGained(FocusEvent e) {
-                    }
-                    @Override
-                    public void focusLost(FocusEvent e) {
-                        if ((Integer)spinnerCourseGroup.getValue() == 0) {
-                            spinnerRed(spinnerCourseGroup);
-                            boolCourseGroup.set(false);
-                        }
-                        else {
-                            spinnerOld(spinnerCourseGroup);
-                            boolCourseGroup.set(true);
-                        }
-                    }
-                });
-                
-                textFieldBirthYear.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue()){
-                                spinnerRed(spinnerBirthYear);
-                                boolBirthYear.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerBirthYear);
-                                boolBirthYear.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldBirthMonth.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if (((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseStartMonth.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) {
-                                spinnerRed(spinnerBirthMonth);
-                                boolBirthMonth.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerBirthMonth);
-                                boolBirthMonth.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldBirthDay.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseStartMonth.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() >= (Integer)spinnerCourseStartMonth.getValue() && (Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseStartDay.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() >= (Integer)spinnerCourseEndMonth.getValue() && (Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseEndDay.getValue())) {
-                                spinnerRed(spinnerBirthDay);
-                                boolBirthDay.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerBirthDay);
-                                boolBirthDay.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseStartYear.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) {
-                                spinnerRed(spinnerCourseStartYear);
-                                boolCourseStartYear.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseStartYear);
-                                boolCourseStartYear.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseStartMonth.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if (((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseStartMonth.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) {
-                                spinnerRed(spinnerCourseStartMonth);
-                                boolCourseStartMonth.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseStartMonth);
-                                boolCourseStartMonth.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseStartDay.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseStartYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseStartMonth.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseStartYear.getValue() && (Integer)spinnerBirthMonth.getValue() >= (Integer)spinnerCourseStartMonth.getValue() && (Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseStartDay.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() >= (Integer)spinnerCourseEndMonth.getValue() && (Integer)spinnerCourseStartDay.getValue() > (Integer)spinnerCourseEndDay.getValue())) {
-                                spinnerRed(spinnerCourseStartDay);
-                                boolCourseStartDay.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseStartDay);
-                                boolCourseStartDay.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseEndYear.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) {
-                                spinnerRed(spinnerCourseEndYear);
-                                boolCourseEndYear.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseEndYear);
-                                boolCourseEndYear.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseEndMonth.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if (((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) {
-                                spinnerRed(spinnerCourseEndMonth);
-                                boolCourseEndMonth.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseEndMonth);
-                                boolCourseEndMonth.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldCourseEndDay.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((((Integer)spinnerBirthYear.getValue() > (Integer)spinnerCourseEndYear.getValue() || (Integer)spinnerCourseStartYear.getValue() > (Integer)spinnerCourseEndYear.getValue()) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue())) ||
-                               ((Integer)spinnerBirthYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerBirthMonth.getValue() >= (Integer)spinnerCourseEndMonth.getValue() && (Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseEndDay.getValue()) ||
-                               ((Integer)spinnerCourseStartYear.getValue() >= (Integer)spinnerCourseEndYear.getValue() && (Integer)spinnerCourseStartMonth.getValue() >= (Integer)spinnerCourseEndMonth.getValue() && (Integer)spinnerCourseStartDay.getValue() > (Integer)spinnerCourseEndDay.getValue())) {
-                                spinnerRed(spinnerCourseEndDay);
-                                boolCourseEndDay.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerCourseEndDay);
-                                boolCourseEndDay.set(true);
-                            }
-                        }
-                    });
-				
+        boolCourseStartYear.set(true);
+        boolCourseStartMonth.set(true);
+        boolCourseStartDay.set(true);
+        boolCourseEndYear .set(true);
+        boolCourseEndMonth.set(true);
+        boolCourseEndDay.set(true);
+        boolBirthYear.set(true);
+        boolBirthMonth.set(true);
+        boolBirthDay.set(true);
+        boolCourseGroup.set(false);
+
+        JSpinner.DefaultEditor editorCourseGroup = (JSpinner.DefaultEditor)spinnerCourseGroup.getEditor();
+        textFieldCourseGroup = editorCourseGroup.getTextField();
+        JSpinner.DefaultEditor editorBirthYear = (JSpinner.DefaultEditor)spinnerBirthYear.getEditor();
+        textFieldBirthYear = editorBirthYear.getTextField();
+        JSpinner.DefaultEditor editorBirthMonth = (JSpinner.DefaultEditor)spinnerBirthMonth.getEditor();
+        textFieldBirthMonth = editorBirthMonth.getTextField();
+        JSpinner.DefaultEditor editorBirthDay = (JSpinner.DefaultEditor)spinnerBirthDay.getEditor();
+        textFieldBirthDay = editorBirthDay.getTextField();
+        JSpinner.DefaultEditor editorCourseStartYear = (JSpinner.DefaultEditor)spinnerCourseStartYear.getEditor();
+        textFieldCourseStartYear = editorCourseStartYear.getTextField();
+        JSpinner.DefaultEditor editorCourseStartMonth = (JSpinner.DefaultEditor)spinnerCourseStartMonth.getEditor();
+        textFieldCourseStartMonth = editorCourseStartMonth.getTextField();
+        JSpinner.DefaultEditor editorCourseStartDay = (JSpinner.DefaultEditor)spinnerCourseStartDay.getEditor();
+        textFieldCourseStartDay = editorCourseStartDay.getTextField();
+        JSpinner.DefaultEditor editorCourseEndYear = (JSpinner.DefaultEditor)spinnerCourseEndYear.getEditor();
+        textFieldCourseEndYear = editorCourseEndYear.getTextField();
+        JSpinner.DefaultEditor editorCourseEndMonth = (JSpinner.DefaultEditor)spinnerCourseEndMonth.getEditor();
+        textFieldCourseEndMonth = editorCourseEndMonth.getTextField();
+        JSpinner.DefaultEditor editorCourseEndDay = (JSpinner.DefaultEditor)spinnerCourseEndDay.getEditor();
+        textFieldCourseEndDay = editorCourseEndDay.getTextField();
+
+
+        textFieldCourseGroup.addFocusListener(new FocusAdapter() {
+           @Override
+           public void focusGained(FocusEvent e) {
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if ((Integer)spinnerCourseGroup.getValue() == 0) {
+                    spinnerRed(spinnerCourseGroup);
+                    boolCourseGroup.set(false);
+                }
+                else {
+                    spinnerOld(spinnerCourseGroup);
+                    boolCourseGroup.set(true);
+                }
+            }
+        });
+
+
+        setYearFocusListener(textFieldBirthYear, spinnerBirthYear, spinnerBirthYear, spinnerCourseStartYear, spinnerBirthYear, spinnerCourseEndYear, boolBirthYear);
+        setMonthFocusListener(textFieldBirthMonth, spinnerBirthMonth, spinnerBirthYear, spinnerCourseStartYear, spinnerBirthYear, spinnerCourseEndYear, spinnerBirthYear,
+                spinnerCourseStartYear, spinnerBirthMonth, spinnerCourseStartMonth, spinnerBirthYear, spinnerCourseEndYear, spinnerBirthMonth, spinnerCourseEndMonth, boolBirthMonth);
+        setDayFocusListener(textFieldBirthDay, spinnerBirthDay, spinnerBirthYear, spinnerCourseStartYear, spinnerBirthYear, spinnerCourseEndYear, spinnerBirthYear, spinnerCourseStartYear,
+                spinnerBirthMonth, spinnerCourseStartMonth, spinnerBirthYear, spinnerCourseEndYear, spinnerBirthMonth, spinnerCourseEndMonth, spinnerBirthYear, spinnerCourseStartYear,
+                spinnerBirthMonth, spinnerCourseStartMonth, spinnerBirthDay, spinnerCourseStartDay, spinnerBirthYear, spinnerCourseEndYear, spinnerBirthMonth, spinnerCourseEndMonth,
+                spinnerBirthDay, spinnerCourseEndDay, boolBirthDay);
+
+        setYearFocusListener(textFieldCourseStartYear, spinnerCourseStartYear, spinnerBirthYear, spinnerCourseStartYear, spinnerCourseStartYear, spinnerCourseEndYear, boolCourseStartYear);
+        setMonthFocusListener(textFieldCourseStartMonth, spinnerCourseStartMonth, spinnerBirthYear, spinnerCourseStartYear, spinnerCourseStartYear, spinnerCourseEndYear, spinnerBirthYear,
+                spinnerCourseStartYear, spinnerBirthMonth, spinnerCourseStartMonth, spinnerCourseStartYear, spinnerCourseEndYear, spinnerCourseStartMonth, spinnerCourseEndMonth, boolCourseStartMonth);
+        setDayFocusListener(textFieldCourseStartDay, spinnerCourseStartDay, spinnerBirthYear, spinnerCourseStartYear, spinnerCourseStartYear, spinnerCourseEndYear, spinnerBirthYear,
+                spinnerCourseStartYear, spinnerBirthMonth, spinnerCourseStartMonth, spinnerCourseStartYear, spinnerCourseEndYear, spinnerCourseStartMonth, spinnerCourseEndMonth,
+                spinnerBirthYear, spinnerCourseStartYear, spinnerBirthMonth, spinnerCourseStartMonth, spinnerBirthDay, spinnerCourseStartDay, spinnerCourseStartYear, spinnerCourseEndYear,
+                spinnerCourseStartMonth, spinnerCourseEndMonth, spinnerCourseStartDay, spinnerCourseEndDay, boolCourseStartDay);
+
+        setYearFocusListener(textFieldCourseEndYear, spinnerCourseEndYear, spinnerBirthYear, spinnerCourseEndYear, spinnerCourseStartYear, spinnerCourseEndYear, boolCourseEndYear);
+        setMonthFocusListener(textFieldCourseEndMonth, spinnerCourseEndMonth, spinnerBirthYear, spinnerCourseEndYear, spinnerCourseStartYear, spinnerCourseEndYear, spinnerBirthYear,
+                spinnerCourseEndYear, spinnerBirthMonth, spinnerCourseEndMonth, spinnerCourseStartYear, spinnerCourseEndYear, spinnerCourseStartMonth, spinnerCourseEndMonth, boolCourseEndMonth);
+        setDayFocusListener(textFieldCourseEndDay, spinnerCourseEndDay, spinnerBirthYear, spinnerCourseEndYear, spinnerCourseStartYear, spinnerCourseEndYear, spinnerBirthYear, spinnerCourseEndYear,
+                spinnerBirthMonth, spinnerCourseEndMonth, spinnerCourseStartYear, spinnerCourseEndYear, spinnerCourseStartMonth, spinnerCourseEndMonth, spinnerBirthYear, spinnerCourseEndYear,
+                spinnerBirthMonth, spinnerCourseEndMonth, spinnerBirthDay, spinnerCourseEndDay, spinnerCourseStartYear, spinnerCourseEndYear, spinnerCourseStartMonth, spinnerCourseEndMonth,
+                spinnerCourseStartDay, spinnerCourseEndDay, boolCourseEndDay);
+
 				dialogStudent.add(panelStudent);
 	}
 	
     private void createFocusListeners(){
-    createSingleFocusListener(textFieldFirstName, tempFirstName, boolFirstName);
-    createSingleFocusListener(textFieldLastName, tempLastName, boolLastName);
-	createSingleFocusListener(textFieldCourseName, tempCourseName, boolCourseName);
-	createSingleFocusListener(textFieldPosition, tempPosition, boolPosition);
-	createSingleFocusListener(textFieldId, tempId, boolId);
-}
-	private void createSpinnerListeners(){
-		createSingleSpinnerListener(textFieldBirthYear, textFieldBirthMonth, textFieldBirthDay, 
-									boolBirthYear, boolBirthMonth, boolBirthDay,
-									spinnerBirthYear, spinnerBirthMonth, spinnerBirthDay,
-									spinnerCourseStartYear, spinnerCourseStartMonth, spinnerCourseStartDay,
-									spinnerCourseEndYear, spinnerCourseEndMonth, spinnerCourseEndDay);
-		createSingleSpinnerListener(textFieldCourseStartYear, textFieldCourseStartMonth, textFieldCourseStartDay, 
-									boolCourseStartYear, boolCourseStartMonth, boolCourseStartDay,
-									spinnerBirthYear, spinnerBirthMonth, spinnerBirthDay,
-									spinnerCourseStartYear, spinnerCourseStartMonth, spinnerCourseStartDay,
-									spinnerCourseEndYear, spinnerCourseEndMonth, spinnerCourseEndDay);
-		createSingleSpinnerListener(textFieldBirthYear, textFieldBirthMonth, textFieldBirthDay, 
-									boolBirthYear, boolBirthMonth, boolBirthDay,
-									spinnerBirthYear, spinnerBirthMonth, spinnerBirthDay,
-									spinnerCourseStartYear, spinnerCourseStartMonth, spinnerCourseStartDay,
-									spinnerCourseEndYear, spinnerCourseEndMonth, spinnerCourseEndDay);
-	}
-    
-    private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
-        textField.addFocusListener(new FocusListener() {
-            String temp = tempText;
-            
-            @Override
-            public void focusGained(FocusEvent e) {
-                textField.setText(temp);
-                bool.set(true);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                temp = textField.getText();
-                if (textField.getText().length() < 50 && textField instanceof JTextArea) {
-                    errorDescription(50);
-                    bool.set(false);
-                } else if (textField.getText().length() < 4 && textField instanceof JTextField) {
-                    error(textField);
-                    bool.set(false);
-                } else {
-                    textField.setBackground(new Color(255, 255, 255));
-                    bool.set(true);
-                    if(textField instanceof JTextField) {
-                        textField.setBorder(oldFieldBorder);
-                    } else {
-                        textField.setBorder(oldAreaBorder);
-                    }
-                }
-            }
-        });
+        createSingleFocusListener(textFieldFirstName, tempFirstName, boolFirstName, 50);
+        createSingleFocusListener(textFieldLastName, tempLastName, boolLastName, 50);
+        createSingleFocusListener(textFieldCourseName, tempCourseName, boolCourseName, 50);
+        createSingleFocusListener(textFieldPosition, tempPosition, boolPosition, 50);
+        createSingleFocusListener(textFieldId, tempId, boolId, 50);
     }
-	
-	private void createSingleSpinnerListener(JTextField textFieldYear, JTextField textFieldMonth, JTextField textFieldDay,
-									final AtomicBoolean boolYear, final AtomicBoolean boolMonth, final AtomicBoolean boolDay, 
-									final JSpinner spinnerAYear, final JSpinner spinnerAMonth, final JSpinner spinnerADay, 
-									final JSpinner spinnerBYear, final JSpinner spinnerBMonth, final JSpinner spinnerBDay,
-									final JSpinner spinnerCYear, final JSpinner spinnerCMonth, final JSpinner spinnerCDay){
-		textFieldYear.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((Integer)spinnerAYear.getValue() > (Integer)spinnerBYear.getValue() || (Integer)spinnerAYear.getValue() > (Integer)spinnerCYear.getValue()){
-                                spinnerRed(spinnerAYear);
-                                boolYear.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerAYear);
-                                boolYear.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldMonth.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if (((Integer)spinnerAYear.getValue() > (Integer)spinnerBYear.getValue() || (Integer)spinnerAYear.getValue() > (Integer)spinnerCYear.getValue()) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerBYear.getValue() && (Integer)spinnerAMonth.getValue() > (Integer)spinnerBMonth.getValue()) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerCYear.getValue() && (Integer)spinnerAMonth.getValue() > (Integer)spinnerCMonth.getValue())) {
-								spinnerRed(spinnerAMonth);               
-								boolMonth.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerAMonth);
-                                boolMonth.set(true);
-                            }
-                        }
-                    });
-                
-                textFieldDay.addFocusListener(new FocusAdapter() {
-                       @Override
-                       public void focusGained(FocusEvent e) {
-                } 
-                        @Override
-                        public void focusLost(FocusEvent e) {
-                            if ((((Integer)spinnerAYear.getValue() > (Integer)spinnerBYear.getValue() || (Integer)spinnerAYear.getValue() > (Integer)spinnerCYear.getValue()) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerBYear.getValue() && (Integer)spinnerAMonth.getValue() > (Integer)spinnerBMonth.getValue()) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerCYear.getValue() && (Integer)spinnerAMonth.getValue() > (Integer)spinnerCMonth.getValue())) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerBYear.getValue() && (Integer)spinnerAMonth.getValue() >= (Integer)spinnerBMonth.getValue() && (Integer)spinnerADay.getValue() > (Integer)spinnerBDay.getValue()) ||
-                               ((Integer)spinnerAYear.getValue() >= (Integer)spinnerCYear.getValue() && (Integer)spinnerAMonth.getValue() >= (Integer)spinnerCMonth.getValue() && (Integer)spinnerADay.getValue() > (Integer)spinnerCDay.getValue())) {
-                                spinnerRed(spinnerADay);
-                                boolDay.set(false);
-                            }
-                            else {
-                                spinnerOld(spinnerADay);
-                                boolDay.set(true);
-                            }
-                        }
-                    });
-	}
     
     private void spinnerRed(JSpinner spinner){
         JComponent boxSpinner = spinner.getEditor();
@@ -802,5 +544,73 @@ public class StudentActionDialogs extends BaseActionDialogs{
         if(!boolCourseEndDay.get()){
             spinnerRed(spinnerCourseEndDay);
         }
+    }
+
+    private void setYearFocusListener(JTextField textField, final JSpinner year, final JSpinner year1, final JSpinner year2, final JSpinner year3, final JSpinner year4, final AtomicBoolean bool) {
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {}
+            @Override
+            public void focusLost(FocusEvent e) {
+                if ((Integer)year1.getValue() > (Integer)year2.getValue() || (Integer)year3.getValue() > (Integer)year4.getValue()){
+                    spinnerRed(year);
+                    bool.set(false);
+                }
+                else {
+                    spinnerOld(year);
+                    bool.set(true);
+                }
+            }
+        });
+    }
+
+    private void setMonthFocusListener(JTextField textField, final JSpinner month, final JSpinner spinner1, final JSpinner spinner2, final JSpinner spinner3,
+                                       final JSpinner spinner4, final JSpinner spinner5, final JSpinner spinner6, final JSpinner spinner7, final JSpinner spinner8,
+                                       final JSpinner spinner9, final JSpinner spinner10, final JSpinner spinner11, final JSpinner spinner12, final AtomicBoolean bool) {
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {}
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (((Integer)spinner1.getValue() > (Integer)spinner2.getValue() || (Integer)spinner3.getValue() > (Integer)spinner4.getValue()) ||
+                        ((Integer)spinner5.getValue() >= (Integer)spinner6.getValue() && (Integer)spinner7.getValue() > (Integer)spinner8.getValue()) ||
+                        ((Integer)spinner9.getValue() >= (Integer)spinner10.getValue() && (Integer)spinner11.getValue() > (Integer)spinner12.getValue())) {
+                    spinnerRed(month);
+                    bool.set(false);
+                }
+                else {
+                    spinnerOld(month);
+                    bool.set(true);
+                }
+            }
+        });
+    }
+
+    private void setDayFocusListener(JTextField textField, final JSpinner day, final JSpinner spinner1, final JSpinner spinner2, final JSpinner spinner3,
+                                     final JSpinner spinner4, final JSpinner spinner5, final JSpinner spinner6, final JSpinner spinner7, final JSpinner spinner8,
+                                     final JSpinner spinner9, final JSpinner spinner10, final JSpinner spinner11, final JSpinner spinner12, final JSpinner spinner13,
+                                     final JSpinner spinner14, final JSpinner spinner15, final JSpinner spinner16, final JSpinner spinner17, final JSpinner spinner18,
+                                     final JSpinner spinner19, final JSpinner spinner20, final JSpinner spinner21, final JSpinner spinner22, final JSpinner spinner23,
+                                     final JSpinner spinner24, final AtomicBoolean bool) {
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if ((((Integer)spinner1.getValue() > (Integer)spinner2.getValue() || (Integer)spinner3.getValue() > (Integer)spinner4.getValue()) ||
+                        ((Integer)spinner5.getValue() >= (Integer)spinner6.getValue() && (Integer)spinner7.getValue() > (Integer)spinner8.getValue()) ||
+                        ((Integer)spinner9.getValue() >= (Integer)spinner10.getValue() && (Integer)spinner11.getValue() > (Integer)spinner12.getValue())) ||
+                        ((Integer)spinner13.getValue() >= (Integer)spinner14.getValue() && (Integer)spinner15.getValue() >= (Integer)spinner16.getValue() && (Integer)spinner17.getValue() > (Integer)spinner18.getValue()) ||
+                        ((Integer)spinner19.getValue() >= (Integer)spinner20.getValue() && (Integer)spinner21.getValue() >= (Integer)spinner22.getValue() && (Integer)spinner23.getValue() > (Integer)spinner24.getValue())) {
+                    spinnerRed(day);
+                    bool.set(false);
+                }
+                else {
+                    spinnerOld(day);
+                    bool.set(true);
+                }
+            }
+        });
     }
 }

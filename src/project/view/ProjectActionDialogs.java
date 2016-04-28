@@ -202,39 +202,9 @@ public class ProjectActionDialogs extends BaseActionDialogs{
     }
 
     private void createFocusListeners() {
-        createSingleFocusListener(textFieldName, tempTextName, boolName);
-        createSingleFocusListener(textFieldSupervisor, tempTextSupervisor, boolSupervisor);
-        createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription);
-    }
-
-    private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
-        textField.addFocusListener(new FocusListener() {
-            String tmp = tempText;
-            @Override
-            public void focusGained(FocusEvent e) {
-                textField.setText(tmp);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                tmp = textField.getText();
-                if (textField.getText().length() < 4 && textField instanceof JTextField) {
-                    error(textField);
-                    bool.set(false);
-                } else if (textField.getText().length() < 100 && textField instanceof JTextArea) {
-                    errorDescription(100);
-                    bool.set(false);
-                } else {
-                    textField.setBackground(new Color(255, 255, 255));
-                    if(textField instanceof JTextField) {
-                        textField.setBorder(oldFieldBorder);
-                    } else {
-                        textField.setBorder(oldAreaBorder);
-                    }
-                    bool.set(true);
-                }
-            }
-        });
+        createSingleFocusListener(textFieldName, tempTextName, boolName, 100);
+        createSingleFocusListener(textFieldSupervisor, tempTextSupervisor, boolSupervisor, 100);
+        createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription, 100);
     }
 
     private void checkFields(){

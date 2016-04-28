@@ -28,7 +28,7 @@ public class TaskActionDialogs extends BaseActionDialogs{
         startMonth = frame.getDate().getProgramMonth();
         startDay = frame.getDate().getProgramDay();
         createDialogTask(frame);
-        dialogTask.setTitle("Adding a task");
+        dialogTask.setTitle("Add task");
         createActionListeners();
         buttonSave.addActionListener(new ActionListener() {
             @Override
@@ -60,7 +60,7 @@ public class TaskActionDialogs extends BaseActionDialogs{
         startDay = task.getDeadlineDay();
         
         createDialogTask(frame);
-        dialogTask.setTitle("Editing " + task.getName());
+        dialogTask.setTitle("Edit task");
         
         tempTextName = task.getName();
         tempTextDescription = task.getDescription();
@@ -233,43 +233,9 @@ public class TaskActionDialogs extends BaseActionDialogs{
     } 
     
     private void createActionListeners(){
-    createSingleFocusListener(textFieldName, tempTextName, boolName);
-    createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription);
-}
-    
-    private void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool) {
-        textField.addFocusListener(new FocusListener() {
-            String temp = tempText;
-            
-            @Override
-            public void focusGained(FocusEvent e) {
-                textField.setText(temp);
-                bool.set(true);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                temp = textField.getText();
-                if (textField.getText().length() < 50 && textField instanceof JTextArea) {
-                    errorDescription(50);
-                    bool.set(false);
-                } else if (textField.getText().length() < 4 && textField instanceof JTextField) {
-                    error(textField);
-                    bool.set(false);
-                } else {
-                    textField.setBackground(new Color(255, 255, 255));
-                    bool.set(true);
-                    if(textField instanceof JTextField) {
-                        textField.setBorder(oldFieldBorder);
-                    } else {
-                        textField.setBorder(oldAreaBorder);
-                    }
-                }
-            }
-        });
+        createSingleFocusListener(textFieldName, tempTextName, boolName, 50);
+        createSingleFocusListener(textAreaDescription, tempTextDescription, boolDescription, 50);
     }
-    
-
     
     void checkFields(){
         if(!boolName.get()){

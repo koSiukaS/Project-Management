@@ -7,6 +7,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseActionDialogs extends PlainDocument {
 
@@ -47,7 +50,7 @@ public class BaseActionDialogs extends PlainDocument {
         textAreaDescription.setText(String.format("The description must consist out of %d characters at least", symbolsCount));
     }
 
-    void customSpinner(JSpinner spinner){
+    public void customSpinner(JSpinner spinner){
         Font boldFont = new Font("Calibri", Font.BOLD, 13);
         spinner.setEditor(new JSpinner.NumberEditor(spinner,"#"));
         JComponent boxSpinner = spinner.getEditor();
@@ -55,5 +58,37 @@ public class BaseActionDialogs extends PlainDocument {
         textFieldSpinner.setColumns(3);
         textFieldSpinner.setFont(boldFont);
         textFieldSpinner.setHorizontalAlignment(JTextField.CENTER);
+    }
+
+    public void createSingleFocusListener(final JTextComponent textField, final String tempText, final AtomicBoolean bool, final int size) {
+        textField.addFocusListener(new FocusListener() {
+            String temp = tempText;
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                textField.setText(temp);
+                bool.set(true);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                temp = textField.getText();
+                if (textField.getText().length() < size && textField instanceof JTextArea) {
+                    errorDescription(size);
+                    bool.set(false);
+                } else if (textField.getText().length() < 4 && textField instanceof JTextField) {
+                    error(textField);
+                    bool.set(false);
+                } else {
+                    textField.setBackground(new Color(255, 255, 255));
+                    bool.set(true);
+                    if(textField instanceof JTextField) {
+                        textField.setBorder(oldFieldBorder);
+                    } else {
+                        textField.setBorder(oldAreaBorder);
+                    }
+                }
+            }
+        });
     }
 }
