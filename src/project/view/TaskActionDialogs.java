@@ -25,7 +25,7 @@ public class TaskActionDialogs extends BaseActionDialogs{
     
     public void addTask(final ArrayList<Task> tasks, final StudentJPanels panel, MainFrame frame){
         startYear = frame.getDate().getProgramYear();
-        startMonth = frame.getDate().getProgramMonth();
+        startMonth = frame.getDate().getProgramMonth() + 1;
         startDay = frame.getDate().getProgramDay();
         createDialogTask(frame);
         dialogTask.setTitle("Add task");

@@ -99,9 +99,9 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setModal(true);
         frame.setVisible(true);
-        frame.setResizable(false);
     }
 
     /**
@@ -147,9 +147,9 @@ public class ProgramDate {
         frame.add(f);
         frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setModal(true);
         frame.setVisible(true);
-        frame.setResizable(false);
     }
 
     /**

@@ -240,7 +240,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         JLabel labelBirthDay = new JLabel("Day");
         textFieldFirstName = new JTextField(12);
         textFieldLastName = new JTextField(12);
-        textFieldId = new JTextField(35);
+        textFieldId = new JTextField(34);
         textFieldPosition = new JTextField(34);
         textFieldCourseName = new JTextField(20);
         buttonSave = new JButton("Add student");
@@ -288,7 +288,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         textFieldPosition.setDocument(new BaseActionDialogs(30));
         textFieldCourseName.setBorder(BorderFactory.createCompoundBorder(textFieldCourseName.getBorder(),BorderFactory.createEmptyBorder(2, 2, 2, 2)));
         textFieldCourseName.setDocument(new BaseActionDialogs(60));
-        buttonSave.setPreferredSize(new Dimension(365, 30));
+        buttonSave.setPreferredSize(new Dimension(382, 30));
         
         SpringLayout spring = new SpringLayout();
         panelStudent.setLayout(spring);
@@ -332,7 +332,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         spring.putConstraint(SpringLayout.NORTH, textFieldFirstName, 10, SpringLayout.NORTH, panelStudent);
         spring.putConstraint(SpringLayout.EAST, labelLastName, -10, SpringLayout.WEST, textFieldLastName);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelLastName, 0, SpringLayout.VERTICAL_CENTER, textFieldLastName);
-        spring.putConstraint(SpringLayout.EAST, textFieldLastName, -10, SpringLayout.EAST, panelStudent);
+        spring.putConstraint(SpringLayout.EAST, textFieldLastName, -17, SpringLayout.EAST, panelStudent);
         spring.putConstraint(SpringLayout.NORTH, textFieldLastName, 10, SpringLayout.NORTH, panelStudent);
         spring.putConstraint(SpringLayout.WEST, labelBirthYear, 10, SpringLayout.WEST, panelStudent);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelBirthYear, 0, SpringLayout.VERTICAL_CENTER, spinnerBirthYear);
@@ -352,7 +352,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         spring.putConstraint(SpringLayout.NORTH, textFieldCourseName, 10, SpringLayout.SOUTH, textFieldId);
         spring.putConstraint(SpringLayout.EAST, labelCourseGroup, -10, SpringLayout.WEST, spinnerCourseGroup);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseGroup, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseGroup);
-        spring.putConstraint(SpringLayout.EAST, spinnerCourseGroup, -10, SpringLayout.EAST, panelStudent);
+        spring.putConstraint(SpringLayout.EAST, spinnerCourseGroup, -17, SpringLayout.EAST, panelStudent);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, spinnerCourseGroup, 0, SpringLayout.VERTICAL_CENTER, textFieldCourseName);
         spring.putConstraint(SpringLayout.WEST, labelId, 10, SpringLayout.WEST, panelStudent);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelId, 0, SpringLayout.VERTICAL_CENTER, textFieldId);
