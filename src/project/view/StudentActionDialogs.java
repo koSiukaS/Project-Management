@@ -365,7 +365,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         spring.putConstraint(SpringLayout.WEST, labelCourseStartYear, 10, SpringLayout.WEST, panelStudent);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseStartYear, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseStartYear);
         spring.putConstraint(SpringLayout.WEST, spinnerCourseStartYear, 10, SpringLayout.EAST, labelCourseStartYear);
-        spring.putConstraint(SpringLayout.NORTH, spinnerCourseStartYear, 10, SpringLayout.SOUTH, spinnerCourseEndYear);
+        spring.putConstraint(SpringLayout.NORTH, spinnerCourseStartYear, 10, SpringLayout.SOUTH, textFieldCourseName);
         spring.putConstraint(SpringLayout.WEST, labelCourseStartMonth, 10, SpringLayout.EAST, spinnerCourseStartYear);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseStartMonth, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseStartYear);
         spring.putConstraint(SpringLayout.WEST, spinnerCourseStartMonth, 10, SpringLayout.EAST, labelCourseStartMonth);
@@ -377,7 +377,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         spring.putConstraint(SpringLayout.WEST, labelCourseEndYear, 10, SpringLayout.WEST, panelStudent);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseEndYear, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseEndYear);
         spring.putConstraint(SpringLayout.WEST, spinnerCourseEndYear, 0, SpringLayout.WEST, spinnerCourseStartYear);
-        spring.putConstraint(SpringLayout.NORTH, spinnerCourseEndYear, 10, SpringLayout.SOUTH, textFieldCourseName);
+        spring.putConstraint(SpringLayout.NORTH, spinnerCourseEndYear, 10, SpringLayout.SOUTH, spinnerCourseStartYear);
         spring.putConstraint(SpringLayout.WEST, labelCourseEndMonth, 10, SpringLayout.EAST, spinnerCourseEndYear);
         spring.putConstraint(SpringLayout.VERTICAL_CENTER, labelCourseEndMonth, 0, SpringLayout.VERTICAL_CENTER, spinnerCourseEndYear);
         spring.putConstraint(SpringLayout.WEST, spinnerCourseEndMonth, 10, SpringLayout.EAST, labelCourseEndMonth);
