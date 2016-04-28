@@ -10,22 +10,22 @@ s1324687
 Bioinformatics
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Receive order
-Receive order to build a table.
+Receive order to build a table. It has to be not small but not too big to.
 2016 06 03
 #
 Counts the cost
-Counts the cost of the table
+Counts the cost of the table. You have to know how much it will cost.
 2016 06 05
 #
 Sets the price
-Both parties agree on the price.
+Both parties agree on the price. The cost must have been agreed by both parties.
 2016 06 08
 #
 Send order to build
-Sends order to build the table.
+Sends order to build the table. The order must be sent to technologist.
 2016 06 09
 @
 Cale
@@ -36,22 +36,22 @@ s1357945
 Bioinformatics
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Plan the dimensions
-Plan the dimensions of the table.
+Plan the dimensions of the table. Dimensions must be right to the milimetrer.
 2016 06 16
 #
 Drows the sketch
-Drows the sketch how table will look like.
+Drows the sketch how table will look like. It must be done for others to see.
 2016 06 19
 #
 Chooses which bolts will be used
-Chooses which bolts will be used in the process.
+Chooses which bolts will be used in the process. To know what to buy.
 2016 06 22
 #
 Foresee manufacturing process
-Foresee manufacturing process of the table.
+Foresee manufacturing process of the table. Plan the process of construction.
 2016 06 25
 @
 Beckett
@@ -62,22 +62,22 @@ s1549234
 Bioinformatics
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Wood selection
-Select wood of the right size.
+Select wood of the right size. Wood has to be the right size and color.
 2016 06 27
 #
 Wood planing
-Planing wood to smooth it out.
+Planing wood to smooth it out. It has to be the right size at the end of this process.
 2016 06 30
 #
 Sanding wood planes
-Sanding wood planes.
+Sanding wood planes. It has to be the right smoothness at the end of this process.
 2016 07 07
 #
 Edgesanding wood
-Edgesanding wood.
+Edgesanding wood. It has to be the right size at the end of this process.
 2016 07 15
 @
 Ormond
@@ -88,20 +88,20 @@ s1346846
 Bioinformatics
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Tabletop milling
-Tabletop milling to get the right size.
+Tabletop milling to get the right size. It has to be the right size at the end of this process.
 2016 07 25
 #
 Legs milling
-Legs milling to get the right size.
+Legs milling to get the right size. It has to be the right size at the end of this process.
 2016 08 05
 #
 Tabletop drilling
-Tabletop drilling to get ready for construction.
+Tabletop drilling to get ready for construction. It has to be the right size at the end of this process.
 2016 08 15
 #
 Legs drilling
-Legs drilling to get ready for construction.
+Legs drilling to get ready for construction. It has to be the right size at the end of this process.
 2016 08 30

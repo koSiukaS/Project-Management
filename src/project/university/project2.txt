@@ -10,10 +10,10 @@ s1516188
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Make a plan
-Make a plan how tree will be grown.
+Make a plan how the tree will be grown. You have to know its location and what kind of plant it will be.
 2016 05 15
 @
 Dunstan
@@ -24,10 +24,10 @@ s1456766
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Fertilize the soil
-Fertilize the soil where the seed will be planted.
+Fertilize the soil where the seed will be planted. Use only the best fetiliser.
 2016 05 30
 @
 Pierce
@@ -38,10 +38,10 @@ s1016188
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Plant a tree
-Plant a tree in good ground.
+Plant a tree in good ground. The soil must be perfect with a lot of minerals for the tree to grow well.
 2016 06 15
 @
 Randy
@@ -52,10 +52,10 @@ s1452266
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Water the seed
-Water the seed and look after it.
+Water the seed and look after it. You have to use a lot of water because eucalypt grows very fast.
 2016 06 30
 @
 Hedley
@@ -66,10 +66,10 @@ s1516688
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Fertilize the soil
-Fertilize  soil again for better growth.
+Fertilize  soil again for better growth. Second fertilizing for better grow.
 2016 07 15
 @
 Tylor
@@ -80,10 +80,10 @@ s1444466
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Water the sprout
-Water the sprout and look after it.
+Water the sprout and look after it. Its important for the sprout to always be watered.
 2016 07 30
 @
 Pierce
@@ -94,10 +94,10 @@ s1016188
 Gardener
 2
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Talk with it
-Talk with it for better growth.
+Talk with it for better growth. Some say that the tree grows better if you talk with them.
 2016 08 15
 @
 Jae
@@ -108,10 +108,10 @@ s1450066
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Prune branches
-Prune branches for eucalyptus to grow better.
+Prune branches of eucalyptus to grow better. If branches are pruned it will grow faster. 
 2016 08 30
 @
 Osbert
@@ -122,10 +122,10 @@ s1511778
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Weeding soil
-Weeding soil.
+Weeding soil. Grass takes a lot of minerals needed for the tree so its better to weed it.
 2016 09 15
 @
 Dunstan
@@ -136,10 +136,10 @@ s1414466
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Loosening of the soil
-Loosening of the soil.
+Loosening of the soil. If you want for your tree to have strong roots.
 2016 09 30
 @
 Pat
@@ -150,10 +150,10 @@ s1015188
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Spraying pesticides
-Spraying pesticides to kill bugs.
+Spraying pesticides to kill bugs. If you want for your tree to be safe.
 2016 10 15
 @
 Bertram
@@ -164,10 +164,10 @@ s1412366
 Gardener
 3
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Water the plant
-Water the plant and look after it.
+Water the plant and look after it. Use a lot of water don't be greedy.
 2016 10 30
 @
 Blake
@@ -178,10 +178,10 @@ s1516688
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Prune branches
-Prune branches of eucalyptus to grow better.
+Prune branches of eucalyptus to grow better. If branches are pruned it will grow faster.
 2016 11 15
 @
 Ansel
@@ -192,10 +192,10 @@ s1444466
 Gardener
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Spraying pesticides second time
-Spraying pesticides to kill bugs for better effect.
+Spraying pesticides to kill bugs for better effect. The second spraying is always needed.
 2016 11 30
 @
 Isiah
@@ -206,8 +206,8 @@ s1016188
 Gardener
 2
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Water the plant for the last time
-Water the plant.
+Water the plant and watch as it grows to be big and strong tree in the future.
 2016 12 15

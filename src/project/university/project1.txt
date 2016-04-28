@@ -10,22 +10,22 @@ s1763173
 Information Technology
 4
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Make a plan
-Make a plan and distribute the work.
+Make a plan and distribute the work. It has to be equally distributed.
 2016 05 15
 #
 Create classes
-Create basic classes of the program.
+Create basic classes of the program. It must have most important classes we will use.
 2016 05 21
 #
 Create variables
-Create variables for the classes.
+Create variables for the classes. They must be well thought and accurate.
 2016 05 30
 #
 Create set and get methods
-Create set and get methods for variables
+Create set and get methods for all variables, including the ones we won't use.
 2016 06 08
 @
 Craig
@@ -36,18 +36,18 @@ s1715132
 Graphics Design
 4
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Create GUI
-Create main window.
+Create main window. It has to look good with a menu window attached.
 2016 05 25
 #
 Create search window
-Create window to search for needed equipment.
+Create window to search for needed equipment. It must close at the end of the search.
 2016 05 28
 #
 Create search method
-Create method which searchs forequipment.
+Create method which searchs for equipment. It must work with any equipment.
 2016 05 30
 #
 Create method: if we don't have the equipment at needed time
@@ -62,20 +62,20 @@ s1700173
 Information Technology
 4
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Find client
-Find client which wants to barrow equipment or rooms.
+Find client which wants to barrow equipment or rooms. Use internet for searching.
 2016 05 25
 #
 Make a list
-Make a list of what kind of things do they want to borrow.
+Make a list of what kind of things do they want to borrow. Put it into exel.
 2016 05 28
 #
 Check if we got it
-Check if we got what they want.
+Check if we got what they want. At the same time look if other companies have it.
 2016 05 30
 #
 Send answer
-Send answer if they will rent it or not.
+Send answer if they will rent it or not. If not, send text with companies which have it.
 2016 06 07

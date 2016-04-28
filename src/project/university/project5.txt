@@ -10,10 +10,10 @@ s1713173
 Information Technology
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Buy Hosting
-Purchase the best hosting plan from hosting.com website.
+Purchase the best hosting plan from hosting.com website. Use as little money as possible.
 2016 05 20
 #
 Buy domain name
@@ -21,11 +21,11 @@ Purchase domain named 'justblog.com' from cheapest service provider.
 2016 05 21
 #
 Install WordPress
-Install Wordpress engine, modify it, install needed plugins.
+Install Wordpress engine, modify it, install needed plugins. 
 2016 05 30
 #
 Build user friendly website
-Build easy to use website.
+Build easy to use website. It has to have all needed functionality.
 2016 06 08
 @
 Leonardo
@@ -36,14 +36,14 @@ s1715152
 Graphics Design
 3
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Plan design
 Plan design to have a general understanding what should it look like.
 2016 05 25
 #
 Make a sketch
-Make a sketch of the plan.
+Make a sketch of the plan. For others to know how it should look like.
 2016 05 28
 #
 Draw a design
@@ -51,7 +51,7 @@ Draw a design for WordPress website, must have white and green colors.
 2016 05 30
 #
 End task
-End task complate all the work.
+End task complete all the work related to the design of the blog.
 2016 06 07
 @
 Tad
@@ -62,7 +62,7 @@ s1719173
 Information Technology
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Plan design
 Plan design to have a general understanding what should it have.
@@ -73,11 +73,11 @@ Draw a design for WordPress website, must have white and green colors.
 2016 05 30
 #
 Make a sketch
-Make a sketch of the plan.
+Make a sketch of the plan. For others to know how it should look like.
 2016 05 28
 #
 End task
-End task completes all the work.
+End task completes all the work related to the design of the blog.
 2016 06 07
 @
 Andre
@@ -88,18 +88,18 @@ s1753173
 Information Technology
 1
 2015 09 01
-2019 06 20
+2019 06 30
 #
 Make a plan
-Make a plan what program will have.
+Make a plan what program will have. All the classes and variables.
 2016 05 25
 #
 Make GUI
-Make GUI ready for use.
+Make GUI ready for use. Should have all the windows ready for use.
 2016 05 30
 #
 Put all classes to GUI
-Put all classes to GUI check if it is working.
+Put all classes to GUI check if it is working. If not, fix it fast.
 2016 06 10
 #
 End project

@@ -10,22 +10,22 @@ s1346897
 Bioinformatics
 1
 2016 09 01
-2019 06 20
+2019 06 30
 #
 Wood varnishing
-Wood varnishing to get the color we want.
+Wood varnishing to get the color we want. Varnish has to be different for each type of wood.
 2016 09 05
 #
 Wood lacquering
-Wood lacquering for it to stay good for long.
+Wood lacquering for it to stay good for long. The better lacquer the longer it stays good.
 2016 09 09
 #
 Sanding
-Sanding for smooth surfaces.
+Sanding for smooth surfaces. For wood not to have splinters. 
 2016 09 15
 #
 2nd lacquering
-2nd lacquering.
+2nd lacquering. It has to be done because sanding cleanses a lot of lacquer.
 2016 09 21
 @
 Sly
@@ -36,22 +36,22 @@ s1495235
 Bioinformatics
 1
 2016 09 01
-2019 06 20
+2019 06 30
 #
 Glue oiling
-Oiling table parts.
+Oiling table parts. Glue table parts to be in the right position.
 2016 09 25
 #
 Nailing dowels
-Nailing dowels for stability.
+Nailing dowels for stability. It's done after glue is put to make it impossible to move.
 2016 09 30
 #
 Screwdriving
-Screwdriving for stability.
+Screwdriving for stability. It's done for better stability and strength.
 2016 10 05
 #
 Assembly of table
-Assembly of table.
+Assembly of table. Assemble the parts to the right location. 
 2016 10 10
 @
 Marty
@@ -62,22 +62,22 @@ s1456789
 Bioinformatics
 1
 2016 09 01
-2019 06 20
+2019 06 30
 #
 Selection of packaging material
-Selection of packaging material.
+Selection of packaging material. Package material has to be strong.
 2016 10 15
 #
 Corrugated cardboard preparation
-Corrugated cardboard preparation for use.
+Corrugated cardboard preparation for use. Opening corrugated cardboard for use.
 2016 10 17
 #
 Placing tables in protective film
-Placing tables in protective film.
+Placing tables in protective film. For tables not to be damaged while transporting.
 2016 10 20
 #
 Product packaging
-Product packaging for transportation.
+Product packaging for transportation. Packing tables into corrugated cardboard.
 2016 10 25
 @
 Joe
@@ -88,16 +88,16 @@ s1349752
 Bioinformatics
 1
 2016 09 01
-2019 06 20
+2019 06 30
 #
 Transportation time coordination
-Time then package will be transported.
+Time then package will be transported. Coordinating with the buyers.
 2016 10 30
 #
 Transport booking
-Transport booking for travel.
+Transport booking for travel. Booking transport until tables are given and trucks return.
 2016 11 02
 #
 Supervision of loading work
-Supervision of loading work.
+Supervision of loading work. Loading of tables into trucks for transportasion.
 2016 11 04

@@ -13,19 +13,19 @@ Architecture
 2019 06 30
 #
 Create a plan
-Create a plan what kind of game it will be.
+Create a plan what kind of game it will be. It has to be very interesting.
 2016 06 03
 #
 Create a board
-Create a board on which game will be played.
+Create a board on which game will be played.It must be big with a lot of space to put cards.
 2016 06 09
 #
 Create question cards
-Create the form of question cards.
+Create the form of question cards. Cards must be round without edges.
 2016 06 12
 #
 Create figures
-Create figures which will be moved.
+Create figures which will be moved. They can be any form, size or color.
 2016 06 15
 @
 Warrick
@@ -39,19 +39,19 @@ Architecture
 2019 06 30
 #
 Create game rules
-Create interesting game rules.
+Create interesting game rules. Rules don't have to be too hard or too easy.
 2016 06 09
 #
 Make board colorful
-Paint the board.
+Paint the board. Use a lot of colors and color combinations while painting.
 2016 06 13
 #
 Make figures colorful
-Paint figures.
+Paint figures. Use a lot of colors and color combinations while painting.
 2016 06 18
 #
 Think of the questions
-Think of the questions for the cards.
+Think of the questions for the cards. They must be appropriate for all age groups.
 2016 06 21
 @
 Winton
@@ -65,13 +65,13 @@ Architecture
 2019 06 30
 #
 Write short description
-Write short description of the game.
+Write short description of the game. Maximum 150 symbols. Is has to be interesting.
 1990 06 20
 #
 Write 1st game tutorial
-Write tutorial for teenagers.
+Write tutorial for teenagers. It has to be easy and funny to play.
 1990 06 22
 #
 Write 2st game tutorial
-Write tutorial for children.
+Write tutorial for children. It has to be very easy and funny to play.
 1990 06 25
