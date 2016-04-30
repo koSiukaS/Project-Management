@@ -98,7 +98,7 @@ public class TaskActionDialogs extends BaseActionDialogs{
     public void removeTask(final ArrayList<Task> tasks, final StudentJPanels mainPanel) {
         if(tasks.size() > 0) {
             final JDialog dialog = new JDialog();
-            dialog.setSize(350, 130);
+            dialog.setSize(370, 130);
             dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dialog.setTitle("Remove task");
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -130,9 +130,9 @@ public class TaskActionDialogs extends BaseActionDialogs{
             layout.putConstraint(SpringLayout.NORTH, taskLabel, 13, SpringLayout.NORTH, panel);
             layout.putConstraint(SpringLayout.WEST, taskLabel, 10, SpringLayout.WEST, panel);
             layout.putConstraint(SpringLayout.NORTH, taskList, 10, SpringLayout.NORTH, panel);
-            layout.putConstraint(SpringLayout.WEST, taskList, 100, SpringLayout.WEST, taskLabel);
+            layout.putConstraint(SpringLayout.WEST, taskList, 20, SpringLayout.EAST, taskLabel);
             layout.putConstraint(SpringLayout.NORTH, button, 35, SpringLayout.NORTH, taskLabel);
-            layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, taskLabel);
+            layout.putConstraint(SpringLayout.WEST, button, 20, SpringLayout.EAST, taskLabel);
 
             dialog.add(panel);
             dialog.setLocationRelativeTo(null);
@@ -184,7 +184,7 @@ public class TaskActionDialogs extends BaseActionDialogs{
         
         SpringLayout spring = new SpringLayout();
         panelTask.setLayout(spring);
-        panelTask.setPreferredSize(new Dimension(480, 240));
+        panelTask.setPreferredSize(new Dimension(500, 240));
         panelTask.add(labelName);
         panelTask.add(textFieldName);
         panelTask.add(labelDescription);

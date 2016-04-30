@@ -62,6 +62,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
             @Override
             public void actionPerformed(ActionEvent e){
 				checkInfo();
+				checkDates();
                 if(boolCourseGroup.get() && boolCourseStartYear.get() && boolCourseStartMonth.get() && boolCourseStartDay.get() && boolCourseEndYear.get() &&
                         boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
                         boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
@@ -134,6 +135,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
             @Override
             public void actionPerformed(ActionEvent e){
                 checkInfo();
+				checkDates();
                 if(boolCourseGroup.get() && boolCourseStartYear.get() && boolCourseStartMonth.get() && boolCourseStartDay.get() && boolCourseEndYear.get() &&
                         boolCourseEndMonth.get() && boolCourseEndDay.get()&& boolBirthYear.get() && boolBirthMonth.get() && boolBirthDay.get() && boolFirstName.get() &&
                         boolLastName.get() && boolPosition.get() && boolId.get() && boolCourseName.get()){
@@ -167,7 +169,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
     public void removeStudent(final ArrayList<Student> students, final ProjectJPanels mainPanel) {
         if(students.size() > 0) {
             final JDialog dialog = new JDialog();
-            dialog.setSize(300, 130);
+            dialog.setSize(320, 130);
             dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dialog.setTitle("Remove student");
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -199,9 +201,9 @@ public class StudentActionDialogs extends BaseActionDialogs{
             layout.putConstraint(SpringLayout.NORTH, studentLabel, 13, SpringLayout.NORTH, panel);
             layout.putConstraint(SpringLayout.WEST, studentLabel, 10, SpringLayout.WEST, panel);
             layout.putConstraint(SpringLayout.NORTH, studentList, 10, SpringLayout.NORTH, panel);
-            layout.putConstraint(SpringLayout.WEST, studentList, 100, SpringLayout.WEST, studentLabel);
+            layout.putConstraint(SpringLayout.WEST, studentList, 20, SpringLayout.EAST, studentLabel);
             layout.putConstraint(SpringLayout.NORTH, button, 35, SpringLayout.NORTH, studentLabel);
-            layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, studentLabel);
+            layout.putConstraint(SpringLayout.WEST, button, 20, SpringLayout.EAST, studentLabel);
 
             dialog.add(panel);
             dialog.setLocationRelativeTo(null);
@@ -221,6 +223,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
 	
 	public void createDialogStudent(){
         dialogStudent = new JDialog();
+		
         dialogStudent.setTitle("Adding a student");
         JPanel panelStudent = new JPanel();
         JLabel labelFirstName = new JLabel("First Name:");
@@ -292,7 +295,7 @@ public class StudentActionDialogs extends BaseActionDialogs{
         
         SpringLayout spring = new SpringLayout();
         panelStudent.setLayout(spring);
-        panelStudent.setPreferredSize(new Dimension(480, 280));
+        panelStudent.setPreferredSize(new Dimension(540, 280));
         panelStudent.add(labelFirstName);
         panelStudent.add(labelLastName);
         panelStudent.add(labelId);
@@ -613,4 +616,41 @@ public class StudentActionDialogs extends BaseActionDialogs{
             }
         });
     }
+	
+	void checkDates() {
+		if((Integer)spinnerCourseStartYear.getValue()*365+(Integer)spinnerCourseStartMonth.getValue()*31+(Integer)spinnerCourseStartDay.getValue() > 
+				(Integer)spinnerCourseEndYear.getValue()*365+(Integer)spinnerCourseEndMonth.getValue()*31+(Integer)spinnerCourseEndDay.getValue()) {
+			if ((Integer)spinnerCourseStartMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue()) {
+				spinnerRed(spinnerCourseStartMonth);
+				spinnerRed(spinnerCourseEndMonth);
+				boolCourseStartMonth.set(false);
+				boolCourseEndMonth.set(false);
+			} else {
+				spinnerRed(spinnerCourseStartDay);
+				spinnerRed(spinnerCourseEndDay);
+				boolCourseStartDay.set(false);
+				boolCourseEndDay.set(false);
+			}
+		} else if((Integer)spinnerBirthYear.getValue()*365+(Integer)spinnerBirthMonth.getValue()*31+(Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseStartYear.getValue()*365+(Integer)spinnerCourseStartMonth.getValue()*31+(Integer)spinnerCourseStartDay.getValue() ||
+		   (Integer)spinnerBirthYear.getValue()*365+(Integer)spinnerBirthMonth.getValue()*31+(Integer)spinnerBirthDay.getValue() > (Integer)spinnerCourseEndYear.getValue()*365+(Integer)spinnerCourseEndMonth.getValue()*31+(Integer)spinnerCourseEndDay.getValue()) {
+			if ((Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseStartMonth.getValue() ||
+				(Integer)spinnerBirthMonth.getValue() > (Integer)spinnerCourseEndMonth.getValue()) {
+				spinnerRed(spinnerBirthMonth);
+				boolBirthMonth.set(false);
+			} else {
+				spinnerRed(spinnerBirthDay);
+				boolBirthDay.set(false);
+			}
+		} else {
+			boolCourseStartYear.set(true);
+			boolCourseStartMonth.set(true);
+			boolCourseStartDay.set(true);
+			boolCourseEndYear .set(true);
+			boolCourseEndMonth.set(true);
+			boolCourseEndDay.set(true);
+			boolBirthYear.set(true);
+			boolBirthMonth.set(true);
+			boolBirthDay.set(true);
+		}
+	}
 }

@@ -62,7 +62,7 @@ public class ProgramDate {
         textFieldDay.setFont(boldFont);
         textFieldDay.setHorizontalAlignment(JTextField.CENTER);
 
-        f.setPreferredSize(new Dimension(400,28));
+        f.setPreferredSize(new Dimension(400,40));
         f.add(new JLabel("Year"));
         f.add(spinnerYear);
         f.add(new JLabel("Month"));

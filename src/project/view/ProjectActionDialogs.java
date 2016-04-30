@@ -93,7 +93,7 @@ public class ProjectActionDialogs extends BaseActionDialogs{
     public void removeProject(final ArrayList<UniversityProject> projects, final MainFrame mainPanel) {
         if(projects.size() > 0) {
             final JDialog dialog = new JDialog();
-            dialog.setSize(360, 130);
+            dialog.setSize(380, 130);
             dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dialog.setTitle("Remove project");
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -125,9 +125,9 @@ public class ProjectActionDialogs extends BaseActionDialogs{
             layout.putConstraint(SpringLayout.NORTH, projectLabel, 13, SpringLayout.NORTH, panel);
             layout.putConstraint(SpringLayout.WEST, projectLabel, 10, SpringLayout.WEST, panel);
             layout.putConstraint(SpringLayout.NORTH, projectList, 10, SpringLayout.NORTH, panel);
-            layout.putConstraint(SpringLayout.WEST, projectList, 100, SpringLayout.WEST, projectLabel);
+            layout.putConstraint(SpringLayout.WEST, projectList, 20, SpringLayout.EAST, projectLabel);
             layout.putConstraint(SpringLayout.NORTH, button, 35, SpringLayout.NORTH, projectLabel);
-            layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, projectLabel);
+            layout.putConstraint(SpringLayout.WEST, button, 20, SpringLayout.EAST, projectLabel);
 
             dialog.add(panel);
             dialog.setLocationRelativeTo(null);
@@ -168,7 +168,7 @@ public class ProjectActionDialogs extends BaseActionDialogs{
 
         SpringLayout spring = new SpringLayout();
         panelProject.setLayout(spring);
-        panelProject.setPreferredSize(new Dimension(480, 240));
+        panelProject.setPreferredSize(new Dimension(500, 240));
         panelProject.add(labelName);
         panelProject.add(textFieldName);
         panelProject.add(labelDescription);
